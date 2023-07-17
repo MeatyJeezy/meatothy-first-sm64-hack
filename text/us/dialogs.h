@@ -2082,18 +2082,39 @@ something.\n\
 Press [B] again to throw\n\
 something you're holding."))
 
-DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
-Hey! Knock it off! That's\n\
-the second time you've\n\
-nailed me. Now you're\n\
-asking for it, linguine\n\
-breath!"))
+// DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
+// Hey! Knock it off! That's\n\
+// the second time you've\n\
+// nailed me. Now you're\n\
+// asking for it, linguine\n\
+// breath!"))
+
+// DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, _("\
+// Keep out!\n\
+// That means you!\n\
+// Arrgghh!\n\
+// \n\
+// Anyone entering this cave\n\
+// without permission will\n\
+// meet certain disaster."))
+
+//NEW DIALOGUE STARTS HERE
+DEFINE_DIALOG(DIALOG_168, 1, 4, 95, 200, _("\
+Use [Z] to crouch.\n\
+While crouched, move around\n\
+to crawl through tight spaces!"))
 
 DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, _("\
-Keep out!\n\
-That means you!\n\
-Arrgghh!\n\
+Welcome to Funland!\n\
 \n\
-Anyone entering this cave\n\
-without permission will\n\
-meet certain disaster."))
+\n\
+\n\
+Before we let you in,\n\
+let's refresh you on the\n\
+basics of movement.\n\
+\n\
+To start, use the left joystick\n\
+to move forward, and\n\
+press the [B] button to\n\
+read the sign!"))
+
