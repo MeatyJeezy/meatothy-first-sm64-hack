@@ -2101,8 +2101,9 @@ something you're holding."))
 //NEW DIALOGUE STARTS HERE
 DEFINE_DIALOG(DIALOG_168, 1, 4, 95, 200, _("\
 Use [Z] to crouch.\n\
-While crouched, move around\n\
-to crawl through tight spaces!"))
+While crouched, move\n\
+around to crawl\n\
+through tight spaces!"))
 
 DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, _("\
 Welcome to Funland!\n\
@@ -2113,8 +2114,8 @@ Before we let you in,\n\
 let's refresh you on the\n\
 basics of movement.\n\
 \n\
-To start, use the left joystick\n\
-to move forward, and\n\
-press the [B] button to\n\
-read the sign!"))
+To start, use the left\n\
+joystick to move forward\n\
+and press the [B] button\n\
+to read the sign!"))
 
