@@ -1,0 +1,15 @@
+extern const GeoLayout rr_area_1_geo[];
+extern const GeoLayout rr_area_1[];
+extern const Collision rr_area_1_collision[];
+extern const MacroObject rr_area_1_macro_objs[];
+extern Lights1 rr_dl_sm64_material_001_lights;
+extern Lights1 rr_dl_death_lights;
+extern Vtx rr_dl_Cube_mesh_layer_1_vtx_0[24];
+extern Gfx rr_dl_Cube_mesh_layer_1_tri_0[];
+extern Vtx rr_dl_Deathplane_mesh_layer_5_vtx_0[4];
+extern Gfx rr_dl_Deathplane_mesh_layer_5_tri_0[];
+extern Gfx mat_rr_dl_sm64_material_001[];
+extern Gfx mat_rr_dl_death[];
+extern Gfx rr_dl_Cube_mesh_layer_1[];
+extern Gfx rr_dl_Deathplane_mesh_layer_5[];
+extern Gfx rr_dl_material_revert_render_settings[];

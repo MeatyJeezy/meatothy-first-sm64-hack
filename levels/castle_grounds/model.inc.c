@@ -18,6 +18,10 @@ Lights1 castle_grounds_dl_f3dlite_material_002_lights = gdSPDefLights1(
 	0x4D, 0x44, 0x32,
 	0x9F, 0x8D, 0x6C, 0x28, 0x28, 0x28);
 
+Lights1 castle_grounds_dl_cloudwarpmaterial_lights = gdSPDefLights1(
+	0x7F, 0x7F, 0x7F,
+	0xFF, 0xFF, 0xFF, 0x28, 0x28, 0x28);
+
 Lights1 castle_grounds_dl_TentA_lights = gdSPDefLights1(
 	0x7F, 0x7F, 0x7F,
 	0xFF, 0xFF, 0xFF, 0x28, 0x28, 0x28);
@@ -7097,6 +7101,20 @@ Gfx castle_grounds_dl_Buildings_mesh_layer_1_tri_4[] = {
 	gsSP1Triangle(9, 11, 10, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 14, 15, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx castle_grounds_dl_Cloudwarp_mesh_layer_5_vtx_0[4] = {
+	{{ {-6916, 0, 6916}, 0, {-16, 1008}, {0, 127, 0, 255} }},
+	{{ {6916, 0, 6916}, 0, {1008, 1008}, {0, 127, 0, 255} }},
+	{{ {6916, 0, -6916}, 0, {1008, -16}, {0, 127, 0, 255} }},
+	{{ {-6916, 0, -6916}, 0, {-16, -16}, {0, 127, 0, 255} }},
+};
+
+Gfx castle_grounds_dl_Cloudwarp_mesh_layer_5_tri_0[] = {
+	gsSPVertex(castle_grounds_dl_Cloudwarp_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -16210,6 +16228,14 @@ Gfx mat_castle_grounds_dl_f3dlite_material_002[] = {
 	gsSPEndDisplayList(),
 };
 
+Gfx mat_castle_grounds_dl_cloudwarpmaterial[] = {
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsSPSetLights1(castle_grounds_dl_cloudwarpmaterial_lights),
+	gsSPEndDisplayList(),
+};
+
 Gfx mat_castle_grounds_dl_TentA[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
@@ -16585,6 +16611,12 @@ Gfx castle_grounds_dl_Buildings_mesh_layer_1[] = {
 	gsSPDisplayList(mat_revert_castle_grounds_dl_Windows),
 	gsSPDisplayList(mat_castle_grounds_dl_f3dlite_material_002),
 	gsSPDisplayList(castle_grounds_dl_Buildings_mesh_layer_1_tri_4),
+	gsSPEndDisplayList(),
+};
+
+Gfx castle_grounds_dl_Cloudwarp_mesh_layer_5[] = {
+	gsSPDisplayList(mat_castle_grounds_dl_cloudwarpmaterial),
+	gsSPDisplayList(castle_grounds_dl_Cloudwarp_mesh_layer_5_tri_0),
 	gsSPEndDisplayList(),
 };
 

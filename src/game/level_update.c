@@ -741,19 +741,21 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
             case WARP_OP_WARP_FLOOR:
                 sSourceWarpNodeId = WARP_NODE_WARP_FLOOR;
                 if (area_get_warp_node(sSourceWarpNodeId) == NULL) {
-#ifndef DISABLE_LIVES
-                    if (m->numLives == 0) {
-                        sDelayedWarpOp = WARP_OP_GAME_OVER;
-                    } else {
-                        sSourceWarpNodeId = WARP_NODE_DEATH;
-                    }
-#else
-                    sSourceWarpNodeId = WARP_NODE_DEATH;
-#endif
-                }
 
-                sDelayedWarpTimer = 20;
-                play_transition(WARP_TRANSITION_FADE_INTO_CIRCLE, sDelayedWarpTimer, 0x00, 0x00, 0x00);
+//#ifndef DISABLE_LIVES
+                    //if (m->numLives == 0) {
+                    //    sDelayedWarpOp = WARP_OP_GAME_OVER;
+                    //} else {
+                    //    sSourceWarpNodeId = WARP_NODE_DEATH;
+                    //}
+//#else
+                    //sSourceWarpNodeId = WARP_NODE_DEATH;
+//#endif
+                }
+//CHANGED commented out the above, don't want to treat this like a death.
+                sDelayedWarpTimer = 5; //CHANGED from 20 to 10
+                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, sDelayedWarpTimer, 0xFF, 0xFF, 0xFF); //CHANGED from fade into circle, should fade to white.
+                play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource); // NEW should play painting entry sound I think?
                 break;
 
             case WARP_OP_LOOK_UP: // enter totwc
@@ -1313,6 +1315,7 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
     sWarpCheckpointActive = FALSE;
     gCurrLevelNum = levelNum;
     gCurrCourseNum = gLevelToCourseNumTable[levelNum - 1];
+	if (gCurrLevelNum == LEVEL_RR) return 0;
 		
     if (gCurrDemoInput != NULL || gCurrCreditsEntry != NULL || gCurrCourseNum == COURSE_NONE) {
         return FALSE;
