@@ -78,10 +78,10 @@ const LevelScript level_rr_entry[] = {
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, rr_area_1),
-		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0B, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0A, LEVEL_RR, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		OBJECT(MODEL_NONE, 0, 200, 0, 0, 0, 0, 0x000A0000, bhvWarp),
+		OBJECT(MODEL_NONE, 0, 200, 0, 0, 0, 0, 0x000A0000, bhvAirborneWarp),
 		MARIO_POS(0x01, 0, 0, 200, 0),
 		TERRAIN(rr_area_1_collision),
 		MACRO_OBJECTS(rr_area_1_macro_objs),
