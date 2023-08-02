@@ -1031,12 +1031,12 @@ s32 act_crazy_box_bounce(struct MarioState *m) {
                 break;
 
             case 1:
-                m->vel[1] = 60.0f;
+                m->vel[1] = 90.0f; // Changed 60 to 90
                 minSpeed = 36.0f;
                 break;
 
             case 2:
-                m->vel[1] = 100.0f;
+                m->vel[1] = 500.0f; // Changed 100 to 500
                 minSpeed = 48.0f;
                 break;
         }

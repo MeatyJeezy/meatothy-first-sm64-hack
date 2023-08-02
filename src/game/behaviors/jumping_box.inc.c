@@ -5,7 +5,7 @@ struct ObjectHitbox sJumpingBoxHitbox = {
     /* downOffset:        */ 20,
     /* damageOrCoinValue: */ 0,
     /* health:            */ 1,
-    /* numLootCoins:      */ 5,
+    /* numLootCoins:      */ 0, // Changed from 5 coins to 0
     /* radius:            */ 150,
     /* height:            */ 250,
     /* hurtboxRadius:     */ 150,
