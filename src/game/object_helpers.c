@@ -1748,6 +1748,16 @@ s32 cur_obj_is_mario_ground_pounding_platform(void) {
 
     return FALSE;
 }
+// NEW copy of above function, except checks if it's a SUPERPOUND
+s32 cur_obj_is_mario_superpounding_platform(void) {
+    if (gMarioObject->platform == o) {
+        if (gMarioStates[0].action == ACT_SUPERPOUND_LAND) { //
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
 
 void spawn_mist_particles(void) {
     spawn_mist_particles_variable(0, 0, 46.0f);

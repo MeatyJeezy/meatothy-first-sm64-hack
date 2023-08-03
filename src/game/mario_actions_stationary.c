@@ -1024,6 +1024,24 @@ s32 act_ground_pound_land(struct MarioState *m) {
     landing_step(m, MARIO_ANIM_GROUND_POUND_LANDING, ACT_BUTT_SLIDE_STOP);
     return FALSE;
 }
+// NEW superpound land. Similar to act_ground_pound_land
+s32 act_superpound_land(struct MarioState *m) {
+    m->actionState = ACT_STATE_SUPERPOUND_LAND; // 
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
+    if (m->input & INPUT_OFF_FLOOR) {
+        return set_mario_action(m, ACT_FREEFALL, 0);
+    }
+
+    if (m->input & INPUT_ABOVE_SLIDE) {
+        return set_mario_action(m, ACT_BUTT_SLIDE, 0);
+    }
+
+    landing_step(m, MARIO_ANIM_GROUND_POUND_LANDING, ACT_BUTT_SLIDE_STOP);
+    return FALSE;
+}
 
 s32 act_first_person(struct MarioState *m) {
     s32 exit = (m->input & (INPUT_OFF_FLOOR | INPUT_ABOVE_SLIDE | INPUT_STOMPED)) != 0;
@@ -1126,6 +1144,7 @@ s32 mario_execute_stationary_action(struct MarioState *m) {
         case ACT_BACKFLIP_LAND_STOP:      cancel = act_backflip_land_stop(m);               break;
         case ACT_LONG_JUMP_LAND_STOP:     cancel = act_long_jump_land_stop(m);              break;
         case ACT_GROUND_POUND_LAND:       cancel = act_ground_pound_land(m);                break;
+        case ACT_SUPERPOUND_LAND:         cancel = act_superpound_land(m);                  break; //NEW Superpound land function
         case ACT_BRAKING_STOP:            cancel = act_braking_stop(m);                     break;
         case ACT_BUTT_SLIDE_STOP:         cancel = act_butt_slide_stop(m);                  break;
         case ACT_HOLD_BUTT_SLIDE_STOP:    cancel = act_hold_butt_slide_stop(m);             break;

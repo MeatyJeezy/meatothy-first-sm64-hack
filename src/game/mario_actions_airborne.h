@@ -7,7 +7,8 @@
 
 enum ActionStatesGroundPound { // act_ground_pound
     ACT_STATE_GROUND_POUND_SPIN,
-    ACT_STATE_GROUND_POUND_FALL
+    ACT_STATE_GROUND_POUND_FALL,
+    ACT_STATE_SUPERPOUND_FALL // NEW 
 };
 
 enum ActionArgsGroundPound { // act_ground_pound

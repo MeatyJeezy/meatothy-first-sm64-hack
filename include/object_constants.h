@@ -740,6 +740,7 @@ enum oSubActionBowserActQuickJump { // BOWSER_ACT_QUICK_JUMP
     #define BREAKABLE_BOX_BP_3_COINS                        0x1
     #define BREAKABLE_BOX_BP_5_COINS                        0x2
     #define BREAKABLE_BOX_BP_LARGE                          0x3
+    #define BREAKABLE_BOX_SUPER                             0x4 //NEW param for super breakable box
     /* oAction */
     #define BREAKABLE_BOX_ACT_HIDDEN                        0x0
     #define BREAKABLE_BOX_ACT_ACTIVE                        0x1

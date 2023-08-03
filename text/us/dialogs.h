@@ -2109,13 +2109,5 @@ DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, _("\
 Welcome to Funland!\n\
 \n\
 \n\
-\n\
-Before we let you in,\n\
-let's refresh you on the\n\
-basics of movement.\n\
-\n\
-To start, use the left\n\
-joystick to move forward\n\
-and press the [B] button\n\
-to read the sign!"))
+\n"))
 

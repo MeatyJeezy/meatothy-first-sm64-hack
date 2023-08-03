@@ -3,8 +3,8 @@
 const GeoLayout rr_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 0, -108, 0, rr_dl_Cube_mesh_layer_1),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 28, -3823, -37, rr_dl_Deathplane_mesh_layer_5),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, rr_dl_Cube_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 28, -3610, -37, rr_dl_Plane_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };

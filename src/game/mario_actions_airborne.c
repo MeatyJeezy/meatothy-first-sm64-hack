@@ -935,11 +935,19 @@ s32 act_ground_pound(struct MarioState *m) {
         if (m->actionTimer >= m->marioObj->header.gfx.animInfo.curAnim->loopEnd + 4) {
             play_sound(SOUND_MARIO_GROUND_POUND_WAH, m->marioObj->header.gfx.cameraToObject);
             m->actionState = ACT_STATE_GROUND_POUND_FALL;
+            m->actionTimer = 0; // NEW Set actionTimer to 0 here so it can be used to count frames.
         }
     } else {
+
         set_mario_animation(m, MARIO_ANIM_GROUND_POUND);
 
         stepResult = perform_air_step(m, 0);
+        m->actionTimer++; // NEW increase actionTimer each frame. If groundpounding long enough, it should turn into superpound.
+        if (m->actionTimer > 15) {
+            m->particleFlags |= PARTICLE_SPARKLES;
+            play_sound(SOUND_GENERAL_COLLECT_1UP, m->marioObj->header.gfx.cameraToObject);
+            set_mario_action(m, ACT_SUPERPOUND, 0); // NEW
+        }
         if (stepResult == AIR_STEP_LANDED) {
             if (should_get_stuck_in_ground(m)) {
 #if ENABLE_RUMBLE
@@ -970,6 +978,49 @@ s32 act_ground_pound(struct MarioState *m) {
 #endif
     }
 
+    return FALSE;
+}
+
+s32 act_superpound(struct MarioState *m) { // NEW Superpound. It's like a harder ground pound that occurs after falling in ground pound state long enough.
+    u32 stepResult;
+
+    if (m->actionState == 0) {
+        m->vel[1] = -70.0f;
+        mario_set_forward_vel(m, 0.0f);
+        m->actionState = ACT_STATE_SUPERPOUND_FALL;
+    }
+
+
+    stepResult = perform_air_step(m, 0);
+    if (stepResult == AIR_STEP_LANDED) {
+        if (should_get_stuck_in_ground(m)) {
+#if ENABLE_RUMBLE
+            queue_rumble_data(5, 80);
+#endif
+            play_sound(SOUND_MARIO_OOOF2, m->marioObj->header.gfx.cameraToObject);
+            m->particleFlags |= PARTICLE_MIST_CIRCLE;
+            set_mario_action(m, ACT_BUTT_STUCK_IN_GROUND, 0);
+        } else {
+            play_mario_heavy_landing_sound(m, SOUND_ACTION_TERRAIN_HEAVY_LANDING);
+            if (!check_fall_damage(m, ACT_HARD_BACKWARD_GROUND_KB)) {
+                m->particleFlags |= PARTICLE_MIST_CIRCLE | PARTICLE_HORIZONTAL_STAR | PARTICLE_SPARKLES; // 
+                set_mario_action(m, ACT_SUPERPOUND_LAND, 0); // 
+            }
+        }
+        set_camera_shake_from_hit(SHAKE_GROUND_POUND);
+    }
+#ifndef DISABLE_GROUNDPOUND_BONK
+    else if (stepResult == AIR_STEP_HIT_WALL) {
+        mario_set_forward_vel(m, -16.0f);
+        if (m->vel[1] > 0.0f) {
+            m->vel[1] = 0.0f;
+        }
+
+        m->particleFlags |= PARTICLE_VERTICAL_STAR;
+        set_mario_action(m, ACT_BACKWARD_AIR_KB, 0);
+    }
+#endif
+    
     return FALSE;
 }
 
@@ -2049,6 +2100,7 @@ s32 mario_execute_airborne_action(struct MarioState *m) {
         case ACT_CRAZY_BOX_BOUNCE:     cancel = act_crazy_box_bounce(m);     break;
         case ACT_SPECIAL_TRIPLE_JUMP:  cancel = act_special_triple_jump(m);  break;
         case ACT_GROUND_POUND:         cancel = act_ground_pound(m);         break;
+        case ACT_SUPERPOUND:           cancel = act_superpound(m);           break; // NEW added ACT_SUPERPOUND function
         case ACT_THROWN_FORWARD:       cancel = act_thrown_forward(m);       break;
         case ACT_THROWN_BACKWARD:      cancel = act_thrown_backward(m);      break;
         case ACT_FLYING_TRIPLE_JUMP:   cancel = act_flying_triple_jump(m);   break;

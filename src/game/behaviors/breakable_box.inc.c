@@ -20,6 +20,7 @@ void breakable_box_init(void) {
         case BREAKABLE_BOX_BP_3_COINS:  o->oNumLootCoins = 3; break;
         case BREAKABLE_BOX_BP_5_COINS:  o->oNumLootCoins = 5; break;
         case BREAKABLE_BOX_BP_LARGE:    cur_obj_scale(1.5f);  break;
+        case BREAKABLE_BOX_SUPER:       cur_obj_scale(0.5f);  break; // NEW
     }
 }
 
@@ -104,8 +105,15 @@ void bhv_breakable_box_loop(void) {
     obj_set_hitbox(o, &sBreakableBoxHitbox);
     cur_obj_set_model(MODEL_BREAKABLE_BOX);
     if (o->oTimer == 0) breakable_box_init();
-    if (cur_obj_was_attacked_or_ground_pounded()) {
-        obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
-        create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+    if (o->oBehParams2ndByte == BREAKABLE_BOX_SUPER) {
+        if (cur_obj_is_mario_superpounding_platform()) { // NEW check if mario superpounds the block instead
+            obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
+            create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+        }
+    } else {
+        if (cur_obj_was_attacked_or_ground_pounded()) {
+            obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
+            create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+        }
     }
 }

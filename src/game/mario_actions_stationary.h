@@ -39,7 +39,8 @@ enum ActionStatesTwirlLand { // act_twirl_land
 
 enum ActionStatesGroundPoundLand { // act_ground_pound_land
     ACT_STATE_GROUND_POUND_LAND_0,
-    ACT_STATE_GROUND_POUND_LAND_1
+    ACT_STATE_GROUND_POUND_LAND_1,
+    ACT_STATE_SUPERPOUND_LAND // NEW
 };
 
 enum ActionStatesFirstPerson { // act_first_person
