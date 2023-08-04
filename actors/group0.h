@@ -333,4 +333,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 
 #include "mario/anim_header.h"
+#include "mario/geo_header.h"
+
 #endif

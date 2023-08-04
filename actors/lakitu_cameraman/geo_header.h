@@ -1,4 +1,4 @@
-extern const GeoLayout lakitu_cameraman_geo[];
+extern const GeoLayout lakitu_geo[];
 extern Lights1 lakitu_cameraman_skin_lights;
 extern Lights1 lakitu_cameraman_clothA_lights;
 extern Lights1 lakitu_cameraman_Clothb_layer1_lights;
