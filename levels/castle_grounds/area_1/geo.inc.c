@@ -15,7 +15,7 @@ const GeoLayout castle_grounds_area_1_geo[] = {
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, castle_grounds_dl_raleroad_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_grounds_dl_Saloon_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, castle_grounds_dl_Saloon_mesh_layer_5),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 3058, 0, 6465, castle_grounds_dl_SHoot_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 3058, 0, 6465, 0, 40, 0, castle_grounds_dl_SHoot_mesh_layer_1),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_TRANSPARENT, castle_grounds_dl_SHoot_mesh_layer_5),
 		GEO_CLOSE_NODE(),
