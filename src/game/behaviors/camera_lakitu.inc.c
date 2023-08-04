@@ -13,11 +13,12 @@
 void bhv_camera_lakitu_init(void) {
     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
         // Despawn unless this is the very beginning of the game
-        if (gNeverEnteredCastle != TRUE) {
-            obj_mark_for_deletion(o);
-        }
+        cur_obj_hide();
+        // if (gNeverEnteredCastle != TRUE) {
+        //     obj_mark_for_deletion(o);
+        // }
     } else {
-        spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
+        //spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
     }
 }
 
@@ -28,15 +29,20 @@ void bhv_camera_lakitu_init(void) {
 static void camera_lakitu_intro_act_trigger_cutscene(void) {
     //! These bounds are slightly smaller than the actual bridge bounds, allowing
     //  the RTA speedrunning method of lakitu skip
-    if (gMarioObject->oPosX >  -544.0f
-        && gMarioObject->oPosX <   545.0f
-        && gMarioObject->oPosY >   800.0f
-        && gMarioObject->oPosZ > -2000.0f
-        && gMarioObject->oPosZ <  -177.0f) {
-        if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+    if (o->oDistanceToMario < 600.0f) {
+        if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) { // CHANGED to detect Lakitu Proximity instead of hard-coded values
             o->oAction = CAMERA_LAKITU_INTRO_ACT_SPAWN_CLOUD;
         }
     }
+    // if (gMarioObject->oPosX >  -544.0f
+    //     && gMarioObject->oPosX <   545.0f
+    //     && gMarioObject->oPosY >   800.0f
+    //     && gMarioObject->oPosZ > -2000.0f
+    //     && gMarioObject->oPosZ <  -177.0f) {
+    //     if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+    //         o->oAction = CAMERA_LAKITU_INTRO_ACT_SPAWN_CLOUD;
+    //     }
+    // }
 }
 
 /**
@@ -44,17 +50,18 @@ static void camera_lakitu_intro_act_trigger_cutscene(void) {
  */
 static void camera_lakitu_intro_act_spawn_cloud(void) {
     if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK) {
+        cur_obj_unhide();
         o->oAction = CAMERA_LAKITU_INTRO_ACT_SHOW_DIALOG;
 
-        o->oPosX = 1800.0f;
-        o->oPosY = 2400.0f;
-        o->oPosZ = -2400.0f;
+        o->oPosX += 1000.0f; //CHANGED += operator should warp Lakitu straight up?
+        o->oPosY += 1600.0f;
+        o->oPosZ += 1400.0f;
 
         o->oMoveAnglePitch = 0x4000;
         o->oCameraLakituSpeed = 60.0f;
         o->oCameraLakituCircleRadius = 1000.0f;
 
-        spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
+        //spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
     }
 }
 
@@ -65,7 +72,7 @@ static void camera_lakitu_intro_act_show_dialog(void) {
     s16 targetMovePitch = 0x0;
     s16 targetMoveYaw = 0x0;
 
-    cur_obj_play_sound_1(SOUND_AIR_LAKITU_FLY);
+    //cur_obj_play_sound_1(SOUND_AIR_LAKITU_FLY); //CHANGED commented out because sound is annoying
 
     // Face toward mario
     o->oFaceAnglePitch = obj_turn_pitch_toward_mario(120.0f, 0);
@@ -101,13 +108,14 @@ static void camera_lakitu_intro_act_show_dialog(void) {
                 if (o->oDistanceToMario < 1000.0f) {
 #ifndef VERSION_JP
                     if (!o->oCameraLakituIntroMusicPlayed) {
-                        play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_LAKITU), 0);
+                        //play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_LAKITU), 0); //CHANGED don't want music interrupted.
+                        cur_obj_play_sound_1(SOUND_ACTION_FLYING_FAST);
                         o->oCameraLakituIntroMusicPlayed = TRUE;
                     }
 #endif
                     // Once within 1000 units, slow down
                     approach_f32_ptr(&o->oCameraLakituSpeed, 20.0f, 1.0f);
-                    if (o->oDistanceToMario < 500.0f
+                    if (o->oDistanceToMario < 600.0f // CHANGED 500 to 600
                         && abs_angle_diff(gMarioObject->oFaceAngleYaw, o->oFaceAngleYaw) > 0x7000) {
                         // Once within 500 units and facing toward mario, come to a stop
                         approach_f32_ptr(&o->oCameraLakituSpeed, 0.0f, 5.0f);
