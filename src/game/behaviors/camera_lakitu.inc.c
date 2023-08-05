@@ -10,6 +10,13 @@
  * If this is the intro lakitu, despawn unless this is the start of the game.
  * Spawn cloud if not the intro lakitu.
  */
+enum FappyDialog {
+    FAPPY_DIALOG_UNUSED,
+    FAPPY_DIALOG_1      = 0x1,
+    FAPPY_DIALOG_2      = 0x2,
+    FAPPY_DIALOG_3      = 0x3
+};
+
 void bhv_camera_lakitu_init(void) {
     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
         // Despawn unless this is the very beginning of the game
@@ -20,6 +27,16 @@ void bhv_camera_lakitu_init(void) {
     } else {
         //spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
     }
+}
+
+s32 get_dialogue_from_param(void) {
+    u8 param = o->oBehParams2ndByte;
+    switch(param) {
+        case FAPPY_DIALOG_1: return DIALOG_034; break;
+        case FAPPY_DIALOG_2: return DIALOG_035; break;
+        case FAPPY_DIALOG_3: return DIALOG_036; break;
+    }
+    return DIALOG_034;
 }
 
 /**
@@ -123,7 +140,7 @@ static void camera_lakitu_intro_act_show_dialog(void) {
                 }
             }
         } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
-            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_034)) {
+            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, get_dialogue_from_param())) {
             o->oCameraLakituFinishedDialog = TRUE;
         }
     }
