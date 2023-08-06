@@ -703,7 +703,7 @@
 #define /*0x1AE*/ oCameraLakituYawVel         OBJECT_FIELD_S16(0x49, 1)
 
 /* Fappy Bigtop */
-#define /*0x0F4*/ oFappyUnusedBlinkTimer    OBJECT_FIELD_S32(0x1B)
+#define /*0x0F4*/ oFappyCounter             OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oFappySpeed               OBJECT_FIELD_F32(0x1C)
 #define /*0x0FC*/ oFappyCircleRadius        OBJECT_FIELD_F32(0x1D)
 #define /*0x100*/ oFappyFinishedDialog      OBJECT_FIELD_S32(0x1E)

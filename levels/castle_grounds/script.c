@@ -12,6 +12,7 @@
 #include "levels/scripts.h"
 
 #include "actors/common1.h"
+#include "actors/group1.h"
 
 /* Fast64 begin persistent block [includes] */
 /* Fast64 end persistent block [includes] */
@@ -27,6 +28,8 @@ const LevelScript level_castle_grounds_entry[] = {
 	LOAD_YAY0(0x07, _castle_grounds_segment_7SegmentRomStart, _castle_grounds_segment_7SegmentRomEnd), 
 	LOAD_YAY0(0x0A, _water_skybox_yay0SegmentRomStart, _water_skybox_yay0SegmentRomEnd), 
 	LOAD_YAY0_TEXTURE(0x09, _outside_yay0SegmentRomStart, _outside_yay0SegmentRomEnd), 
+	LOAD_YAY0(0x05, _group1_yay0SegmentRomStart, _group1_yay0SegmentRomEnd),
+	LOAD_RAW(0x0C, _group1_geoSegmentRomStart, _group1_geoSegmentRomEnd), //New
 	LOAD_YAY0(0x05, _group10_yay0SegmentRomStart, _group10_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0C, _group10_geoSegmentRomStart, _group10_geoSegmentRomEnd), 
 	LOAD_YAY0(0x06, _group15_yay0SegmentRomStart, _group15_yay0SegmentRomEnd), 
@@ -40,6 +43,7 @@ const LevelScript level_castle_grounds_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_11), 
 	JUMP_LINK(script_func_global_16), 
+	//LOAD_MODEL_FROM_GEO(MODEL_LAKITU lakitu_geo), //NEW
 	LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_03, castle_grounds_geo_0006F4), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, bubbly_tree_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_WARP_PIPE, warp_pipe_geo), 
@@ -60,7 +64,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		WARP_NODE(0x0B, LEVEL_WF, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_NONE, 569, -651, 4363, 0, 0, 0, 0x000B0000, bhvWarp),
 		OBJECT(MODEL_BREAKABLE_BOX, 576, -659, 13458, 0, 0, 0, 0x00040000, bhvBreakableBox),
-		OBJECT(MODEL_LAKITU, 518, -609, 11156, 0, 0, 0, 0x00010000, bhvCameraLakitu),
+		OBJECT(MODEL_LAKITU, 518, -609, 11156, 0, 0, 0, 0x00010000, bhvCameraLakitu), // specify 0x30 instead of MODEL_LAKITU
 		OBJECT(MODEL_GOOMBA, 138, -665, 12596, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_BREAKABLE_BOX_SMALL, 446, -665, 12417, 0, 0, 0, 0x00000000, bhvJumpingBox),
 		OBJECT(MODEL_NONE, 479, -398, 15925, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),

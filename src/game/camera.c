@@ -2879,7 +2879,7 @@ void update_camera(struct Camera *c) {
 #endif
         && gCurrentArea->camera->mode != CAMERA_MODE_INSIDE_CANNON) {
         // Only process R_TRIG if 'fixed' is not selected in the menu
-        if (cam_select_alt_mode(CAM_SELECTION_NONE) == CAM_SELECTION_MARIO) {
+        if (cam_select_alt_mode(CAM_SELECTION_NONE) == CAM_SELECTION_MARIO && gMarioStates[0].area->camera->mode != CAMERA_MODE_FIXED) { // NEW check if cam mode is fixed, don't allow switch to mario cam
             if (gPlayer1Controller->buttonPressed & R_TRIG) {
                 if (set_cam_angle(0) == CAM_ANGLE_LAKITU) {
                     set_cam_angle(CAM_ANGLE_MARIO);

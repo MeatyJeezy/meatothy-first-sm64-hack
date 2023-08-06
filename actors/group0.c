@@ -33,3 +33,6 @@
 
 #include "mario/anims/data.inc.c"
 #include "mario/anims/table.inc.c"
+#include "lakitu_cameraman/model.inc.c"
+#include "lakitu_cameraman/anims/data.inc.c"
+#include "lakitu_cameraman/anims/table.inc.c"

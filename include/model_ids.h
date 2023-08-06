@@ -67,6 +67,7 @@
 #define MODEL_WF_TOWER_SQUARE_PLATORM          0x2D        // wf_geo_000B10
 #define MODEL_WF_TOWER_SQUARE_PLATORM_UNUSED   0x2E        // wf_geo_000B38 - unused & duplicated
 #define MODEL_WF_TOWER_SQUARE_PLATORM_ELEVATOR 0x2F        // wf_geo_000B60 - elevator platorm
+#define MODEL_LAKITU                           0x30
 
 // Level model IDs
 
@@ -416,7 +417,7 @@
 // group 15
 #define MODEL_MIPS                        0x64        // mips_geo
 #define MODEL_BOO_CASTLE                  0x65        // boo_castle_geo
-#define MODEL_LAKITU                      0x66        // lakitu_geo
+//#define MODEL_LAKITU                      0x66        // lakitu_geo
 
 // group 16
 #define MODEL_CHILL_BULLY                 0x64        // chilly_chief_geo

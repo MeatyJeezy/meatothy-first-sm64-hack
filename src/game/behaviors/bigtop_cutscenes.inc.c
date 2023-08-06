@@ -20,73 +20,98 @@ enum FappyBigtopDialog {
 // Lock Mario in place prepare for cutscene
 static void bigtop_act_trigger_cutscene(void) {
     // struct Camera *c = gCurrentArea->camera;
-    if (o->oDistanceToMario < 6000.0f) {
+    if (o->oDistanceToMario < 8000.0f) {
         o->oAnimState = FAPPY_ANIM_DEFAULT;
+
         if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) { // CHANGED to detect Proximity instead of hard-coded values
-            // Move cam up and towards Fappy
-            // if (gPlayerCameraState->pos[1] < 3000.0f) {
-            //     gPlayerCameraState->pos[1] += 1000.0f;
-            //     if (gPlayerCameraState->pos[1] >= 3000.0f) {
-            //         gPlayerCameraState->pos[0] -= 1000.0f;
-                    o->oAction = BIGTOP_ACT_MOVE_CAMERA;
-                //}
-            // }
+                o->oAction++;
+                // set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
+                //reset_camera(gMarioStates[0].area->camera);
+                //set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_FIXED, 1);
+                // gPlayerCameraState->faceAngle[1] = DEGREES(180);
         }
     }
 }
 
-static void bigtop_act_move_camera(void) {
-    //f32 focusDistance;
+static void fappy_face_camera(s16 pitch) {
+    o->oFaceAnglePitch = 0;
+    //o->oFappyYawVel = approach_s16_symmetric(o->oFappyYawVel, 2000, 100);
+    o->oFaceAngleYaw = o->oAngleToMario; //cur_obj_rotate_yaw_toward(yaw, 50);
+    
+}
+// Move camera up and towards Fappy
+static void move_and_point_camera_at_object(void) {
     Vec3f focus;
     s16 pitch;
     s16 yaw;
+    // Gets Fappy position
+    object_pos_to_vec3f(focus, o);
+    focus[0] = o->oPosX +300;
+    focus[1] = o->oPosY + 200;
+    focus[2] = o->oPosZ + 200;
+    // focusDistance = calc_abs_dist(gPlayerCameraState->pos, focus);
+    if (o->oFappyCounter == 0) {
+        //obj_rotate_towards_point(struct Object *obj, Vec3f point, s16 pitchOff, s16 yawOff, s16 pitchDiv, s16 yawDiv)
+        //vec3f_copy(gMarioStates[0].area->camera->focus, focus);
+        o->oFappyCounter++;
+    }
+    //approach_f32_asymptotic_bool(&gMarioState->area->camera->focus[0], o->oPosX, 0.15f);
+    //approach_f32_asymptotic_bool(&gMarioState->area->camera->focus[2], o->oPosZ, 0.15f);
+    approach_vec3f_asymptotic(gPlayerCameraState->pos, focus, 0.2f, 0.93f, 0.85f);
+    //approach_vec3f_asymptotic(gMarioState->area->camera->focus, focus, 0.5f, 0.95f, 0.85f);
+    
+    // rotate_in_xz(gMarioStates[0].area->camera->pos, focus, DEGREES(180));
+    // Get pitch and yaw from camera pos and Fappy focus[] xyz values.
+    yaw = calculate_yaw(gPlayerCameraState->pos, focus);
+    pitch = calculate_pitch(gPlayerCameraState->pos, focus);
+    //vec3f_set_dist_and_angle(gPlayerCameraState->pos, focus, 200.0f, pitch, yaw);
+    //vec3f_get_yaw(gPlayerCameraState->pos, focus, &yaw);
+    //vec3f_get_pitch(gPlayerCameraState->pos, focus, &pitch);
+
+    
+
+    // approach_f32_asymptotic_bool(f32 *current, f32 target, f32 multiplier)
+    // Set camera angle then move. 
+    // [0] is pitch, [1] is yaw
+    
+    //gPlayerCameraState->faceAngle[0] = pitch; // 180 degrees I think
+    //gMarioStates[0].area->camera->yaw = DEGREES(-80);
+    //gPlayerCameraState->faceAngle[1] = yaw;
+    // Slightly offset camera position above Fappy
+    // focus[1] = o->oPosY;
+
+    //approach_vec3f_asymptotic(gPlayerCameraState->pos, focus, 0.0f, 1.0f, 0.5f);
+    // calc Fappy's yaw to camera
+    pitch = calculate_pitch(focus, gPlayerCameraState->pos);
+    fappy_face_camera(pitch);
+}
+
+static void bigtop_act_move_camera(void) {
+    //f32 focusDistance;
+
     // struct Camera *c = gCurrentArea->camera;
     //if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
-        switch (o->oBehParams2ndByte) {
+    switch (o->oBehParams2ndByte) {
         case BIGTOP_FIRST_CUTSCENE:
-        // Move camera up and towards Fappy
-            // while (gPlayerCameraState->pos[1] < 2000.0f) {
-            //     gPlayerCameraState->pos[1] += 500.0f;
-            //     if (gPlayerCameraState->pos[1] >= 2000.0f) {
-            //         gPlayerCameraState->pos[0] -= 1000.0f;
-            //     }
-            // }
-            // set camera focus to Fappy
-            //vec3f_set(gCamera->focus, o->oPosX, o->oPosY, o->oPosZ);
-            focus[0] = o->oPosX;
-            focus[1] = o->oPosY + 400.0f;
-            focus[2] = o->oPosZ;
-            // focusDistance = calc_abs_dist(gPlayerCameraState->pos, focus);
-            
-            // get pitch and yaw from camera pos and Fappy focus[] xyz values.
-            yaw = calculate_yaw(gPlayerCameraState->pos, focus);
-            pitch = calculate_pitch(gPlayerCameraState->pos, focus);
-            // vec3f_get_yaw(gPlayerCameraState->pos, focus, &yaw);
-            // vec3f_get_pitch(gPlayerCameraState->pos, focus, &pitch);
-
-            approach_vec3f_asymptotic(gPlayerCameraState->pos, focus, 0.9f, 0.9f, 0.9f);
-
-            // approach_f32_asymptotic_bool(f32 *current, f32 target, f32 multiplier)
-            gPlayerCameraState->faceAngle[0] = pitch;
-            gPlayerCameraState->faceAngle[1] = yaw + 200;
-
+            // Point cam at Fappy, and turn him towards camera a bit
+            move_and_point_camera_at_object();
             // Wait x frames before opening dialogue
-            if (o->oTimer < 240) {
-                o->oTimer++;
-            }
             // Once dialog is done, advance action
-            else if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            DIALOG_FLAG_TEXT_DEFAULT, FAPPY_BIGTOP_DIALOG_0, 0)) {
-                o->oAction = BIGTOP_ACT_SHOW_DIALOG;
-            }
-            
-            
-            
-            // if (c->cutscene == CUTSCENE_NONE) {
-            //     c->cutscene = CUTSCENE_BIGTOP_1; // Setting this should play the cutscene I think?
-                //start_cutscene(c, CUTSCENE_BIGTOP_1);
-            // } 
-            break;
+            // if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK) {
+                if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+                DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, FAPPY_BIGTOP_DIALOG_0)) {
+                    o->oFappyFinishedDialog = TRUE;
+                // }
+                // if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
+                // DIALOG_FLAG_TEXT_DEFAULT, FAPPY_BIGTOP_DIALOG_0, 0)) {
+                    // This helps with the weird camera
+                    //reset_camera(gMarioState->area->camera);
+                    set_camera_mode(gMarioState->area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
+                    o->oAction++;
+                }
+
+        break;
+
         case BIGTOP_SECOND_CUTSCENE:
         break;
         }
@@ -94,7 +119,7 @@ static void bigtop_act_move_camera(void) {
 }
 
 static void bigtop_act_show_dialog(void) {
-    cur_obj_hide();
+    obj_mark_for_deletion(o);
 }
 // void bhv_camera_lakitu_init(void) {
 //     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
@@ -239,12 +264,24 @@ static void bigtop_act_show_dialog(void) {
  */
 void bhv_bigtop_cutscene_loop(void) {
     cur_obj_unhide();
+    // Fixes cam until last function call
+    // The camera gets all weird, reset it somewhere
+    if (o->oDistanceToMario < 8000.0f && o->oAction < BIGTOP_ACT_SHOW_DIALOG) {
+        //gMarioStates[0].area->camera->mode = CAMERA_MODE_FIXED;
+        set_camera_mode(gMarioState->area->camera, CAMERA_MODE_FIXED, 1);
+    } else {
+        //set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
+    }
             switch (o->oAction) {
                 case BIGTOP_ACT_TRIGGER_CUTSCENE:
                     bigtop_act_trigger_cutscene();
                     break;
                 case BIGTOP_ACT_MOVE_CAMERA:
-                    bigtop_act_move_camera();
+                // Wait x frames
+                    //if (o->oTimer >= 100) { 
+                        bigtop_act_move_camera(); 
+                        //}
+                    //else { o->oTimer++; }
                     break;
                 case BIGTOP_ACT_SHOW_DIALOG:
                     bigtop_act_show_dialog();
