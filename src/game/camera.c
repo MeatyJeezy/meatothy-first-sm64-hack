@@ -6055,6 +6055,9 @@ struct CameraTrigger sCamBBH[] = {
 struct CameraTrigger sCamCastleGrounds[] = {
 	NULL_TRIGGER
 };
+struct CameraTrigger sCamWF[] = {
+	NULL_TRIGGER
+};
 struct CameraTrigger *sCameraTriggers[LEVEL_COUNT + 1] = {
     NULL,
     #include "levels/level_defines.h"
@@ -6533,7 +6536,7 @@ void find_mario_floor_and_ceil(struct PlayerGeometry *pg) {
 void start_object_cutscene(u8 cutscene, struct Object *obj) {
     sObjectCutscene = cutscene;
     gRecentCutscene = CUTSCENE_NONE;
-    gCutsceneFocus = obj;
+    gCutsceneFocus = obj; 
     gObjCutsceneDone = FALSE;
 }
 
@@ -8480,6 +8483,17 @@ void cutscene_pyramid_top_explode_end(struct Camera *c) {
     transition_next_state(c, 30);
 }
 
+//NEW Bigtop Cutscene 1 Handling
+void cutscene_bigtop_1(struct Camera *c) {
+    cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_036);
+}
+
+void cutscene_bigtop_1_end(struct Camera *c) {
+    //cutscene_stop_dialog(c);
+    transition_next_state(c, 30);
+}
+//END NEW Bigtop Cutscene 1 Handling
 /**
  * Store the camera focus in cvar0, and store the top of the pyramid in cvar3.
  */
@@ -10174,6 +10188,12 @@ struct Cutscene sCutscenePyramidTopExplode[] = {
     { cutscene_pyramid_top_explode_end, 0 }
 };
 
+//NEW Cutscene for first bigtop entry
+struct Cutscene sCutsceneBigtop1[] = {
+    { cutscene_bigtop_1, CUTSCENE_LOOP },
+    { cutscene_bigtop_1_end, 0 }
+};
+
 /**
  * Cutscene that plays when Mario dies while standing, or from electrocution.
  */
@@ -10802,6 +10822,7 @@ void play_cutscene(struct Camera *c) {
         CUTSCENE(CUTSCENE_RACE_DIALOG,          sCutsceneDialog)
         CUTSCENE(CUTSCENE_ENTER_PYRAMID_TOP,    sCutsceneEnterPyramidTop)
         CUTSCENE(CUTSCENE_SSL_PYRAMID_EXPLODE,  sCutscenePyramidTopExplode)
+        CUTSCENE(CUTSCENE_BIGTOP_1,             sCutsceneBigtop1) // NEW Cutscene declaration for first bigtop entry
     }
 
 #undef CUTSCENE

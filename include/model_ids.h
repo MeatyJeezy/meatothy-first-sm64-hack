@@ -409,7 +409,7 @@
 #define MODEL_WHOMP                       0x67        // whomp_geo
 #define MODEL_KOOPA_WITH_SHELL            0x68        // koopa_with_shell_geo
 #define MODEL_METALLIC_BALL               0x65        // metallic_ball_geo
-#define MODEL_CHAIN_CHOMP                 0x66        // chain_chomp
+#define MODEL_CHAIN_CHOMP                 0x6C        // chain_chomp CHANGED from 66 to 6C to not conflict with lakitu
 #define MODEL_KOOPA_FLAG                  0x6A        // koopa_flag_geo
 #define MODEL_WOODEN_POST                 0x6B        // wooden_post_geo
 

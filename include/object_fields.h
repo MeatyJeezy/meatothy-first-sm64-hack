@@ -702,6 +702,15 @@
 #define /*0x1AC*/ oCameraLakituPitchVel       OBJECT_FIELD_S16(0x49, 0)
 #define /*0x1AE*/ oCameraLakituYawVel         OBJECT_FIELD_S16(0x49, 1)
 
+/* Fappy Bigtop */
+#define /*0x0F4*/ oFappyUnusedBlinkTimer    OBJECT_FIELD_S32(0x1B)
+#define /*0x0F8*/ oFappySpeed               OBJECT_FIELD_F32(0x1C)
+#define /*0x0FC*/ oFappyCircleRadius        OBJECT_FIELD_F32(0x1D)
+#define /*0x100*/ oFappyFinishedDialog      OBJECT_FIELD_S32(0x1E)
+#define /*0x104*/ oFappyIntroMusicPlayed    OBJECT_FIELD_S32(0x1F)
+#define /*0x1AC*/ oFappyPitchVel            OBJECT_FIELD_S16(0x49, 0)
+#define /*0x1AE*/ oFappyYawVel              OBJECT_FIELD_S16(0x49, 1)
+
 /* Evil Lakitu */
 #define /*0x0F4*/ oEnemyLakituNumSpinies           OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oEnemyLakituBlinkTimer           OBJECT_FIELD_S32(0x1C)

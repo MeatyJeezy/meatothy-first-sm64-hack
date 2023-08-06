@@ -283,7 +283,8 @@ enum Cutscenes {
     CUTSCENE_CREDITS,
     CUTSCENE_EXIT_WATERFALL,
     CUTSCENE_EXIT_FALL_WMOTR,
-    CUTSCENE_ENTER_POOL
+    CUTSCENE_ENTER_POOL,
+    CUTSCENE_BIGTOP_1 // NEW enum for bigtop cutscene
 };
 
 /**

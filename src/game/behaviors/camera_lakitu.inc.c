@@ -10,6 +10,7 @@
  * If this is the intro lakitu, despawn unless this is the start of the game.
  * Spawn cloud if not the intro lakitu.
  */
+// NEW enum for fappy dialogue
 enum FappyDialog {
     FAPPY_DIALOG_UNUSED,
     FAPPY_DIALOG_1      = 0x1,
@@ -28,7 +29,7 @@ void bhv_camera_lakitu_init(void) {
         //spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
     }
 }
-
+// NEW chooses Dialog constant based on second byte param
 s32 get_dialogue_from_param(void) {
     u8 param = o->oBehParams2ndByte;
     switch(param) {

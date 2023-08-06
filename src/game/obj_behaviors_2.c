@@ -780,6 +780,7 @@ static void treat_far_home_as_mario(f32 threshold) {
 #include "behaviors/haunted_chair.inc.c"
 #include "behaviors/mad_piano.inc.c"
 #include "behaviors/flying_bookend_switch.inc.c"
+#include "behaviors/bigtop_cutscenes.inc.c" //NEW custom cutscene handling object
 
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.

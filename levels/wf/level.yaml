@@ -10,5 +10,5 @@ shared-path: []
 skybox-bin: cloud_floor
 texture-bin: grass
 effects: false
-actor-bins: [group1, group14]
+actor-bins: [group1, group14, group15]
 common-bin: [common0]

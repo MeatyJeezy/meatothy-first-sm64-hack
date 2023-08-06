@@ -1674,6 +1674,18 @@ enum animIDsSwoop {
     /* Animations */
     #define CAMERA_LAKITU_ANIM_DEFAULT                      0x0
 
+/* Bigtop Cutscenes */
+    /* BehParams2ndByte */
+    #define BIGTOP_FIRST_CUTSCENE                           0x0
+    #define BIGTOP_SECOND_CUTSCENE                          0x1
+    /* oAction */
+    #define BIGTOP_ACT_TRIGGER_CUTSCENE                     0x0
+    #define BIGTOP_ACT_MOVE_CAMERA                          0x1
+    #define BIGTOP_ACT_SHOW_DIALOG                          0x2
+    /* Animations */
+    #define FAPPY_ANIM_DEFAULT                              0x0
+    #define FAPPY_ANIM_STRESSED                             0x1
+
 /* RR Cruiser Wing */
     /* oBehParams2ndByte */
     #define CRUISER_WING_BP_CLOCKWISE                       0x0
