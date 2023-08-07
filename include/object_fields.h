@@ -711,6 +711,10 @@
 #define /*0x1AC*/ oFappyPitchVel            OBJECT_FIELD_S16(0x49, 0)
 #define /*0x1AE*/ oFappyYawVel              OBJECT_FIELD_S16(0x49, 1)
 
+/* Ligma object */
+#define /*0x0F4*/ oLigmaDialog              OBJECT_FIELD_S32(0x1B)
+#define /*0x100*/ oLigmaTimerStarted        OBJECT_FIELD_S32(0x1C)
+
 /* Evil Lakitu */
 #define /*0x0F4*/ oEnemyLakituNumSpinies           OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oEnemyLakituBlinkTimer           OBJECT_FIELD_S32(0x1C)

@@ -56,6 +56,9 @@
 
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
+//#include "text_strings.h" // NEW
+
+//#include "src/game/ingame_menu.h"
 
 #define BC_B(a) _SHIFTL(a, 24, 8)
 #define BC_BB(a, b) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8))
@@ -66,6 +69,11 @@
 #define BC_HH(a, b) (_SHIFTL(a, 16, 16) | _SHIFTL(b, 0, 16))
 #define BC_W(a) ((uintptr_t)(u32)(a))
 #define BC_PTR(a) ((uintptr_t)(a))
+
+// enum LigmaDialogs {
+//     LIGMA_DIALOG_1,
+//     LIGMA_DIALOG_FINAL
+// };
 
 enum BehaviorCommands {
     /*0x00*/ BHV_CMD_BEGIN,
@@ -6094,6 +6102,58 @@ const BehaviorScript bhvBigtopCutscene[] = {
     ANIMATE(FAPPY_ANIM_DEFAULT),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bigtop_cutscene_loop),
+    END_LOOP(),
+};
+// Just gonna place the ligma code here cuz fuck it
+// loop to decrement timer. kill mario if timer reaches 0, and delete the obj if mario presses L to ligma shield
+// void bhv_ligma_loop(void) {
+//     s32 dialogID;
+//     dialogID = o->oBehParams2ndByte;
+//     if (!(o->oLigmaTimerStarted)) {
+//         o->oTimer = 0;
+//         o->oLigmaTimerStarted = TRUE;
+
+//         //Kill after several seconds. 
+//     } else { 
+//         // Delete if L trigger is pressed
+//         if ((gPlayer1Controller->buttonPressed & L_TRIG)) {
+//             play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
+//             obj_mark_for_deletion(o);
+//             // Increment the timer and kill the player with the appropriate ligma joke
+//         } else if (o->oTimer++ > 300) {
+//             // Check which joke to use and print it in center of screen, then kill mario
+//             gMarioState->health = 0xFF;
+//             switch (dialogID) {
+//                 case LIGMA_DIALOG_UPOST:
+//                     u8 ligmaString[] = { TEXT_LIGMA_UPOST };
+//                     print_hud_lut_string(HUD_LUT_GLOBAL, 0, 69, ligmaString);
+//                     set_mario_action(gMarioState, ACT_STANDING_DEATH, 0);
+//                 break;
+//                 case LIGMA_DIALOG_FISSTIN: 
+//                     u8 ligmaString[] = { TEXT_LIGMA_FISSTIN };
+//                     print_hud_lut_string(HUD_LUT_GLOBAL, 0, 69, ligmaString);
+//                     set_mario_action(gMarioState, ACT_STANDING_DEATH, 0);
+//                 break;
+//                 case LIGMA_DIALOG_TASTEOFEDEN:
+//                     u8 ligmaString[] = { TEXT_LIGMA_FISSTIN };
+//                     print_hud_lut_string(HUD_LUT_GLOBAL, 0, 69, ligmaString);
+//                     set_mario_action(gMarioState, ACT_STANDING_DEATH, 0);
+//                 break;
+//                 case default: 
+//                     u8 ligmaString[] = { TEXT_LIGMA_DEFAULT };
+//                     print_hud_lut_string(HUD_LUT_GLOBAL, 0, 69, ligmaString);
+//                     set_mario_action(gMarioState, ACT_STANDING_DEATH, 0);
+//                 break;
+//             }
+//         }
+//     }
+// }
+//NEW invisible ligma object
+const BehaviorScript bhvLigma[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ligma_loop),
     END_LOOP(),
 };
 

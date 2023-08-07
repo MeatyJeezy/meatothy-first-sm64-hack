@@ -40,6 +40,8 @@
 #define TOAD_STAR_2_DIALOG_AFTER DIALOG_155
 #define TOAD_STAR_3_DIALOG_AFTER DIALOG_156
 
+
+
 enum ToadMessageStates {
     TOAD_MESSAGE_FADED,
     TOAD_MESSAGE_OPAQUE,
@@ -129,6 +131,8 @@ static void toad_message_talking(void) {
         DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, o->oToadMessageDialogId)) {
         o->oToadMessageRecentlyTalked = TRUE;
         o->oToadMessageState = TOAD_MESSAGE_FADING;
+        // Set timer to 0 and start counting if dialog is a ligma joke
+       
         switch (o->oToadMessageDialogId) {
             case TOAD_STAR_1_DIALOG:
                 o->oToadMessageDialogId = TOAD_STAR_1_DIALOG_AFTER;
@@ -155,6 +159,10 @@ static void toad_message_opacifying(void) {
 static void toad_message_fading(void) {
     if ((o->oOpacity -= 6) == 81) {
         o->oToadMessageState = TOAD_MESSAGE_FADED;
+        // NEW spawns ligma object if it's a ligma dialogue, passing the dialogid into the behaviorparam slot
+         if (o->oToadMessageDialogId > LIGMA_DIALOG_START || o->oToadMessageDialogId <= LIGMA_DIALOG_FINAL) {
+             spawn_object_relative(o->oToadMessageDialogId, 0, 0, 0, o, MODEL_YOSHI, bhvLigma);
+        }
     }
 }
 

@@ -881,14 +881,29 @@ don't lose your cool.\n\
 You can still control\n\
 Mario--just try to keep\n\
 calm!"))
-
-DEFINE_DIALOG(DIALOG_069, 1, 6, 30, 200, _("\
-Sometimes you'll bump into\n\
-invisible walls at the\n\
-edges of the painting\n\
-worlds. If you hit a wall\n\
-while flying, you'll bounce\n\
-back."))
+// HIGHJACKED DIALOG STARTS HERE
+// 69 = UPOST
+// FISSTIN
+// TASTEOFEDEN
+DEFINE_DIALOG(DIALOG_069, 1, 4, 30, 200, _("\
+There's something weird\n\
+about that post\n\
+over there.\n\
+\n\
+It may look like a\n\
+normal wooden post,\n\
+but it's actually\n\
+a U-Post.\n\
+They should really\n\
+label it properly.\n\
+Someone could get\n\
+seriously injured!"))
+// Sometimes you'll bump into\n\
+// invisible walls at the\n\
+// edges of the painting\n\
+// worlds. If you hit a wall\n\
+// while flying, you'll bounce\n\
+// back."))
 
 DEFINE_DIALOG(DIALOG_070, 1, 5, 30, 200, _("\
 You can return to the\n\

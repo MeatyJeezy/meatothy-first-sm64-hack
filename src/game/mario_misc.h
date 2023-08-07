@@ -7,6 +7,15 @@
 #include "types.h"
 #include "config.h"
 
+// NEW enum for Ligma Dialogs
+enum LigmaDialogs {
+    LIGMA_DIALOG_START = 68, 
+    LIGMA_DIALOG_UPOST,
+    LIGMA_DIALOG_FISSTIN,
+    LIGMA_DIALOG_TASTEOFEDEN,
+    LIGMA_DIALOG_FINAL
+};
+
 extern struct GraphNodeObject gMirrorMario;
 extern struct MarioBodyState gBodyStates[2];
 
