@@ -18,3 +18,4 @@
 #include "mario/geo.inc.c"
 
 #include "lakitu_cameraman/geo.inc.c"
+#include "CustomBob/geo.inc.c"

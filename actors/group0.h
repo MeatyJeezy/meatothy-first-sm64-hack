@@ -337,4 +337,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "lakitu_cameraman/geo_header.h"
 
+#include "CustomBob/geo_header.h"
+
 #endif
