@@ -713,7 +713,8 @@
 
 /* Ligma object */
 #define /*0x0F4*/ oLigmaDialog              OBJECT_FIELD_S32(0x1B)
-#define /*0x100*/ oLigmaTimerStarted        OBJECT_FIELD_S32(0x1C)
+#define /*0x0F8*/ oLigmaTimerStarted        OBJECT_FIELD_S32(0x1C)
+#define /*0x0FC*/ oLigmaKilledMario         OBJECT_FIELD_F32(0x1D)
 
 /* Evil Lakitu */
 #define /*0x0F4*/ oEnemyLakituNumSpinies           OBJECT_FIELD_S32(0x1B)

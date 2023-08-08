@@ -882,7 +882,7 @@ You can still control\n\
 Mario--just try to keep\n\
 calm!"))
 // HIGHJACKED DIALOG STARTS HERE
-// 69 = UPOST
+// 69-70 = UPOST
 // FISSTIN
 // TASTEOFEDEN
 DEFINE_DIALOG(DIALOG_069, 1, 4, 30, 200, _("\
@@ -905,54 +905,74 @@ seriously injured!"))
 // while flying, you'll bounce\n\
 // back."))
 
-DEFINE_DIALOG(DIALOG_070, 1, 5, 30, 200, _("\
-You can return to the\n\
-castle's main hall at any\n\
-time from the painting\n\
-worlds where the enemies\n\
-live.\n\
-Just stop, stand still,\n\
-press Start to pause the\n\
-game, then select\n\
-『Exit Course.』\n\
-\n\
-You don't have to collect\n\
-all Power Stars in one\n\
-course before going on to\n\
-the next.\n\
-\n\
-Return later, when you're\n\
-more experienced, to pick\n\
-up difficult ones.\n\
-\n\
-\n\
-Whenever you find a Star,\n\
-a hint for finding the\n\
-next one will appear on\n\
-the course's start screen.\n\
-\n\
-You can, however, collect\n\
-any of the remaining\n\
-Stars next. You don't\n\
-have to recover the one\n\
-described by the hint."))
+DEFINE_DIALOG(DIALOG_070, 1, 1, 30, 200, _("\
+U-Post cringe online."))
+// You can return to the\n\
+// castle's main hall at any\n\
+// time from the painting\n\
+// worlds where the enemies\n\
+// live.\n\
+// Just stop, stand still,\n\
+// press Start to pause the\n\
+// game, then select\n\
+// 『Exit Course.』\n\
+// \n\
+// You don't have to collect\n\
+// all Power Stars in one\n\
+// course before going on to\n\
+// the next.\n\
+// \n\
+// Return later, when you're\n\
+// more experienced, to pick\n\
+// up difficult ones.\n\
+// \n\
+// \n\
+// Whenever you find a Star,\n\
+// a hint for finding the\n\
+// next one will appear on\n\
+// the course's start screen.\n\
+// \n\
+// You can, however, collect\n\
+// any of the remaining\n\
+// Stars next. You don't\n\
+// have to recover the one\n\
+// described by the hint."))
 
-DEFINE_DIALOG(DIALOG_071, 1, 3, 30, 200, _("\
-Danger Ahead!\n\
-Beware of the strange\n\
-cloud! Don't inhale!\n\
-If you feel faint, run for\n\
-higher ground and fresh\n\
-air!\n\
-Circle: Shelter\n\
-Arrow: Entrance-Exit"))
+// FISS TIN
+DEFINE_DIALOG(DIALOG_071, 1, 4, 30, 200, _("\
+Apparently, this\n\
+carnival is built on\n\
+top of an old mineshaft.\n\
+\n\
+The original owners\n\
+sold the land after\n\
+stripping the underground\n\
+completely barren.\n\
+According to\n\
+Wikipedia, their main\n\
+exports were Cobalt,\n\
+Fiss Tin, and Manganese.\n\
+I thought that was\n\
+pretty interesting.\n\
+You'd never guess\n\
+looking at it now.\n\
+"))
+// Danger Ahead!\n\
+// Beware of the strange\n\
+// cloud! Don't inhale!\n\
+// If you feel faint, run for\n\
+// higher ground and fresh\n\
+// air!\n\
+// Circle: Shelter\n\
+// Arrow: Entrance-Exit"))
 
-DEFINE_DIALOG(DIALOG_072, 1, 5, 30, 200, _("\
-High winds ahead!\n\
-Pull your Cap down tight.\n\
-If it blows off, you'll\n\
-have to find it on this\n\
-mountain."))
+DEFINE_DIALOG(DIALOG_072, 1, 1, 30, 200, _("\
+My fiss tin ur ass"))
+// High winds ahead!\n\
+// Pull your Cap down tight.\n\
+// If it blows off, you'll\n\
+// have to find it on this\n\
+// mountain."))
 
 DEFINE_DIALOG(DIALOG_073, 1, 4, 95, 200, _("\
 Aarrgh! Ahoy, matey. I\n\

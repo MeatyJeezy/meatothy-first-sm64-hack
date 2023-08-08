@@ -8,11 +8,16 @@
 #include "config.h"
 
 // NEW enum for Ligma Dialogs
+// There are 2 entries for each ligma joke. The first is the line the NPC speaks
+// The second entry is the line that pops up upon killing the player
 enum LigmaDialogs {
     LIGMA_DIALOG_START = 68, 
     LIGMA_DIALOG_UPOST,
+    LIGMA_DIALOG_UPOST_GOTTEM,
     LIGMA_DIALOG_FISSTIN,
+    LIGMA_DIALOG_FISSTIN_GOTTEM,
     LIGMA_DIALOG_TASTEOFEDEN,
+    LIGMA_DIALOG_TASTEOFEDEN_GOTTEM,
     LIGMA_DIALOG_FINAL
 };
 

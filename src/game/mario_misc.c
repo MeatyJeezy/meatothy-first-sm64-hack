@@ -147,6 +147,10 @@ static void toad_message_talking(void) {
                 bhv_spawn_star_no_level_exit(STAR_BP_ACT_3);
                 break;
         }
+        // NEW Ligma object spawns here 
+        if (o->oToadMessageDialogId > LIGMA_DIALOG_START || o->oToadMessageDialogId <= LIGMA_DIALOG_FINAL) {
+             spawn_object_relative(o->oToadMessageDialogId, 0, 0, 0, o, MODEL_NONE, bhvLigma);
+        }
     }
 }
 
@@ -159,10 +163,6 @@ static void toad_message_opacifying(void) {
 static void toad_message_fading(void) {
     if ((o->oOpacity -= 6) == 81) {
         o->oToadMessageState = TOAD_MESSAGE_FADED;
-        // NEW spawns ligma object if it's a ligma dialogue, passing the dialogid into the behaviorparam slot
-         if (o->oToadMessageDialogId > LIGMA_DIALOG_START || o->oToadMessageDialogId <= LIGMA_DIALOG_FINAL) {
-             spawn_object_relative(o->oToadMessageDialogId, 0, 0, 0, o, MODEL_YOSHI, bhvLigma);
-        }
     }
 }
 

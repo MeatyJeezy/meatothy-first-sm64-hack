@@ -160,6 +160,7 @@ s32 get_str_x_pos_from_center(s16 centerPos, u8 *str, f32 scale);
 void print_hud_my_score_coins(s32 useCourseCoinScore, s8 fileIndex, s8 courseIndex, s16 x, s16 y);
 void int_to_str(s32 num, u8 *dst);
 s32 get_dialog_id(void);
+s32 get_dialog_box_state(void);
 void create_dialog_box(s16 dialog);
 void create_dialog_box_with_var(s16 dialog, s32 dialogVar);
 void create_dialog_inverted_box(s16 dialog);
