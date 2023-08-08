@@ -708,10 +708,6 @@ s32 get_dialog_id(void) {
     return gDialogID;
 }
 
-s32 get_dialog_state(void) {
-    return gDialogBoxState;
-}
-
 void create_dialog_box(s16 dialog) {
     if (gDialogID == DIALOG_NONE) {
         gDialogID = dialog;
