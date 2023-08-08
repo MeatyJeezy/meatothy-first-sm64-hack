@@ -2146,3 +2146,59 @@ Welcome to Funland!\n\
 \n\
 \n"))
 
+// EXTRA DIALOG ADDED TO THE ARRAY. JUST USE DEFINE_DIALOG AND
+// WRITE DIALOG HERE THE SAME WAY THE REST ARE WRITTEN.
+
+// KEEP 170 - 190 reserved for Ligma Dialog only.
+// TIP: When creating Ligma dialog, open file "mario_misc.h" and
+// Add a constant to represent each dialog, can use whatever name you like,
+// HOWEVER, make sure the *_GOTTEM is dialog is always the dialog ID after
+// the initial ligma setup.
+
+// For toads, assign the DIALOG_ID in the first byte of the behavior param.
+// For all other billboards/NPCs, use the second byte.
+// Remember to convert Decimal to Hexadecimal.
+
+
+// 170 = UPOST
+// FISSTIN
+// TASTEOFEDEN
+DEFINE_DIALOG(DIALOG_170, 1, 4, 30, 200, _("\
+There's something weird\n\
+about that post\n\
+over there.\n\
+\n\
+It may look like a\n\
+normal wooden post,\n\
+but it's actually\n\
+a U-Post.\n\
+They should really\n\
+label it properly.\n\
+Someone could get\n\
+seriously injured!"))
+
+DEFINE_DIALOG(DIALOG_171, 1, 1, 30, 200, _("\
+U-Post cringe online."))
+
+// FISS TIN
+DEFINE_DIALOG(DIALOG_172, 1, 4, 30, 200, _("\
+Apparently, this\n\
+carnival is built on\n\
+top of an old mineshaft.\n\
+\n\
+The original owners\n\
+sold the land after\n\
+stripping the underground\n\
+completely barren.\n\
+According to\n\
+Wikipedia, their main\n\
+exports were Cobalt,\n\
+Fiss Tin, and Manganese.\n\
+I thought that was\n\
+pretty interesting.\n\
+You'd never guess\n\
+looking at it now.\n\
+"))
+
+DEFINE_DIALOG(DIALOG_173, 1, 1, 30, 200, _("\
+My fiss tin ur ass"))
