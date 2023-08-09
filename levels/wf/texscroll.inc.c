@@ -10,8 +10,8 @@ void scroll_wf_dl_Circle_mesh_layer_1_vtx_0() {
 	int deltaY;
 	Vtx *vertices = segmented_to_virtual(wf_dl_Circle_mesh_layer_1_vtx_0);
 
-	deltaX = (int)(0.009999999776482582 * 0x20) % width;
-	deltaY = (int)(0.009999999776482582 * 0x20) % height;
+	deltaX = (int)(0.20000000298023224 * 0x20) % width;
+	deltaY = (int)(0.20000000298023224 * 0x20) % height;
 
 	if (absi(currentX) > width) {
 		deltaX -= (int)(absi(currentX) / width) * width * signum_positive(deltaX);
@@ -28,9 +28,15 @@ void scroll_wf_dl_Circle_mesh_layer_1_vtx_0() {
 }
 
 void scroll_sts_mat_wf_dl_Temp4vision_001() {
+	static int intervalTex1 = 30;
+	static int curInterval1 = 30;
 	Gfx *mat = segmented_to_virtual(mat_wf_dl_Temp4vision_001);
-	shift_s(mat, 17, PACK_TILESIZE(0, 1));
-	shift_t(mat, 17, PACK_TILESIZE(0, 1));
+
+	if (--curInterval1 <= 0) {
+		shift_s(mat, 17, PACK_TILESIZE(0, 1));
+		shift_t(mat, 17, PACK_TILESIZE(0, 1));
+		curInterval1 = intervalTex1;
+	}
 };
 
 void scroll_wf_dl_Main_mesh_layer_0_vtx_0() {

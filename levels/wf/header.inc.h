@@ -15,7 +15,7 @@ extern Lights1 wf_dl_wood2_lights;
 extern Lights1 wf_dl_Scafold_lights;
 extern u8 wf_dl_stage_ci8[];
 extern u8 wf_dl_stage_ci8_pal_rgba16[];
-extern u8 wf_dl_tent3_i4[];
+extern u8 wf_dl_coloraddingtest_rgba16[];
 extern u8 wf_dl_TentWhiteDark_ci4[];
 extern u8 wf_dl_TentWhiteDark_ci4_pal_rgba16[];
 extern u8 wf_dl_TentPurpleDark_ci4[];
