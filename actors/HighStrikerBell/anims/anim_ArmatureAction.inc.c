@@ -14,7 +14,7 @@ static const u16 HighStrikerBell_anim_ArmatureAction_indices[] = {
 };
 
 static const struct Animation HighStrikerBell_anim_ArmatureAction = {
-	1,
+	0,
 	0,
 	0,
 	1,

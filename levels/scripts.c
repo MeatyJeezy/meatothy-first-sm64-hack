@@ -197,6 +197,7 @@ const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CHUCKYA,                 chuckya_geo),
     LOAD_MODEL_FROM_GEO(MODEL_TRAJECTORY_MARKER_BALL,      bowling_ball_track_geo),
     LOAD_MODEL_FROM_GEO(MODEL_LAKITU,                   lakitu_geo), //NEW
+    LOAD_MODEL_FROM_GEO(MODEL_HIGHSTRIKER_BELL,         highstrikerbell_geo),
     RETURN(),
 };
 

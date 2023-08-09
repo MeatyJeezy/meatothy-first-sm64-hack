@@ -19,12 +19,9 @@ enum FappyBigtopDialog {
     FAPPY_BIGTOP_DIALOG_2,
     FAPPY_BIGTOP_DIALOG_3
 };
-// Amount of cutscenes to choose from
-// #define TOTAL_BIGTOP_CUTSCENES 3
 
 // Lock Mario in place prepare for cutscene
 static void bigtop_act_trigger_cutscene(void) {
-    // struct Camera *c = gCurrentArea->camera;
     if (o->oDistanceToMario < 8000.0f) {
         o->oAnimState = FAPPY_ANIM_DEFAULT;
 
@@ -133,8 +130,6 @@ static void bigtop_act_move_fappy_to_mario(void) {
             } else {
                 // Move cam close behind mario and look slightly up, like in c-up mode almost
                 // maybe this function will work? shit idk.
-                //focus_on_mario(focus, pos, 125.f, 125.f, 250.f, DEGREES(120), gPlayerCameraState->faceAngle[1]);
-                //cutscene_dialog_move_mario_shoulder(gPlayerCameraState);
 
                 // Stay moving in a circle around mario
                 s16 turnAmount = 0x4000
@@ -204,8 +199,7 @@ static void bigtop_act_end_cutscene(void) {
         // Airborne check
         if (!(gMarioState->action & ACT_FLAG_AIR)) {
             // Make a new object with the param set to the warp we want to use
-            // set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT);
-            spawn_object_relative(warpParam, 0, 0, 0, gMarioState->marioObj, MODEL_YOSHI, bhvFadingWarp);
+            spawn_object_relative(warpParam, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvFadingWarp);
             o->oFappyCounter++;
         }
     } else {
@@ -291,24 +285,17 @@ void bhv_bigtop_cutscene_loop(void) {
     // Fixes cam until last function call
     // The camera gets all weird, reset it somewhere
     if (o->oDistanceToMario < 8000.0f && o->oAction < BIGTOP_ACT_END_CUTSCENE) {
-        //gMarioStates[0].area->camera->mode = CAMERA_MODE_FIXED;
         if (o->oAction == BIGTOP_ACT_TRIGGER_CUTSCENE) {
             check_bigtop_cutscene_flags();
         }
         set_camera_mode(gMarioState->area->camera, CAMERA_MODE_FIXED, 1);
-    } else {
-        //set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
     }
         switch (o->oAction) {
             case BIGTOP_ACT_TRIGGER_CUTSCENE:
                 bigtop_act_trigger_cutscene();
                 break;
             case BIGTOP_ACT_MOVE_CAMERA:
-            // Wait x frames
-                //if (o->oTimer >= 100) { 
-                    bigtop_act_move_camera(); 
-                    //}
-                //else { o->oTimer++; }
+                bigtop_act_move_camera(); 
                 break;
             case BIGTOP_ACT_MOVE_FAPPY_TO_MARIO:
                 bigtop_act_move_fappy_to_mario();
@@ -317,17 +304,4 @@ void bhv_bigtop_cutscene_loop(void) {
                 bigtop_act_end_cutscene();
                 break;
         }
-    //             vec3f_copy(&o->oPosVec, gLakituState.curPos);
-
-    //             o->oHomeX = gLakituState.curFocus[0];
-    //             o->oHomeZ = gLakituState.curFocus[2];
-
-    //             o->oFaceAngleYaw = -cur_obj_angle_to_home();
-    //             o->oFaceAnglePitch = atan2s(cur_obj_lateral_dist_to_home(),
-    //                                         o->oPosY - gLakituState.curFocus[1]);
-
-    //             o->oPosX = CASTLE_MIRROR_X + mirroredX;
-    //         }
-    //     }
-    // }
 }

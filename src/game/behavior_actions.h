@@ -553,6 +553,13 @@ void bhv_bigtop_cutscene_loop(void); // NEW starts here
 void bhv_bigtop_cutscene_init(void);
 void bhv_ligma_loop(void); //
 
+void bhv_highstriker_carny_init(void);
+void bhv_highstriker_carny_loop(void);
+void bhv_highstriker_machine_init(void);
+void bhv_highstriker_machine_loop(void);
+void bhv_highstriker_bell_init(void);
+void bhv_highstriker_bell_loop(void);
+
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 
 // Bowser

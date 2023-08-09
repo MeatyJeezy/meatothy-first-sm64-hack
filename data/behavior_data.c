@@ -6115,4 +6115,39 @@ const BehaviorScript bhvLigma[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvHighStrikerCarny[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    //LOAD_ANIMATIONS(oAnimations, lakitu_seg6_anims_060058F8),
+    //ANIMATE(FAPPY_ANIM_DEFAULT),
+    SET_INTERACT_TYPE(INTERACT_TEXT),
+    SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
+    CALL_NATIVE(bhv_highstriker_carny_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_highstriker_carny_loop),
+    END_LOOP(),
+};
 
+const BehaviorScript bhvHighStrikerMachine[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    //LOAD_ANIMATIONS(oAnimations, lakitu_seg6_anims_060058F8),
+    //ANIMATE(FAPPY_ANIM_DEFAULT),
+    LOAD_COLLISION_DATA(breakable_box_seg8_collision),
+    SET_FLOAT(oCollisionDistance, 1000),
+    CALL_NATIVE(bhv_highstriker_machine_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_highstriker_machine_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvHighStrikerBell[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, HighStrikerBell_anims),
+    ANIMATE(HIGHSTRIKER_BELL_LAUNCH),
+    CALL_NATIVE(bhv_highstriker_bell_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_highstriker_bell_loop),
+    END_LOOP(),
+};

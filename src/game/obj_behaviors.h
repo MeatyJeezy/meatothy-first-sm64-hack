@@ -171,5 +171,11 @@ void bhv_free_bowling_ball_loop(void); /* likely unused */
 void bhv_rr_cruiser_wing_init(void);
 void bhv_rr_cruiser_wing_loop(void);
 void spawn_default_star(f32 x, f32 y, f32 z);
+// void bhv_highstriker_machine_init(void); // NEW STARTS HERE
+// void bhv_highstriker_machine_loop(void);
+// void bhv_highstriker_carny_init(void);
+// void bhv_highstriker_carny_loop(void);
+// void bhv_highstriker_bell_init(void);
+// void bhv_highstriker_bell_loop(void);
 
 #endif // OBJ_BEHAVIORS_H

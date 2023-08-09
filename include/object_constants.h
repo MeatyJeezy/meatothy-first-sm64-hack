@@ -1689,6 +1689,14 @@ enum animIDsSwoop {
     #define FAPPY_ANIM_DEFAULT                              0x0
     #define FAPPY_ANIM_STRESSED                             0x1
 
+/* Highstriker Game */
+    /* BehParams2ndByte */
+    /* oAction */
+    #define HIGHSTRIKER_ACT_WEAK_GROUND_POUND               0x0
+    #define HIGHSTRIKER_ACT_SUPERPOUND                      0x1
+    /* Animations */
+    #define HIGHSTRIKER_BELL_LAUNCH                         0x0
+
 /* RR Cruiser Wing */
     /* oBehParams2ndByte */
     #define CRUISER_WING_BP_CLOCKWISE                       0x0

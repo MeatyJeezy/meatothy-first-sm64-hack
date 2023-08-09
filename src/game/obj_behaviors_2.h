@@ -22,4 +22,11 @@ void obj_spit_fire(s16 relativePosX, s16 relativePosY, s16 relativePosZ, f32 sca
                    f32 startSpeed, f32 endSpeed, s16 movePitch);
 void obj_set_speed_to_zero(void);
 
+void bhv_highstriker_machine_init(void);
+void bhv_highstriker_machine_loop(void);
+void bhv_highstriker_carny_init(void);
+void bhv_highstriker_carny_loop(void);
+void bhv_highstriker_bell_init(void);
+void bhv_highstriker_bell_loop(void);
+
 #endif // OBJ_BEHAVIORS_2_H

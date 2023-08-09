@@ -68,6 +68,7 @@
 #define MODEL_WF_TOWER_SQUARE_PLATORM_UNUSED   0x2E        // wf_geo_000B38 - unused & duplicated
 #define MODEL_WF_TOWER_SQUARE_PLATORM_ELEVATOR 0x2F        // wf_geo_000B60 - elevator platorm
 #define MODEL_LAKITU                           0x30
+#define MODEL_HIGHSTRIKER_BELL                 0x31
 
 // Level model IDs
 

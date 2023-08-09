@@ -542,5 +542,8 @@ extern const BehaviorScript bhvIntroScene[];
 extern const BehaviorScript bhvUnusedFakeStar[];
 extern const BehaviorScript bhvBigtopCutscene[]; // NEW
 extern const BehaviorScript bhvLigma[];
+extern const BehaviorScript bhvHighStrikerBell[];
+extern const BehaviorScript bhvHighStrikerCarny[];
+extern const BehaviorScript bhvHighStrikerMachine[];
 
 #endif // BEHAVIOR_DATA_H

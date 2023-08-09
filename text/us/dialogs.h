@@ -2200,6 +2200,8 @@ DEFINE_DIALOG(DIALOG_173, 1, 1, 30, 200, _("\
 My fiss tin ur ass"))
 
 // Fappy Bigtop Dialogue starts HERE
+// Dialog IDs can be changed, but make sure to edit the enum in
+// bigtop_cutscenes.inc.c
 DEFINE_DIALOG(DIALOG_174, 1, 4, 30, 200, _("\
 Oh no, oh no!\n\
 This is terrible!\n\
@@ -2220,17 +2222,17 @@ The performers I hired\n\
 all bailed on the show!\n\
 \n\
 They said something about\n\
-a 'gross safety malpractice.'\n\
-and that 'Fun Tokens aren't\n\
-real money.'\n\
+'occupational hazards'\n\
+and that 'Fun Tokens\n\
+aren't real money.'\n\
 What a joke!\n\
 How can those cowards\n\
 even call themselves\n\
 carnies?\n\
 I know you're the\n\
-acrobatic type, Mario.\n\
-Would you fill in for\n\
-them?\n\
+acrobatic type,\n\
+Mario. Would you fill\n\
+in for them?\n\
 I'll make it worth\n\
 your time with a\n\
 Fun Token.\n\
@@ -2240,9 +2242,9 @@ Whadda ya say?\n\
 \n\
 \n\
 Great! I'll take\n\
-your perpetual silence\n\
-and creepy fluoride\n\
-stare as a yes!\n\
+your daunting silence\n\
+and fluoride stare\n\
+as a yes!\n\
 The act should be easy,\n\
 just follow my queues.\n\
 And whatever you do,\n\
@@ -2256,3 +2258,39 @@ You have collected\n\
 DEFINE_DIALOG(DIALOG_177, 1, 4, 30, 200, _("\
 You have collected\n\
 2 stars here."))
+
+DEFINE_DIALOG(DIALOG_178, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_179, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_180, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_181, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_182, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_184, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_185, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_186, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_187, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_188, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_189, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_190, 1, 4, 30, 200, _("\
+"))
