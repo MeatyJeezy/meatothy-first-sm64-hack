@@ -19,3 +19,4 @@
 
 #include "lakitu_cameraman/geo.inc.c"
 #include "CustomBob/geo.inc.c"
+#include "HighStrikerBell/geo.inc.c"

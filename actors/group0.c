@@ -37,3 +37,6 @@
 #include "lakitu_cameraman/anims/data.inc.c"
 #include "lakitu_cameraman/anims/table.inc.c"
 #include "CustomBob/model.inc.c"
+#include "HighStrikerBell/model.inc.c"
+#include "HighStrikerBell/anims/data.inc.c"
+#include "HighStrikerBell/anims/table.inc.c"

@@ -339,4 +339,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "CustomBob/geo_header.h"
 
+#include "HighStrikerBell/geo_header.h"
+
+
+#include "HighStrikerBell/anim_header.h"
 #endif
