@@ -1,3 +1,4 @@
+#include "texscroll.h"
 #include <ultra64.h>
 
 #include "sm64.h"
@@ -752,8 +753,7 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                     sSourceWarpNodeId = WARP_NODE_DEATH;
 #endif
                 }
-//CHANGED commented out the above, don't want to treat this like a death.
-                // Check if it's a warp floor or deathwarp
+                // NEW Check if it's a warp floor or deathwarp
                 if (sSourceWarpNodeId == WARP_NODE_WARP_FLOOR) {
                     sDelayedWarpTimer = 5;
                     play_transition(WARP_TRANSITION_FADE_INTO_COLOR, sDelayedWarpTimer, 0xFF, 0xFF, 0xFF); //CHANGED from fade into circle, should fade to white.
@@ -1150,7 +1150,7 @@ s32 update_level(void) {
 
     switch (sCurrPlayMode) {
         case PLAY_MODE_NORMAL:
-            changeLevel = play_mode_normal();
+            changeLevel = play_mode_normal(); scroll_textures();
             break;
         case PLAY_MODE_PAUSED:
             changeLevel = play_mode_paused();

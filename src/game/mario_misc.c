@@ -149,7 +149,7 @@ static void toad_message_talking(void) {
         }
         // NEW Ligma object spawns here 
         if (o->oToadMessageDialogId > LIGMA_DIALOG_START && o->oToadMessageDialogId <= LIGMA_DIALOG_FINAL) {
-             spawn_object_relative(o->oToadMessageDialogId, 0, 0, 0, o, MODEL_NONE, bhvLigma);
+            spawn_object_relative(o->oToadMessageDialogId, 0, 0, 0, o, MODEL_NONE, bhvLigma);
         }
     }
 }

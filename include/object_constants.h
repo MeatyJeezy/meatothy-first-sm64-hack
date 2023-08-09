@@ -1678,10 +1678,13 @@ enum animIDsSwoop {
     /* BehParams2ndByte */
     #define BIGTOP_FIRST_CUTSCENE                           0x0
     #define BIGTOP_SECOND_CUTSCENE                          0x1
+    #define BIGTOP_THIRD_CUTSCENE                           0x2
+    #define BIGTOP_FOURTH_CUTSCENE                          0x3
     /* oAction */
     #define BIGTOP_ACT_TRIGGER_CUTSCENE                     0x0
     #define BIGTOP_ACT_MOVE_CAMERA                          0x1
-    #define BIGTOP_ACT_SHOW_DIALOG                          0x2
+    #define BIGTOP_ACT_MOVE_FAPPY_TO_MARIO                  0x2
+    #define BIGTOP_ACT_END_CUTSCENE                         0x3
     /* Animations */
     #define FAPPY_ANIM_DEFAULT                              0x0
     #define FAPPY_ANIM_STRESSED                             0x1

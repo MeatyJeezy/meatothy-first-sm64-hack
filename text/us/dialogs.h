@@ -2141,10 +2141,7 @@ around to crawl\n\
 through tight spaces!"))
 
 DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, _("\
-Welcome to Funland!\n\
-\n\
-\n\
-\n"))
+Welcome to Funland!"))
 
 // EXTRA DIALOG ADDED TO THE ARRAY. JUST USE DEFINE_DIALOG AND
 // WRITE DIALOG HERE THE SAME WAY THE REST ARE WRITTEN.
@@ -2197,8 +2194,65 @@ Fiss Tin, and Manganese.\n\
 I thought that was\n\
 pretty interesting.\n\
 You'd never guess\n\
-looking at it now.\n\
-"))
+looking at it now."))
 
 DEFINE_DIALOG(DIALOG_173, 1, 1, 30, 200, _("\
 My fiss tin ur ass"))
+
+// Fappy Bigtop Dialogue starts HERE
+DEFINE_DIALOG(DIALOG_174, 1, 4, 30, 200, _("\
+Oh no, oh no!\n\
+This is terrible!\n\
+\n\
+\n\
+The show is about to\n\
+start, and the performers\n\
+bailed last minute!\n\
+What do I do...?\n\
+Someone's already here!\n\
+Wait... is that who\n\
+I think it is?"))
+
+DEFINE_DIALOG(DIALOG_175, 1, 4, 30, 200, _(
+"\
+Mario! Oh, what luck!\n\
+The performers I hired\n\
+all bailed on the show!\n\
+\n\
+They said something about\n\
+a 'gross safety malpractice.'\n\
+and that 'Fun Tokens aren't\n\
+real money.'\n\
+What a joke!\n\
+How can those cowards\n\
+even call themselves\n\
+carnies?\n\
+I know you're the\n\
+acrobatic type, Mario.\n\
+Would you fill in for\n\
+them?\n\
+I'll make it worth\n\
+your time with a\n\
+Fun Token.\n\
+Whadda ya say?\n\
+...\n\
+\n\
+\n\
+\n\
+Great! I'll take\n\
+your perpetual silence\n\
+and creepy fluoride\n\
+stare as a yes!\n\
+The act should be easy,\n\
+just follow my queues.\n\
+And whatever you do,\n\
+do NOT mess this up.\n\
+Good luck!"))
+
+DEFINE_DIALOG(DIALOG_176, 1, 4, 30, 200, _("\
+You have collected\n\
+1 star here."))
+
+DEFINE_DIALOG(DIALOG_177, 1, 4, 30, 200, _("\
+You have collected\n\
+2 stars here."))

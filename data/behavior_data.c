@@ -6100,6 +6100,7 @@ const BehaviorScript bhvBigtopCutscene[] = {
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, lakitu_seg6_anims_060058F8),
     ANIMATE(FAPPY_ANIM_DEFAULT),
+    CALL_NATIVE(bhv_bigtop_cutscene_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bigtop_cutscene_loop),
     END_LOOP(),

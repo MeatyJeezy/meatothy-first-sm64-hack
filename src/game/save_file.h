@@ -132,11 +132,20 @@ enum SaveProgressFlags {
     SAVE_FLAG_CAP_ON_UKIKI           = (1 << 18), /* 0x00040000 */
     SAVE_FLAG_CAP_ON_MR_BLIZZARD     = (1 << 19), /* 0x00080000 */
     SAVE_FLAG_UNLOCKED_50_STAR_DOOR  = (1 << 20), /* 0x00100000 */
+    // NEW CUSTOM FLAGS START
+    SAVE_FLAG_CUSTOM_1 = (1 << 21), /* Fappy Bigtop Cutscene 1*/
+    SAVE_FLAG_CUSTOM_2 = (1 << 22), /* F Bt Cut 2*/
+    SAVE_FLAG_CUSTOM_3 = (1 << 23), /* F bt cut 3*/
+    // CUSTOM FLAGS END
     SAVE_FLAG_COLLECTED_TOAD_STAR_1  = (1 << 24), /* 0x01000000 */
     SAVE_FLAG_COLLECTED_TOAD_STAR_2  = (1 << 25), /* 0x02000000 */
     SAVE_FLAG_COLLECTED_TOAD_STAR_3  = (1 << 26), /* 0x04000000 */
     SAVE_FLAG_COLLECTED_MIPS_STAR_1  = (1 << 27), /* 0x08000000 */
     SAVE_FLAG_COLLECTED_MIPS_STAR_2  = (1 << 28), /* 0x10000000 */
+    // These flags count as stars apparently.
+    SAVE_FLAG_CUSTOM_4 = (1 << 29), 
+    SAVE_FLAG_CUSTOM_5 = (1 << 30),
+    SAVE_FLAG_CUSTOM_6 = (1 << 31),
 };
 
 enum StarFlags {

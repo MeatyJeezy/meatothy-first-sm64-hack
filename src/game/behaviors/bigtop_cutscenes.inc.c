@@ -1,22 +1,27 @@
-
-/**
- * Behavior for bhvFappy. This includes both the intro lakitu and the
- * lakitu visible in the mirror room.
- * TODO: Processing order relative to bhvCloud
+#include "game/interaction.h"
+/*
+ * Behavior for bhvBigtopCutscene. 
  */
 
-/**
- * Init function for camera lakitu.
- * If this is the intro lakitu, despawn unless this is the start of the game.
- * Spawn cloud if not the intro lakitu.
- */
+/*
+    Bigtop acts: 
+*/
+
+// TODO: Add init function to choose which cutscene to play. Checks the players WF star flags.
+
+
 // NEW enum for fappy bigtop dialogue
+// 1 and 2 for cutscene 1
+// for cutscene 2
 enum FappyBigtopDialog {
-    FAPPY_BIGTOP_DIALOG_0   = 0x0,
-    FAPPY_BIGTOP_DIALOG_1   = 0x1,
-    FAPPY_BIGTOP_DIALOG_2   = 0x2,
-    FAPPY_BIGTOP_DIALOG_3   = 0x3
+    FAPPY_BIGTOP_DIALOG_0   = 0xAE,
+    FAPPY_BIGTOP_DIALOG_1,
+    FAPPY_BIGTOP_DIALOG_2,
+    FAPPY_BIGTOP_DIALOG_3
 };
+// Amount of cutscenes to choose from
+// #define TOTAL_BIGTOP_CUTSCENES 3
+
 // Lock Mario in place prepare for cutscene
 static void bigtop_act_trigger_cutscene(void) {
     // struct Camera *c = gCurrentArea->camera;
@@ -24,16 +29,12 @@ static void bigtop_act_trigger_cutscene(void) {
         o->oAnimState = FAPPY_ANIM_DEFAULT;
 
         if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) { // CHANGED to detect Proximity instead of hard-coded values
-                o->oAction++;
-                // set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
-                //reset_camera(gMarioStates[0].area->camera);
-                //set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_FIXED, 1);
-                // gPlayerCameraState->faceAngle[1] = DEGREES(180);
+                o->oAction = BIGTOP_ACT_MOVE_CAMERA;
         }
     }
 }
 
-static void fappy_face_camera(s16 pitch) {
+static void fappy_face_camera(void) {
     o->oFaceAnglePitch = 0;
     //o->oFappyYawVel = approach_s16_symmetric(o->oFappyYawVel, 2000, 100);
     o->oFaceAngleYaw = o->oAngleToMario; //cur_obj_rotate_yaw_toward(yaw, 50);
@@ -42,251 +43,280 @@ static void fappy_face_camera(s16 pitch) {
 // Move camera up and towards Fappy
 static void move_and_point_camera_at_object(void) {
     Vec3f focus;
-    s16 pitch;
-    s16 yaw;
+    //s16 pitch;
+    //s16 yaw;
+
     // Gets Fappy position
     object_pos_to_vec3f(focus, o);
     focus[0] = o->oPosX +300;
     focus[1] = o->oPosY + 200;
     focus[2] = o->oPosZ + 200;
-    // focusDistance = calc_abs_dist(gPlayerCameraState->pos, focus);
-    if (o->oFappyCounter == 0) {
-        //obj_rotate_towards_point(struct Object *obj, Vec3f point, s16 pitchOff, s16 yawOff, s16 pitchDiv, s16 yawDiv)
-        //vec3f_copy(gMarioStates[0].area->camera->focus, focus);
-        o->oFappyCounter++;
-    }
-    //approach_f32_asymptotic_bool(&gMarioState->area->camera->focus[0], o->oPosX, 0.15f);
-    //approach_f32_asymptotic_bool(&gMarioState->area->camera->focus[2], o->oPosZ, 0.15f);
     approach_vec3f_asymptotic(gPlayerCameraState->pos, focus, 0.2f, 0.93f, 0.85f);
-    //approach_vec3f_asymptotic(gMarioState->area->camera->focus, focus, 0.5f, 0.95f, 0.85f);
-    
-    // rotate_in_xz(gMarioStates[0].area->camera->pos, focus, DEGREES(180));
-    // Get pitch and yaw from camera pos and Fappy focus[] xyz values.
-    yaw = calculate_yaw(gPlayerCameraState->pos, focus);
-    pitch = calculate_pitch(gPlayerCameraState->pos, focus);
-    //vec3f_set_dist_and_angle(gPlayerCameraState->pos, focus, 200.0f, pitch, yaw);
-    //vec3f_get_yaw(gPlayerCameraState->pos, focus, &yaw);
-    //vec3f_get_pitch(gPlayerCameraState->pos, focus, &pitch);
-
-    
-
-    // approach_f32_asymptotic_bool(f32 *current, f32 target, f32 multiplier)
-    // Set camera angle then move. 
-    // [0] is pitch, [1] is yaw
-    
-    //gPlayerCameraState->faceAngle[0] = pitch; // 180 degrees I think
-    //gMarioStates[0].area->camera->yaw = DEGREES(-80);
-    //gPlayerCameraState->faceAngle[1] = yaw;
-    // Slightly offset camera position above Fappy
-    // focus[1] = o->oPosY;
-
-    //approach_vec3f_asymptotic(gPlayerCameraState->pos, focus, 0.0f, 1.0f, 0.5f);
-    // calc Fappy's yaw to camera
-    pitch = calculate_pitch(focus, gPlayerCameraState->pos);
-    fappy_face_camera(pitch);
+    fappy_face_camera();
 }
 
 static void bigtop_act_move_camera(void) {
-    //f32 focusDistance;
-
-    // struct Camera *c = gCurrentArea->camera;
-    //if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
+    //f32 focusDistance
+    // 2nd Byte Param specifies which cutscene and dialogue. Starts at 0x00.
     switch (o->oBehParams2ndByte) {
         case BIGTOP_FIRST_CUTSCENE:
-            // Point cam at Fappy, and turn him towards camera a bit
-            move_and_point_camera_at_object();
-            // Wait x frames before opening dialogue
-            // Once dialog is done, advance action
-            // if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK) {
-                if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
-                DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, FAPPY_BIGTOP_DIALOG_0)) {
-                    o->oFappyFinishedDialog = TRUE;
-                // }
-                // if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-                // DIALOG_FLAG_TEXT_DEFAULT, FAPPY_BIGTOP_DIALOG_0, 0)) {
-                    // This helps with the weird camera
-                    //reset_camera(gMarioState->area->camera);
-                    set_camera_mode(gMarioState->area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
-                    o->oAction++;
-                }
+        // Point cam at Fappy, and turn him towards camera a bit
+        move_and_point_camera_at_object();
+        // Once dialog is done, set object movement vars advance action
+            if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, FAPPY_BIGTOP_DIALOG_0)) {
+                set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP);
+                o->oAction = BIGTOP_ACT_MOVE_FAPPY_TO_MARIO;
 
+                o->oMoveAnglePitch = 0x4000;
+                o->oFappySpeed = 60.0f; 
+                o->oFappyCircleRadius = 1000.0f;
+
+                save_file_set_flags(SAVE_FLAG_CUSTOM_1);
+            }
         break;
 
         case BIGTOP_SECOND_CUTSCENE:
+            //SKIP THIS FIRST PART FOR EVERYTHING BUT CUTSCENE 1
+            // move_and_point_camera_at_object();
+            // if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+            // DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, FAPPY_BIGTOP_DIALOG_1)) {
+                o->oAction = BIGTOP_ACT_MOVE_FAPPY_TO_MARIO;
+                o->oMoveAnglePitch = 0x4000;
+                o->oFappySpeed = 60.0f; 
+                o->oFappyCircleRadius = 1000.0f;
+
+                save_file_set_flags(SAVE_FLAG_CUSTOM_2);
         break;
+
+        case BIGTOP_THIRD_CUTSCENE:
+            // move_and_point_camera_at_object();
+            // if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+            // DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, FAPPY_BIGTOP_DIALOG_2)) {
+                o->oAction = BIGTOP_ACT_MOVE_FAPPY_TO_MARIO;
+                o->oMoveAnglePitch = 0x4000;
+                o->oFappySpeed = 60.0f; 
+                o->oFappyCircleRadius = 1000.0f;
+
+                save_file_set_flags(SAVE_FLAG_CUSTOM_3);
+        break;
+
+        // I don't intend to have this many challenges probably, so this just deletes the object and lets the player roam freely
+        case BIGTOP_FOURTH_CUTSCENE:
+
+        break;
+    }
+}
+
+// Fly fappy down to Mario and deliver final dialogue,
+static void bigtop_act_move_fappy_to_mario(void) {
+    s16 targetMovePitch = 0x0;
+    s16 targetMoveYaw = 0x0;
+
+// TEMPORARY HERE TO TEST
+    //cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP, DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_174);
+    // Move to next action if dialogue is done, else move to mario and initiate dialogue
+    o->oFaceAnglePitch = obj_turn_pitch_toward_mario(120.0f, 0);
+    o->oFaceAngleYaw = o->oAngleToMario;
+    if (o->oFappyFinishedDialog) {
+        // Keep mario locked in so he is forced to use warp
+        set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT);
+        o->oFappyCounter = 0;
+        o->oAction++;
+        targetMovePitch = -0x3000;
+        targetMoveYaw = -0x6000;
+    } else {
+        if (o->oFappySpeed != 0.0f) {
+            if (o->oDistanceToMario > 5000.0f) {
+                targetMovePitch = o->oMoveAnglePitch;
+                targetMoveYaw = o->oAngleToMario;
+            } else {
+                // Move cam close behind mario and look slightly up, like in c-up mode almost
+                // maybe this function will work? shit idk.
+                //focus_on_mario(focus, pos, 125.f, 125.f, 250.f, DEGREES(120), gPlayerCameraState->faceAngle[1]);
+                //cutscene_dialog_move_mario_shoulder(gPlayerCameraState);
+
+                // Stay moving in a circle around mario
+                s16 turnAmount = 0x4000
+                                 - atan2s(o->oFappyCircleRadius,
+                                          o->oDistanceToMario - o->oFappyCircleRadius);
+                if ((s16)(o->oMoveAngleYaw - o->oAngleToMario) < 0) {
+                    turnAmount = -turnAmount;
+                }
+
+                targetMoveYaw = o->oAngleToMario + turnAmount;
+                targetMovePitch = o->oFaceAnglePitch;
+
+                approach_f32_ptr(&o->oFappyCircleRadius, 200.0f, 50.0f);
+                if (o->oDistanceToMario < 1000.0f) {
+                    if (!o->oFappyIntroMusicPlayed) {
+                        //play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_LAKITU), 0); //CHANGED don't want music interrupted.
+                        cur_obj_play_sound_1(SOUND_ACTION_FLYING_FAST);
+                        o->oFappyIntroMusicPlayed = TRUE;
+                    }
+                    // Once within 1000 units, slow down
+                    approach_f32_ptr(&o->oFappySpeed, 20.0f, 1.0f);
+                    if (o->oDistanceToMario < 600.0f // CHANGED 500 to 600
+                        && abs_angle_diff(gMarioObject->oFaceAngleYaw, o->oFaceAngleYaw) > 0x7000) {
+                        // Once within 500 units and facing toward mario, come to a stop
+                        approach_f32_ptr(&o->oFappySpeed, 0.0f, 5.0f);
+                    }
+                }
+            }
+        } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, (o->oBehParams2ndByte + FAPPY_BIGTOP_DIALOG_1))) { // Adding BIGTOP_DIALOG_1 should play the second dialogue in cutscene 1.
+            o->oFappyFinishedDialog = TRUE;
         }
-    //}
+    }
+    
+    o->oFappyPitchVel = approach_s16_symmetric(o->oFappyPitchVel, 2000, 400);
+    obj_move_pitch_approach(targetMovePitch, o->oFappyPitchVel);
+
+    o->oFappyYawVel = approach_s16_symmetric(o->oFappyYawVel, 2000, 100);
+    cur_obj_rotate_yaw_toward(targetMoveYaw, o->oFappyYawVel);
+
+    // vel y is explicitly computed, so gravity doesn't apply
+    obj_compute_vel_from_move_pitch(o->oFappySpeed);
+    cur_obj_move_using_fvel_and_gravity();
+    //o->oFappyFinishedDialog = TRUE;
 }
 
-static void bigtop_act_show_dialog(void) {
-    obj_mark_for_deletion(o);
+// Warp mario into the right place, play final dialogue and fly away
+static void bigtop_act_end_cutscene(void) {
+    s16 warpParam = 0xF1;
+    s16 targetMovePitch = 0x0;
+    s16 targetMoveYaw = 0x0;
+
+    // Set warp param to move mario to new area
+    switch (o->oBehParams2ndByte) {
+        case BIGTOP_FIRST_CUTSCENE: // warp 0xB - C
+        warpParam = 0xB;
+        break;
+        case BIGTOP_SECOND_CUTSCENE: // warp 0xD - E
+        warpParam = 0xD;
+        break;
+        case BIGTOP_THIRD_CUTSCENE: // warp 0xF - 0x10
+        warpParam = 0xF;
+        break;
+    }
+    // Added these checks for if Mario is skipping the cutscene. Makes sure the warp doesnt appear before he is grounded.
+    if (o->oFappyCounter == 0) {
+        // Airborne check
+        if (!(gMarioState->action & ACT_FLAG_AIR)) {
+            // Make a new object with the param set to the warp we want to use
+            // set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT);
+            spawn_object_relative(warpParam, 0, 0, 0, gMarioState->marioObj, MODEL_YOSHI, bhvFadingWarp);
+            o->oFappyCounter++;
+        }
+    } else {
+        approach_f32_ptr(&o->oFappySpeed, 60.0f, 3.0f);
+        if (o->oDistanceToMario > 5000.0f) {
+            set_mario_npc_dialog(MARIO_DIALOG_STOP);
+            // This all might be a little extra but if it works idgaf
+                struct Object *fappyObj = o;
+                struct Object *fadeWarp = cur_obj_nearest_object_with_behavior(bhvFadingWarp);
+                gMarioState->usedObj = fadeWarp;
+                gMarioState->interactObj = fadeWarp;
+                // Force tele?
+                gMarioState->action = ACT_IDLE;
+                set_camera_mode(gMarioState->area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
+                obj_mark_for_deletion(fappyObj);
+        }
+        targetMovePitch = -0x3000;
+        targetMoveYaw = -0x6000;
+
+        o->oFappyPitchVel = approach_s16_symmetric(o->oFappyPitchVel, 2000, 400);
+        obj_move_pitch_approach(targetMovePitch, o->oFappyPitchVel);
+
+        o->oFappyYawVel = approach_s16_symmetric(o->oFappyYawVel, 2000, 100);
+        cur_obj_rotate_yaw_toward(targetMoveYaw, o->oFappyYawVel);
+
+        // vel y is explicitly computed, so gravity doesn't apply
+        obj_compute_vel_from_move_pitch(o->oFappySpeed);
+        cur_obj_move_using_fvel_and_gravity();
+    }
 }
-// void bhv_camera_lakitu_init(void) {
-//     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
-//         // Despawn unless this is the very beginning of the game
-//         cur_obj_hide();
-//         // if (gNeverEnteredCastle != TRUE) {
-//         //     obj_mark_for_deletion(o);
-//         // }
-//     } else {
-//         //spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
-//     }
-// }
-// // NEW chooses Dialog constant based on second byte param
-// s32 get_dialogue_from_param(void) {
-//     u8 param = o->oBehParams2ndByte;
-//     switch(param) {
-//         case FAPPY_DIALOG_1: return DIALOG_034; break;
-//         case FAPPY_DIALOG_2: return DIALOG_035; break;
-//         case FAPPY_DIALOG_3: return DIALOG_036; break;
-//     }
-//     return DIALOG_034;
-// }
 
-/**
- * 
- */
-// static void camera_lakitu_intro_act_trigger_cutscene(void) {
-//     //! These bounds are slightly smaller than the actual bridge bounds, allowing
-//     //  the RTA speedrunning method of lakitu skip
-//     if (o->oDistanceToMario < 600.0f) {
-//         if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) { // CHANGED to detect Lakitu Proximity instead of hard-coded values
-//             o->oAction = CAMERA_LAKITU_INTRO_ACT_SPAWN_CLOUD;
-//         }
-//     }
-//     // if (gMarioObject->oPosX >  -544.0f
-//     //     && gMarioObject->oPosX <   545.0f
-//     //     && gMarioObject->oPosY >   800.0f
-//     //     && gMarioObject->oPosZ > -2000.0f
-//     //     && gMarioObject->oPosZ <  -177.0f) {
-//     //     if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
-//     //         o->oAction = CAMERA_LAKITU_INTRO_ACT_SPAWN_CLOUD;
-//     //     }
-//     // }
-// }
+// Check each flag to see whether to skip straight to end
+void check_bigtop_cutscene_flags(void) {
+    u32 flags = save_file_get_flags();
 
-// /**
-//  * Warp up into the air and spawn cloud, then enter the TODO action.
-//  */
-// static void camera_lakitu_intro_act_spawn_cloud(void) {
-//     if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_SPEAK) {
-//         cur_obj_unhide();
-//         o->oAction = CAMERA_LAKITU_INTRO_ACT_SHOW_DIALOG;
+    switch (o->oBehParams2ndByte) {
+        case BIGTOP_FIRST_CUTSCENE:
+        if (flags & SAVE_FLAG_CUSTOM_1) {
+            o->oAction = BIGTOP_ACT_END_CUTSCENE;
+            cur_obj_hide();
+        }
+        break;
+        case BIGTOP_SECOND_CUTSCENE:
+        if (flags & SAVE_FLAG_CUSTOM_2) {
+            o->oAction = BIGTOP_ACT_END_CUTSCENE;
+            cur_obj_hide();
+        }
+        break;
+        case BIGTOP_THIRD_CUTSCENE:
+        if (flags & SAVE_FLAG_CUSTOM_3) {
+            o->oAction = BIGTOP_ACT_END_CUTSCENE;
+            cur_obj_hide();
+        }
+        break;
+    }
+}
 
-//         o->oPosX += 1000.0f; //CHANGED += operator should warp Lakitu straight up?
-//         o->oPosY += 1600.0f;
-//         o->oPosZ += 1400.0f;
+void bhv_bigtop_cutscene_init(void) {
+    o->oBehParams2ndByte = 0;
 
-//         o->oMoveAnglePitch = 0x4000;
-//         o->oFappySpeed = 60.0f;
-//         o->oFappyCircleRadius = 1000.0f;
-
-//         //spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
-//     }
-// }
-
-// /**
-//  * Circle down to mario, show the dialog, then fly away.
-//  */
-// static void camera_lakitu_intro_act_show_dialog(void) {
-//     s16 targetMovePitch = 0x0;
-//     s16 targetMoveYaw = 0x0;
-
-//     //cur_obj_play_sound_1(SOUND_AIR_LAKITU_FLY); //CHANGED commented out because sound is annoying
-
-//     // Face toward mario
-//     o->oFaceAnglePitch = obj_turn_pitch_toward_mario(120.0f, 0);
-//     o->oFaceAngleYaw = o->oAngleToMario;
-
-//     // After finishing dialog, fly away and despawn
-//     if (o->oFappyFinishedDialog) {
-//         approach_f32_ptr(&o->oFappySpeed, 60.0f, 3.0f);
-//         if (o->oDistanceToMario > 6000.0f) {
-//             obj_mark_for_deletion(o);
-//         }
-
-//         targetMovePitch = -0x3000;
-//         targetMoveYaw = -0x6000;
-//     } else {
-//         if (o->oFappySpeed != 0.0f) {
-//             if (o->oDistanceToMario > 5000.0f) {
-//                 targetMovePitch = o->oMoveAnglePitch;
-//                 targetMoveYaw = o->oAngleToMario;
-//             } else {
-//                 // Stay moving in a circle around mario
-//                 s16 turnAmount = 0x4000
-//                                  - atan2s(o->oFappyCircleRadius,
-//                                           o->oDistanceToMario - o->oFappyCircleRadius);
-//                 if ((s16)(o->oMoveAngleYaw - o->oAngleToMario) < 0) {
-//                     turnAmount = -turnAmount;
-//                 }
-
-//                 targetMoveYaw = o->oAngleToMario + turnAmount;
-//                 targetMovePitch = o->oFaceAnglePitch;
-
-//                 approach_f32_ptr(&o->oFappyCircleRadius, 200.0f, 50.0f);
-//                 if (o->oDistanceToMario < 1000.0f) {
-// #ifndef VERSION_JP
-//                     if (!o->oFappyIntroMusicPlayed) {
-//                         //play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_LAKITU), 0); //CHANGED don't want music interrupted.
-//                         cur_obj_play_sound_1(SOUND_ACTION_FLYING_FAST);
-//                         o->oFappyIntroMusicPlayed = TRUE;
-//                     }
-// #endif
-//                     // Once within 1000 units, slow down
-//                     approach_f32_ptr(&o->oFappySpeed, 20.0f, 1.0f);
-//                     if (o->oDistanceToMario < 600.0f // CHANGED 500 to 600
-//                         && abs_angle_diff(gMarioObject->oFaceAngleYaw, o->oFaceAngleYaw) > 0x7000) {
-//                         // Once within 500 units and facing toward mario, come to a stop
-//                         approach_f32_ptr(&o->oFappySpeed, 0.0f, 5.0f);
-//                     }
-//                 }
-//             }
-//         } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
-//             DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, get_dialogue_from_param())) {
-//             o->oFappyFinishedDialog = TRUE;
-//         }
-//     }
-
-//     o->oFappyPitchVel = approach_s16_symmetric(o->oFappyPitchVel, 2000, 400);
-//     obj_move_pitch_approach(targetMovePitch, o->oFappyPitchVel);
-
-//     o->oFappyYawVel = approach_s16_symmetric(o->oFappyYawVel, 2000, 100);
-//     cur_obj_rotate_yaw_toward(targetMoveYaw, o->oFappyYawVel);
-
-//     // vel y is explicitly computed, so gravity doesn't apply
-//     obj_compute_vel_from_move_pitch(o->oFappySpeed);
-//     cur_obj_move_using_fvel_and_gravity();
-// }
-
+    // Add 1 to the 
+    if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_WF)) & STAR_FLAG_ACT_1) {
+        o->oBehParams2ndByte = 1;
+        if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_WF)) & STAR_FLAG_ACT_2) {
+            o->oBehParams2ndByte = 2;
+            if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_WF)) & STAR_FLAG_ACT_3) {
+                o->oBehParams2ndByte = 3;
+                
+            }
+        }
+    }
+}
 /**
  * Update function for bigtop cutscene.
  */
 void bhv_bigtop_cutscene_loop(void) {
+
     cur_obj_unhide();
+    if (o->oBehParams2ndByte >= BIGTOP_FOURTH_CUTSCENE) {
+        // Delete it, no cutscene to play
+        obj_mark_for_deletion(o);
+    }
     // Fixes cam until last function call
     // The camera gets all weird, reset it somewhere
-    if (o->oDistanceToMario < 8000.0f && o->oAction < BIGTOP_ACT_SHOW_DIALOG) {
+    if (o->oDistanceToMario < 8000.0f && o->oAction < BIGTOP_ACT_END_CUTSCENE) {
         //gMarioStates[0].area->camera->mode = CAMERA_MODE_FIXED;
+        if (o->oAction == BIGTOP_ACT_TRIGGER_CUTSCENE) {
+            check_bigtop_cutscene_flags();
+        }
         set_camera_mode(gMarioState->area->camera, CAMERA_MODE_FIXED, 1);
     } else {
         //set_camera_mode(gMarioStates[0].area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
     }
-            switch (o->oAction) {
-                case BIGTOP_ACT_TRIGGER_CUTSCENE:
-                    bigtop_act_trigger_cutscene();
-                    break;
-                case BIGTOP_ACT_MOVE_CAMERA:
-                // Wait x frames
-                    //if (o->oTimer >= 100) { 
-                        bigtop_act_move_camera(); 
-                        //}
-                    //else { o->oTimer++; }
-                    break;
-                case BIGTOP_ACT_SHOW_DIALOG:
-                    bigtop_act_show_dialog();
-                    break;
-            }
+        switch (o->oAction) {
+            case BIGTOP_ACT_TRIGGER_CUTSCENE:
+                bigtop_act_trigger_cutscene();
+                break;
+            case BIGTOP_ACT_MOVE_CAMERA:
+            // Wait x frames
+                //if (o->oTimer >= 100) { 
+                    bigtop_act_move_camera(); 
+                    //}
+                //else { o->oTimer++; }
+                break;
+            case BIGTOP_ACT_MOVE_FAPPY_TO_MARIO:
+                bigtop_act_move_fappy_to_mario();
+                break;
+            case BIGTOP_ACT_END_CUTSCENE:
+                bigtop_act_end_cutscene();
+                break;
+        }
     //             vec3f_copy(&o->oPosVec, gLakituState.curPos);
 
     //             o->oHomeX = gLakituState.curFocus[0];
