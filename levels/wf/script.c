@@ -90,6 +90,7 @@ const LevelScript level_wf_entry[] = {
 		OBJECT(MODEL_NONE, -3154, -9011, 7141, 0, 0, 0, 0x000E0000, bhvFadingWarp),
 		OBJECT(MODEL_NONE, -3154, -4636, 7141, 0, 0, 0, 0x00100000, bhvFadingWarp),
 		OBJECT(MODEL_LAKITU, -70, -4736, 7080, 0, 180, 0, 0x00000000, bhvBigtopCutscene),
+		OBJECT(MODEL_GOOMBA, -92, -8865, 14954, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_STAR, 521, -9633, 11640, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 121, -9484, 11640, 0, 0, 0, 0x01000000, bhvStar),
 		OBJECT(MODEL_STAR, -253, -9358, 11640, 0, 0, 0, 0x02000000, bhvStar),
