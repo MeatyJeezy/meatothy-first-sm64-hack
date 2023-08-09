@@ -20,3 +20,5 @@
 #include "lakitu_cameraman/geo.inc.c"
 #include "CustomBob/geo.inc.c"
 #include "HighStrikerBell/geo.inc.c"
+#include "HighStrikerRinger/geo.inc.c"
+#include "HighStrikerCarnie/geo.inc.c"

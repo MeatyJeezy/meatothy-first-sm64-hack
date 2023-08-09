@@ -343,4 +343,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 
 #include "HighStrikerBell/anim_header.h"
+#include "HighStrikerRinger/geo_header.h"
+
+
+#include "HighStrikerRinger/anim_header.h"
+#include "HighStrikerCarnie/geo_header.h"
+
+
+#include "HighStrikerCarnie/anim_header.h"
 #endif

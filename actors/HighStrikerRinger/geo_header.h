@@ -1,0 +1,7 @@
+extern const GeoLayout highstrikerringer_geo[];
+extern Lights1 HighStrikerRinger_f3dlite_material_017_lights;
+extern Vtx HighStrikerRinger_offset_000_mesh_layer_1_vtx_0[24];
+extern Gfx HighStrikerRinger_offset_000_mesh_layer_1_tri_0[];
+extern Gfx mat_HighStrikerRinger_f3dlite_material_017[];
+extern Gfx HighStrikerRinger_offset_000_mesh_layer_1[];
+extern Gfx HighStrikerRinger_material_revert_render_settings[];
