@@ -97,6 +97,9 @@ const GeoLayout mario_left_hand_cap_armature[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_ANIMATED_PART(LAYER_OPAQUE, 60, 0, 0, mario_005_switch_option_left_hand_cap_mesh_layer_1),
+		GEO_OPEN_NODE(),
+			GEO_DISPLAY_LIST(LAYER_ALPHA, mario_005_switch_option_left_hand_cap_mesh_layer_4),
+		GEO_CLOSE_NODE(),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -207,6 +210,9 @@ const GeoLayout mario_002_switch_opt0_001_switch_opt1_jump_mario_left_hand_cap_a
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_ANIMATED_PART(LAYER_TRANSPARENT, 60, 0, 0, mario_005_switch_option_left_hand_cap_mesh_layer_1),
+		GEO_OPEN_NODE(),
+			GEO_DISPLAY_LIST(LAYER_TRANSPARENT, mario_005_switch_option_left_hand_cap_mesh_layer_4),
+		GEO_CLOSE_NODE(),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -451,6 +457,9 @@ const GeoLayout mario_002_switch_opt0_001_switch_opt2_jump_mario_left_hand_cap_a
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_ANIMATED_PART(LAYER_OPAQUE, 60, 0, 0, mario_005_switch_option_left_hand_cap_mesh_layer_1_mat_override_metal_v3_001_0),
+		GEO_OPEN_NODE(),
+			GEO_DISPLAY_LIST(LAYER_ALPHA, mario_005_switch_option_left_hand_cap_mesh_layer_4_mat_override_metal_v3_001_0),
+		GEO_CLOSE_NODE(),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -639,6 +648,9 @@ const GeoLayout mario_002_switch_opt0_001_switch_opt3_jump_mario_left_hand_cap_a
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_ANIMATED_PART(LAYER_TRANSPARENT, 60, 0, 0, mario_005_switch_option_left_hand_cap_mesh_layer_1_mat_override_metal_v3_001_0),
+		GEO_OPEN_NODE(),
+			GEO_DISPLAY_LIST(LAYER_TRANSPARENT, mario_005_switch_option_left_hand_cap_mesh_layer_4_mat_override_metal_v3_001_0),
+		GEO_CLOSE_NODE(),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
