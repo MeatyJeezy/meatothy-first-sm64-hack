@@ -213,6 +213,16 @@ enum DialogId {
     DIALOG_207,
     DIALOG_208,
     DIALOG_209,
+    DIALOG_210,
+    DIALOG_211,
+    DIALOG_212,
+    DIALOG_213,
+    DIALOG_214,
+    DIALOG_215,
+    DIALOG_216,
+    DIALOG_217,
+    DIALOG_218,
+    DIALOG_219,
     DIALOG_COUNT
 };
 

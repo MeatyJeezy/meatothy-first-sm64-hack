@@ -2416,7 +2416,6 @@ Ahem... Which Mario 64\n\
 object does not react\n\
 to being punched?\n\
 \n\
-\n\
 Yellow: Bobomb\n\
 Red: Bowser\n\
 Green: Giant Goomba\n\
@@ -2427,9 +2426,10 @@ Correct! All others\n\
 technically react to\n\
 punches.\n\
 \n\
-Who doesn't\n\
-love a good semantics\n\
-debate?\n\
+Who doesn't love a\n\
+good semantics debate?\n\
+\n\
+\n\
 On to Question 3:\n\
 What size of shoe\n\
 does the statue of\n\
@@ -2491,8 +2491,7 @@ What year was Mario's\n\
 Yellow: 2019\n\
 Red: 2020\n\
 Green: 2016\n\
-Blue: 2015\n\
-"))
+Blue: 2015"))
 
 DEFINE_DIALOG(DIALOG_206, 1, 4, 30, 200, _("\
 But of course, who\n\
@@ -2510,8 +2509,7 @@ enter the next room?\n\
 Yellow: Quicksand\n\
 Red: Lava\n\
 Green: Warp\n\
-Blue: Deathwarp\n\
-"))
+Blue: Deathwarp"))
 
 DEFINE_DIALOG(DIALOG_207, 1, 4, 30, 200, _("\
 "))
