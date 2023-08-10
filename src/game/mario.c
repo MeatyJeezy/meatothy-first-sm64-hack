@@ -1234,7 +1234,7 @@ void update_mario_button_inputs(struct MarioState *m) {
     }
     // NEW if player presses left trigger and no Ligma object is active AND no dialog box is open, damage mario for 7 health.
     if ((m->controller->buttonPressed & L_TRIG) && (count_objects_with_behavior(bhvLigma) == 0) && (get_dialog_id() < 0)
-    && !(m->action & (ACT_FLAG_INTANGIBLE | ACT_FLAG_STATIONARY))) { // If mario has any of these flags, do not hurt him
+    && !(m->action & ACT_FLAG_INTANGIBLE)) { // If mario has any of these flags, do not hurt him
         //hurt_and_set_mario_action(m, ACT_SHOCKED, 0, 21);
         play_sound(SOUND_MARIO_ATTACKED, m->marioObj->header.gfx.cameraToObject);
         set_camera_shake_from_hit(SHAKE_LARGE_DAMAGE);

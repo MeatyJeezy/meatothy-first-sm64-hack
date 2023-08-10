@@ -68,7 +68,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_LAKITU, 518, -609, 11156, 0, 0, 0, 0x00010000, bhvCameraLakitu),
 		OBJECT(MODEL_GOOMBA, 138, -665, 12596, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_BREAKABLE_BOX_SMALL, 446, -665, 12417, 0, 0, 0, 0x00000000, bhvJumpingBox),
-		OBJECT(MODEL_TOAD, -690, -662, 14347, 0, -116, 0, 0x49000000, bhvToadMessage),
+		OBJECT(MODEL_TOAD, -690, -662, 14347, 0, -116, 0, 0xAC000000, bhvToadMessage),
 		OBJECT(MODEL_CASTLE_CASTLE_DOOR, 964, -665, 14507, 0, 0, 0, 0x000C0000, bhvDoorWarp),
 		OBJECT(MODEL_NONE, 479, -398, 15925, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
 		MARIO_POS(0x01, 0, 479, -398, 15925),

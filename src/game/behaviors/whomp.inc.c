@@ -22,14 +22,14 @@ void whomp_init(void) {
 
     if (o->oBehParams2ndByte != 0) {
         gSecondCameraFocus = o;
-        cur_obj_scale(2.0f);
+        cur_obj_scale(2.3f);
         if (o->oSubAction == 0) {
-            if (o->oDistanceToMario < 600.0f) {
+            if (o->oDistanceToMario < 1000.0f) { // CHANGED
                 o->oSubAction++;
                 seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
             } else {
                 cur_obj_set_pos_to_home();
-                o->oHealth = 3;
+                o->oHealth = 4;
             }
         } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP, 
             DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_114)) {
@@ -100,7 +100,7 @@ void king_whomp_chase(void) {
                 o->oForwardVel = 9.0f;
                 cur_obj_init_animation_with_accel_and_sound(0, 3.0f);
             }
-            if (o->oDistanceToMario < 300.0f) {
+            if (o->oDistanceToMario < 600.0f) {
                 o->oAction = 3;
             }
         }
@@ -123,19 +123,89 @@ void whomp_prepare_jump(void) {
 }
 
 void whomp_jump(void) {
-    if (o->oTimer == 0) {
+    if (o->oTimer == 0 && o->oHealth != 3 && o->oHealth != 1) {
         o->oVelY = 40.0f;
+    } else if (o->oTimer == 0 && (o->oHealth == 3 || o->oHealth == 1)) {
+        o->oVelY = 5.0f;
     }
 
-    if (o->oTimer >= 8) {
+    // phase shift depending on how much health. This will really throw the player off good haha lmao!
+    switch (o->oHealth) {
+        // Normal
+        case 4:
+        if (o->oTimer >= 8) {
         o->oAngleVelPitch += 0x100;
         o->oFaceAnglePitch += o->oAngleVelPitch;
-        if (o->oFaceAnglePitch > 0x4000) {
-            o->oAngleVelPitch = 0;
-            o->oFaceAnglePitch = 0x4000;
-            o->oAction = 5;
+            if (o->oFaceAnglePitch > 0x4000) {
+                o->oAngleVelPitch = 0;
+                o->oFaceAnglePitch = 0x4000;
+                o->oAction = 5;
+            }
         }
-    }
+        break;
+        // Really fast
+        case 3:
+        if (o->oTimer >= 1) {
+            o->oAngleVelPitch += 0x400;
+            o->oFaceAnglePitch += o->oAngleVelPitch;
+            if (o->oFaceAnglePitch > 0x4000) {
+                o->oAngleVelPitch = 0;
+                o->oFaceAnglePitch = 0x4000;
+                o->oAction = 5;
+            }
+        }
+        break;
+        // Delayed a bit
+        case 2: 
+        if (o->oTimer >= 36) {
+            o->oAngleVelPitch += 0x100;
+            o->oFaceAnglePitch += o->oAngleVelPitch;
+            if (o->oFaceAnglePitch > 0x4000) {
+                o->oAngleVelPitch = 0;
+                o->oFaceAnglePitch = 0x4000;
+                o->oAction = 5;
+            }
+        }
+        break;
+        // Slam 3 times really fast
+        case 1:
+            if (o->oTimer >= 8) {
+                // Whomp getup flag not set, slam down
+                if (!o->oWhompGetup) {
+                    o->oAngleVelPitch += 0x400;
+                    o->oFaceAnglePitch += o->oAngleVelPitch;
+                }
+                // Whomp getup flag set, lift up to neutral
+                if (o->oWhompGetup) {
+                    if (o->oFaceAnglePitch > 0x3000) {
+
+                    }
+                    o->oAngleVelPitch += 0x200;
+                    o->oFaceAnglePitch -= o->oAngleVelPitch;
+                    // If whomp is fully up
+                    if (o->oFaceAnglePitch < 0) {
+                        o->oAngleVelPitch = 0;
+                        o->oFaceAnglePitch = 0x0;
+                        o->oWhompGetup = FALSE;
+                    }
+                } else if (o->oFaceAnglePitch > 0x4000) {
+                    o->oAngleVelPitch = 0;
+                    o->oFaceAnglePitch = 0x4000;
+                    o->oWhompGetup = TRUE;
+
+                    // Attacked three times, move to laying down.
+                    if (o->oWhompAttackCounter >= 3) {
+                        o->oWhompGetup = FALSE;
+                        o->oAction = 5;
+                    } else {
+                        cur_obj_play_sound_2(SOUND_OBJ_WHOMP);
+                        cur_obj_shake_screen(SHAKE_POS_SMALL);
+                    }
+                    o->oWhompAttackCounter++;
+                }
+            }
+        break;
+    } 
 }
 
 void whomp_land(void) {
@@ -153,6 +223,7 @@ void whomp_land(void) {
 
 void king_whomp_on_ground(void) {
     if (o->oSubAction == 0) {
+        o->oWhompAttackCounter = 0;
         if (cur_obj_is_mario_ground_pounding_platform()) {
             Vec3f pos;
             o->oHealth--;
@@ -242,7 +313,14 @@ void whomp_die(void) {
             spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
             cur_obj_shake_screen(SHAKE_POS_SMALL);
             o->oPosY += 100.0f;
-            spawn_default_star(180.0f, 3880.0f, 340.0f);
+            // spawn_default_star(180.0f, 3880.0f, 340.0f);
+            // NEW Spawns the star relative to King Whomp
+            struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 400, o->oPosZ, 0, 0, 0);
+            starObj->oBehParams = 0x01000000;
+            vec3f_set(&starObj->oHomeVec, o->oPosX, o->oPosY + 400, o->oPosZ);
+            starObj->oFaceAnglePitch = 0;
+            starObj->oFaceAngleRoll = 0;
+            // end new
             cur_obj_play_sound_2(SOUND_OBJ_KING_WHOMP_DEATH);
             o->oAction = 9;
         }

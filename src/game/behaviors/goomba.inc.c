@@ -350,13 +350,11 @@ void bhv_goomba_update(void) {
                 // Spawn star: x-100 y -8400 z 16000
                 // Goomba spawn: x -100, y -8900, z 14950
                 // Relative: x 0, y 500, z -1050
-                // 
                 struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, goombaPos[0], goombaPos[1] + 500, goombaPos[2] - 1050, 0, 0, 0);
-                starObj->oBehParams = 0x01000000;
+                starObj->oBehParams = 0x00000000;
                 vec3f_set(&starObj->oHomeVec, goombaPos[0], goombaPos[1] + 500, goombaPos[2] - 1050);
                 starObj->oFaceAnglePitch = 0;
                 starObj->oFaceAngleRoll = 0;
-                //spawn_star(starObj, goombaPos[0], goombaPos[1] + 500, goombaPos[2] - 1050);
             }
 
         } else {
