@@ -711,6 +711,11 @@
 #define /*0x1AC*/ oFappyPitchVel            OBJECT_FIELD_S16(0x49, 0)
 #define /*0x1AE*/ oFappyYawVel              OBJECT_FIELD_S16(0x49, 1)
 
+/* Quizmaster */
+#define /*0x0F4*/ oQuizCounter              OBJECT_FIELD_S32(0x1B)
+#define /*0x0F8*/ oQuizFinishedDialog       OBJECT_FIELD_F32(0x1C)
+#define oQuizDialogID                       OBJECT_FIELD_S32(0x1D)
+
 /* Ligma object */
 #define /*0x0F4*/ oLigmaDialog              OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oLigmaTimerStarted        OBJECT_FIELD_S32(0x1C)

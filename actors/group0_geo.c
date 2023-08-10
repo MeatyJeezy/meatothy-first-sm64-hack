@@ -22,3 +22,6 @@
 #include "HighStrikerBell/geo.inc.c"
 #include "HighStrikerRinger/geo.inc.c"
 #include "HighStrikerCarnie/geo.inc.c"
+#include "warp_pipe_blue/geo.inc.c"
+#include "warp_pipe_yellow/geo.inc.c"
+#include "warp_pipe_red/geo.inc.c"

@@ -2274,6 +2274,9 @@ DEFINE_DIALOG(DIALOG_181, 1, 4, 30, 200, _("\
 DEFINE_DIALOG(DIALOG_182, 1, 4, 30, 200, _("\
 "))
 
+DEFINE_DIALOG(DIALOG_183, 1, 4, 30, 200, _("\
+"))
+
 DEFINE_DIALOG(DIALOG_184, 1, 4, 30, 200, _("\
 "))
 
@@ -2293,4 +2296,228 @@ DEFINE_DIALOG(DIALOG_189, 1, 4, 30, 200, _("\
 "))
 
 DEFINE_DIALOG(DIALOG_190, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_191, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_192, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_193, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_194, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_195, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_196, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_197, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_198, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_199, 1, 4, 30, 200, _("\
+"))
+
+// 100 IQ superquiz starts here
+DEFINE_DIALOG(DIALOG_200, 1, 4, 30, 200, _("\
+Welcome, brave guest,\n\
+to the ultimate trial!\n\
+The Brain Busting\n\
+Bonanza!\n\
+It's the...\n\
+\n\
+\n\
+\n\
+100\n\
+\n\
+\n\
+\n\
+IQ\n\
+\n\
+\n\
+\n\
+ULTRAQUIZ!!!\n\
+\n\
+\n\
+\n\
+I am your host,\n\
+Quizmaster Fappy.\n\
+It's a pleasure to\n\
+have you!\n\
+Here, your mental\n\
+fortitude will be\n\
+pushed to its limits\n\
+as you engage in a\n\
+mental beatdown the\n\
+likes of which you've\n\
+never experienced!\n\
+If you think you have\n\
+what it takes, then\n\
+jump right through\n\
+that pipe.\n\
+\n\
+But I warn you:\n\
+A single incorrect\n\
+answer will send you\n\
+back to the start.\n\
+Yeehehehee..."))
+
+DEFINE_DIALOG(DIALOG_201, 1, 4, 30, 200, _("\
+So you're up to the\n\
+challenge, eh?\n\
+Alright then,\n\
+go-getter!\n\
+Here comes Question 1:\n\
+\n\
+\n\
+\n\
+What is the surname\n\
+of Mario's brother?\n\
+\n\
+\n\
+Yellow: Reggie\n\
+Red: Luigi\n\
+Green: Mario\n\
+Blue: Gretzky"))
+
+DEFINE_DIALOG(DIALOG_202, 1, 4, 30, 220, _("\
+That's right! In 2015,\n\
+Miyamoto confirmed that\n\
+the Mario brothers share\n\
+the last name 'Mario.'\n\
+That was a warmup, I\n\
+hope you're ready for\n\
+Question 2:\n\
+\n\
+Who is currently the\n\
+holder of the world\n\
+record in...\n\
+\n\
+Wait, no. This is a\n\
+terrible question. Why\n\
+would anyone include a\n\
+question whose answer can\n\
+change over time in a quiz\n\
+that isn't being updated?\n\
+\n\
+\n\
+Let's just go ahead and\n\
+skip that one.\n\
+\n\
+\n\
+Ahem... Which Mario 64\n\
+object does not react\n\
+to being punched?\n\
+\n\
+\n\
+Yellow: Bobomb\n\
+Red: Bowser\n\
+Green: Giant Goomba\n\
+Blue: Signpost"))
+
+DEFINE_DIALOG(DIALOG_203, 1, 4, 30, 200, _("\
+Correct! All others\n\
+technically react to\n\
+punches.\n\
+\n\
+Who doesn't\n\
+love a good semantics\n\
+debate?\n\
+On to Question 3:\n\
+What size of shoe\n\
+does the statue of\n\
+liberty wear?\n\
+\n\
+Yellow: 1650\n\
+Red: 879\n\
+Green: 305\n\
+Blue: 35"))
+
+DEFINE_DIALOG(DIALOG_204, 1, 4, 30, 200, _("\
+...Hey, what's up?\n\
+You've just been\n\
+standing there.\n\
+\n\
+It shouldn't take this\n\
+long to answer. You\n\
+either know it or you\n\
+don't.\n\
+You're not trying to\n\
+cheat, are you? Tryna\n\
+pull a fast one on ol'\n\
+Fappy here?\n\
+Well how about this:\n\
+You'll have all the time\n\
+in the world to think\n\
+about the answer in...\n\
+GAY\n\
+\n\
+\n\
+\n\
+BABY\n\
+\n\
+\n\
+\n\
+JAIL"))
+
+DEFINE_DIALOG(DIALOG_205, 1, 4, 30, 200, _("\
+That's right, size 879!\n\
+Hoo mama, lemme get some\n\
+of that!\n\
+\n\
+...\n\
+\n\
+\n\
+\n\
+...\n\
+\n\
+\n\
+\n\
+Question 4:\n\
+\n\
+\n\
+\n\
+What year was Mario's\n\
+30th anniversary?\n\
+\n\
+\n\
+Yellow: 2019\n\
+Red: 2020\n\
+Green: 2016\n\
+Blue: 2015\n\
+"))
+
+DEFINE_DIALOG(DIALOG_206, 1, 4, 30, 200, _("\
+But of course, who\n\
+would forget their\n\
+own birthday?\n\
+\n\
+Lets ramp up the\n\
+difficulty, shall we?\n\
+\n\
+\n\
+Question 5: Which floor\n\
+texture would you most\n\
+like to land on when you\n\
+enter the next room?\n\
+Yellow: Quicksand\n\
+Red: Lava\n\
+Green: Warp\n\
+Blue: Deathwarp\n\
+"))
+
+DEFINE_DIALOG(DIALOG_207, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_208, 1, 4, 30, 200, _("\
+"))
+
+DEFINE_DIALOG(DIALOG_209, 1, 4, 30, 200, _("\
 "))

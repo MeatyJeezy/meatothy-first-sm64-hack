@@ -46,3 +46,6 @@
 #include "HighStrikerCarnie/model.inc.c"
 #include "HighStrikerCarnie/anims/data.inc.c"
 #include "HighStrikerCarnie/anims/table.inc.c"
+#include "warp_pipe_blue/model.inc.c"
+#include "warp_pipe_yellow/model.inc.c"
+#include "warp_pipe_red/model.inc.c"

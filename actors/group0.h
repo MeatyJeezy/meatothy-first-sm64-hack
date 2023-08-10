@@ -351,4 +351,10 @@ extern const Gfx white_particle_small_unused_dl[];
 
 
 #include "HighStrikerCarnie/anim_header.h"
+#include "warp_pipe_blue/geo_header.h"
+
+#include "warp_pipe_yellow/geo_header.h"
+
+#include "warp_pipe_red/geo_header.h"
+
 #endif

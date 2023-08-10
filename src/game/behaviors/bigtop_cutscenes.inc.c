@@ -307,3 +307,68 @@ void bhv_bigtop_cutscene_loop(void) {
                 break;
         }
 }
+
+
+/*
+    QUIZMASTER STUFF HERE, UNRELATED TO ABOVE!
+*/
+
+enum QuizMasterDialog {
+    QUIZ_WELCOME        = 200,
+    QUIZ_END
+};
+
+static void quiz_not_talking(void) {
+    //o->oInteractionSubtype = INT_SUBTYPE_NPC;
+    if (o->oInteractStatus == INT_STATUS_INTERACTED) {
+        o->oInteractStatus = INT_STATUS_NONE;
+        o->oAction = 1;
+    }
+}
+
+static void quiz_message_talking(void) {
+    s32 dialogID = o->oBehParams2ndByte;
+    if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+        DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, dialogID)) {
+        // Handle special dialogue.
+        o->oInteractStatus = INT_STATUS_NONE;
+        switch(dialogID) {
+            default:
+            break;
+        }
+        o->oAction = 0;
+    }
+}
+
+void bhv_quizmaster_init(void) {
+    o->oInteractionSubtype = INT_SUBTYPE_NPC;
+}
+
+void bhv_quizmaster_loop(void) {
+
+    cur_obj_unhide();
+    o->oFaceAngleYaw = o->oAngleToMario;
+    // if behparam1 is >0, initiate dialogue automatically.
+    if (GET_BPARAM1(o->oBehParams) != 0 && !o->oQuizFinishedDialog) {
+        // delete if flagged
+        if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITDW_DOOR) {
+            obj_mark_for_deletion(o);
+        }
+        if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+        DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, o->oBehParams2ndByte)) {
+            // marks as finished and sets the flag to not spawn quizmaster again
+            o->oQuizFinishedDialog = TRUE;
+            save_file_set_flags(SAVE_FLAG_UNLOCKED_BITDW_DOOR);
+        }
+    } else {
+        switch(o->oAction) {
+            case 0:
+            quiz_not_talking();
+            break;
+
+            case 1:
+            quiz_message_talking();
+            break;
+        }
+    }
+}

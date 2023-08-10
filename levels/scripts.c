@@ -199,7 +199,10 @@ const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_LAKITU,                   lakitu_geo), //NEW
     LOAD_MODEL_FROM_GEO(MODEL_HIGHSTRIKER_BELL,         highstrikerbell_geo), // 
     LOAD_MODEL_FROM_GEO(MODEL_HIGHSTRIKER_CARNY,        highstrikercarnie_geo), // 
-    LOAD_MODEL_FROM_GEO(MODEL_HIGHSTRIKER_RINGER,       highstrikerringer_geo), //  
+    LOAD_MODEL_FROM_GEO(MODEL_HIGHSTRIKER_RINGER,       highstrikerringer_geo), //
+    LOAD_MODEL_FROM_GEO(MODEL_PIPE_RED,                 warp_pipe_red_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_PIPE_BLUE,                warp_pipe_blue_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_PIPE_YELLOW,              warp_pipe_yellow_geo),  
     RETURN(),
 };
 

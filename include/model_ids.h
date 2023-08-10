@@ -71,6 +71,9 @@
 #define MODEL_HIGHSTRIKER_BELL                 0x31
 #define MODEL_HIGHSTRIKER_RINGER               0x32
 #define MODEL_HIGHSTRIKER_CARNY                0x33
+#define MODEL_PIPE_RED                           0xE4
+#define MODEL_PIPE_BLUE                         0xE5
+#define MODEL_PIPE_YELLOW                       0xE6
 
 // Level model IDs
 

@@ -120,23 +120,38 @@
 
 void bhv_highstriker_bell_init (void) {
     //o->oAnimations = HIGHSTRIKER_BELL_LAUNCH;
+    // Bell on the ground if true
+    if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITFS_DOOR) {
+        o->oAction = HIGHSTRIKER_ACT_COMPLETE;
+        // set pos?
+    }
     cur_obj_unhide();
     cur_obj_scale(1.0f);
 }
 void bhv_highstriker_bell_loop (void) {
-    o->oAnimations = HIGHSTRIKER_BELL_LAUNCH;
+    o->oAnimations = 0;
     if (o->oDistanceToMario < 300) {
         gMarioState->hurtCounter += 40;
     }
 }
 void bhv_highstriker_machine_init (void) {
-    o->oBehParams2ndByte++;
+    if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITFS_DOOR) { // No need to check for the puck really. It aint going nowhere
+        //o->oAction = HIGHSTRIKER_COMPLETE;
+        // set pos?
+    }
+    //load_object_collision_model();
 }
 void bhv_highstriker_machine_loop (void) {
-    o->oBehParams2ndByte++;
+    o->oBehParams2ndByte = 0;
 }
 void bhv_highstriker_carny_init (void) {
-    o->oBehParams2ndByte++;
+    // Carny dead if true
+    if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITFS_DOOR) {
+        o->oAction = HIGHSTRIKER_ACT_COMPLETE;
+        // set pos?
+    }
+    cur_obj_unhide();
+    cur_obj_scale(1.0f);
 }
 void bhv_highstriker_carny_loop (void) {
     o->oBehParams2ndByte++;

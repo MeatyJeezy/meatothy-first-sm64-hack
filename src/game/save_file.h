@@ -122,12 +122,12 @@ enum SaveProgressFlags {
     SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR = (1 <<  7), /* 0x00000080 F dial 2*/
     SAVE_FLAG_DDD_MOVED_BACK         = (1 <<  8), /* 0x00000100 F dial 3*/
     SAVE_FLAG_MOAT_DRAINED           = (1 <<  9), /* 0x00000200 F dial 4*/
-    SAVE_FLAG_UNLOCKED_PSS_DOOR      = (1 << 10), /* 0x00000400 F dial 5, ligma shield explanation?*/
+    SAVE_FLAG_UNLOCKED_PSS_DOOR      = (1 << 10), /* 0x00000400 F dialog ligma shield explanation?*/
     SAVE_FLAG_UNLOCKED_WF_DOOR       = (1 << 11), /* 0x00000800 */
     SAVE_FLAG_UNLOCKED_CCM_DOOR      = (1 << 12), /* 0x00001000 */
     SAVE_FLAG_UNLOCKED_JRB_DOOR      = (1 << 13), /* 0x00002000 */
-    SAVE_FLAG_UNLOCKED_BITDW_DOOR    = (1 << 14), /* 0x00004000 */
-    SAVE_FLAG_UNLOCKED_BITFS_DOOR    = (1 << 15), /* 0x00008000 */
+    SAVE_FLAG_UNLOCKED_BITDW_DOOR    = (1 << 14), /* 0x00004000 Quizmaster first entry*/
+    SAVE_FLAG_UNLOCKED_BITFS_DOOR    = (1 << 15), /* 0x00008000 Highstriker Complete */
     // end of safe flags
     SAVE_FLAG_CAP_ON_GROUND          = (1 << 16), /* 0x00010000 */
     SAVE_FLAG_CAP_ON_KLEPTO          = (1 << 17), /* 0x00020000 */

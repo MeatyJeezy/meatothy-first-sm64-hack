@@ -1694,10 +1694,14 @@ enum animIDsSwoop {
 /* Highstriker Game */
     /* BehParams2ndByte */
     /* oAction */
+    #define HIGHSTRIKER_ACT_DEFAULT
     #define HIGHSTRIKER_ACT_WEAK_GROUND_POUND               0x0
     #define HIGHSTRIKER_ACT_SUPERPOUND                      0x1
+    #define HIGHSTRIKER_ACT_BROKEN                          0x2
+    #define HIGHSTRIKER_ACT_COMPLETE                        0x3
     /* Animations */
-    #define HIGHSTRIKER_BELL_LAUNCH                         0x0
+    #define HIGHSTRIKER_ANIM_DEFAULT                        0x0
+    #define HIGHSTRIKER_ANIM_BELL_LAUNCH                    0x1
 
 /* RR Cruiser Wing */
     /* oBehParams2ndByte */
