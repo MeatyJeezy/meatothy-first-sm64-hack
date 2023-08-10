@@ -1548,6 +1548,8 @@ enum animIDsSwoop {
     #define GOOMBA_TRIPLET_SPAWNER_ACT_LOADED               0x1
 
 /* Goomba */
+    /* BPARAM1 */
+    #define GOOMBA_GROWER                                   0x01 // NEW Set param for special grower
     /* oBehParams2ndByte */
     #define GOOMBA_SIZE_REGULAR                             0x00
     #define GOOMBA_SIZE_HUGE                                0x01

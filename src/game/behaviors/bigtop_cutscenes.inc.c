@@ -117,7 +117,6 @@ static void bigtop_act_move_fappy_to_mario(void) {
     o->oFaceAngleYaw = o->oAngleToMario;
     if (o->oFappyFinishedDialog) {
         // Keep mario locked in so he is forced to use warp
-        set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT);
         o->oFappyCounter = 0;
         o->oAction++;
         targetMovePitch = -0x3000;
@@ -161,6 +160,7 @@ static void bigtop_act_move_fappy_to_mario(void) {
         } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
             DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, (o->oBehParams2ndByte + FAPPY_BIGTOP_DIALOG_1))) { // Adding BIGTOP_DIALOG_1 should play the second dialogue in cutscene 1.
             o->oFappyFinishedDialog = TRUE;
+            set_mario_npc_dialog(MARIO_DIALOG_LOOK_FRONT);
         }
     }
     
@@ -260,6 +260,8 @@ void check_bigtop_cutscene_flags(void) {
 void bhv_bigtop_cutscene_init(void) {
     o->oBehParams2ndByte = 0;
 
+    //TEMPORARY SKIP THE FIRST CUTSCENE FOR DEBUG PURPOSES
+    save_file_set_flags(SAVE_FLAG_CUSTOM_1);
     // Add 1 to the 
     if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_WF)) & STAR_FLAG_ACT_1) {
         o->oBehParams2ndByte = 1;

@@ -15,9 +15,9 @@ static struct ObjectHitbox sGoombaHitbox = {
     /* health:            */ 0,
     /* numLootCoins:      */ 1,
     /* radius:            */ 72,
-    /* height:            */ 50,
-    /* hurtboxRadius:     */ 42,
-    /* hurtboxHeight:     */ 40,
+    /* height:            */ 65, // CHANGED from 50
+    /* hurtboxRadius:     */ 52, //42
+    /* hurtboxHeight:     */ 59,// from 40
 };
 
 /**
@@ -314,63 +314,117 @@ void bhv_goomba_update(void) {
     // PARTIAL_UPDATE
 
     f32 animSpeed;
+    f32 goombaScale;
+    f32 lateralDist;
+    f32 addScale;
+    Vec3f marioPos;
+    Vec3f goombaPos;
+    //struct Object *starObj;
 
-    if (obj_update_standard_actions(o->oGoombaScale)) {
-        // If this goomba has a spawner and mario moved away from the spawner, unload
-        if (o->parentObj != o) {
-            if (o->parentObj->oAction == GOOMBA_TRIPLET_SPAWNER_ACT_UNLOADED) {
-                obj_mark_for_deletion(o);
+    // NEW check if the goomba is the custom "growing" type.
+    if (GET_BPARAM1(o->oBehParams) == GOOMBA_GROWER) {
+        if (obj_update_standard_actions(o->oGoombaScale)) {
+            obj_update_blinking(&o->oGoombaBlinkTimer, 50, 60, 20);
+
+            // Scale goomba size up and down if mario is in a certain radius
+            object_pos_to_vec3f(marioPos, gMarioState->marioObj);
+            object_pos_to_vec3f(goombaPos, o);
+            vec3f_get_lateral_dist(marioPos, goombaPos, &lateralDist);
+            if (lateralDist < 700.0f && lateralDist > 200.0f) {
+                addScale = (500.0f / lateralDist);
+                goombaScale = 1.5f + (addScale * (addScale * 2.0f));
+                cur_obj_scale(goombaScale);
+            } else if (lateralDist >= 700.0f) {
+                cur_obj_scale(1.5f);
             }
-        }
+            //else cur_obj_scale(1.5f);
+            //cur_obj_update_floor_and_walls();
+            cur_obj_init_animation_with_accel_and_sound(GOOMBA_ANIM_DEFAULT, 1.0f);
+            if (o->oAction == GOOMBA_ACT_ATTACKED_MARIO) {
+                    goomba_act_attacked_mario();
+            }
+            if (obj_handle_attacks(&sGoombaHitbox, GOOMBA_ACT_ATTACKED_MARIO,
+                sGoombaAttackHandlers[o->oGoombaSize & 0x1])
+                && (o->oAction != GOOMBA_ACT_ATTACKED_MARIO)) {
+                mark_goomba_as_dead();
+                // Spawn star: x-100 y -8400 z 16000
+                // Goomba spawn: x -100, y -8900, z 14950
+                // Relative: x 0, y 500, z -1050
+                // 
+                struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, goombaPos[0], goombaPos[1] + 500, goombaPos[2] - 1050, 0, 0, 0);
+                starObj->oBehParams = 0x01000000;
+                vec3f_set(&starObj->oHomeVec, goombaPos[0], goombaPos[1] + 500, goombaPos[2] - 1050);
+                starObj->oFaceAnglePitch = 0;
+                starObj->oFaceAngleRoll = 0;
+                //spawn_star(starObj, goombaPos[0], goombaPos[1] + 500, goombaPos[2] - 1050);
+            }
 
-        cur_obj_scale(o->oGoombaScale);
-        obj_update_blinking(&o->oGoombaBlinkTimer, 30, 50, 5);
-#ifdef FLOOMBAS
-        if (o->oIsFloomba) {
-            o->oAnimState += FLOOMBA_ANIM_STATE_EYES_OPEN;
+        } else {
+            o->oAnimState = GOOMBA_ANIM_STATE_EYES_CLOSED;
         }
-#endif
-        cur_obj_update_floor_and_walls();
-
-        if (o->oGoombaScale == 0.0f || (animSpeed = (o->oForwardVel / o->oGoombaScale * 0.4f)) < 1.0f) {
-            animSpeed = 1.0f;
-        }
-#if defined(FLOOMBAS) && defined(INTRO_FLOOMBAS)
-        if (o->oAction == FLOOMBA_ACT_STARTUP) {
-            animSpeed = (GET_BPARAM1(o->oBehParams) / 16.0f);
-        }
-#endif
-        cur_obj_init_animation_with_accel_and_sound(GOOMBA_ANIM_DEFAULT, animSpeed);
-
-        switch (o->oAction) {
-            case GOOMBA_ACT_WALK:
-                goomba_act_walk();
-                break;
-            case GOOMBA_ACT_ATTACKED_MARIO:
-                goomba_act_attacked_mario();
-                break;
-            case GOOMBA_ACT_JUMP:
-                goomba_act_jump();
-                break;
-#if defined(FLOOMBAS) && defined(INTRO_FLOOMBAS)
-            case FLOOMBA_ACT_STARTUP:
-                floomba_act_startup();
-                break;
-#endif
-        }
-        if (obj_handle_attacks(&sGoombaHitbox, GOOMBA_ACT_ATTACKED_MARIO,
-                               sGoombaAttackHandlers[o->oGoombaSize & 0x1])
-                               && (o->oAction != GOOMBA_ACT_ATTACKED_MARIO)) {
-            mark_goomba_as_dead();
-        }
-
-        cur_obj_move_standard(-78);
+        
+        
+        
+    // OLD regular code    
     } else {
-        o->oAnimState = GOOMBA_ANIM_STATE_EYES_CLOSED;
+            
+        if (obj_update_standard_actions(o->oGoombaScale)) {
+            // If this goomba has a spawner and mario moved away from the spawner, unload
+            if (o->parentObj != o) {
+                if (o->parentObj->oAction == GOOMBA_TRIPLET_SPAWNER_ACT_UNLOADED) {
+                    obj_mark_for_deletion(o);
+                }
+            }
+
+            cur_obj_scale(o->oGoombaScale);
+            obj_update_blinking(&o->oGoombaBlinkTimer, 30, 50, 5);
 #ifdef FLOOMBAS
-        if (o->oIsFloomba) {
-            o->oAnimState += FLOOMBA_ANIM_STATE_EYES_OPEN;
-        }
+            if (o->oIsFloomba) {
+                o->oAnimState += FLOOMBA_ANIM_STATE_EYES_OPEN;
+            }
 #endif
+            cur_obj_update_floor_and_walls();
+
+            if (o->oGoombaScale == 0.0f || (animSpeed = (o->oForwardVel / o->oGoombaScale * 0.4f)) < 1.0f) {
+                animSpeed = 1.0f;
+            }
+#if defined(FLOOMBAS) && defined(INTRO_FLOOMBAS)
+            if (o->oAction == FLOOMBA_ACT_STARTUP) {
+                animSpeed = (GET_BPARAM1(o->oBehParams) / 16.0f);
+            }
+#endif
+            cur_obj_init_animation_with_accel_and_sound(GOOMBA_ANIM_DEFAULT, animSpeed);
+
+            switch (o->oAction) {
+                case GOOMBA_ACT_WALK:
+                    goomba_act_walk();
+                    break;
+                case GOOMBA_ACT_ATTACKED_MARIO:
+                    goomba_act_attacked_mario();
+                    break;
+                case GOOMBA_ACT_JUMP:
+                    goomba_act_jump();
+                    break;
+#if defined(FLOOMBAS) && defined(INTRO_FLOOMBAS)
+                case FLOOMBA_ACT_STARTUP:
+                    floomba_act_startup();
+                    break;
+#endif
+            }
+            if (obj_handle_attacks(&sGoombaHitbox, GOOMBA_ACT_ATTACKED_MARIO,
+                                sGoombaAttackHandlers[o->oGoombaSize & 0x1])
+                                && (o->oAction != GOOMBA_ACT_ATTACKED_MARIO)) {
+                mark_goomba_as_dead();
+            }
+
+            cur_obj_move_standard(-78);
+        } else {
+            o->oAnimState = GOOMBA_ANIM_STATE_EYES_CLOSED;
+#ifdef FLOOMBAS
+            if (o->oIsFloomba) {
+                o->oAnimState += FLOOMBA_ANIM_STATE_EYES_OPEN;
+            }
+#endif
+        }
     }
 }

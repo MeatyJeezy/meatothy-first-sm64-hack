@@ -69,6 +69,8 @@
 #define MODEL_WF_TOWER_SQUARE_PLATORM_ELEVATOR 0x2F        // wf_geo_000B60 - elevator platorm
 #define MODEL_LAKITU                           0x30
 #define MODEL_HIGHSTRIKER_BELL                 0x31
+#define MODEL_HIGHSTRIKER_RINGER               0x32
+#define MODEL_HIGHSTRIKER_CARNY                0x33
 
 // Level model IDs
 

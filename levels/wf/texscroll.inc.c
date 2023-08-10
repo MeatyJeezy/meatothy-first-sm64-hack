@@ -27,18 +27,6 @@ void scroll_wf_dl_Circle_mesh_layer_1_vtx_0() {
 	currentX += deltaX;	currentY += deltaY;
 }
 
-void scroll_sts_mat_wf_dl_Temp4vision_001() {
-	static int intervalTex1 = 30;
-	static int curInterval1 = 30;
-	Gfx *mat = segmented_to_virtual(mat_wf_dl_Temp4vision_001);
-
-	if (--curInterval1 <= 0) {
-		shift_s(mat, 17, PACK_TILESIZE(0, 1));
-		shift_t(mat, 17, PACK_TILESIZE(0, 1));
-		curInterval1 = intervalTex1;
-	}
-};
-
 void scroll_wf_dl_Main_mesh_layer_0_vtx_0() {
 	int i = 0;
 	int count = 63;
@@ -62,6 +50,5 @@ void scroll_wf_dl_Main_mesh_layer_0_vtx_0() {
 
 void scroll_wf() {
 	scroll_wf_dl_Circle_mesh_layer_1_vtx_0();
-	scroll_sts_mat_wf_dl_Temp4vision_001();
 	scroll_wf_dl_Main_mesh_layer_0_vtx_0();
 }
