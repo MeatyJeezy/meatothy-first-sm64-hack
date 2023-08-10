@@ -177,11 +177,16 @@ void whomp_jump(void) {
                 }
                 // Whomp getup flag set, lift up to neutral
                 if (o->oWhompGetup) {
-                    if (o->oFaceAnglePitch > 0x3000) {
-
+                    // Slow get up until a certain point
+                    if (o->oFaceAnglePitch > 0x3900) {
+                        o->oAngleVelPitch += 0x10;
+                        o->oFaceAnglePitch -= o->oAngleVelPitch;
                     }
-                    o->oAngleVelPitch += 0x200;
-                    o->oFaceAnglePitch -= o->oAngleVelPitch;
+                    else {
+                        o->oAngleVelPitch += 0x300;
+                        o->oFaceAnglePitch -= o->oAngleVelPitch;
+                    }
+
                     // If whomp is fully up
                     if (o->oFaceAnglePitch < 0) {
                         o->oAngleVelPitch = 0;

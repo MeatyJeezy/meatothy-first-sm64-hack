@@ -96,7 +96,7 @@ const LevelScript level_wf_entry[] = {
 		OBJECT(MODEL_STAR, -253, -9358, 11640, 0, 0, 0, 0x02000000, bhvStar),
 		OBJECT(MODEL_NONE, 32, -9786, 2993, 0, 0, 0, 0x000A0000, bhvWarp),
 		MARIO_POS(0x01, 0, 32, -9786, 2910),
-		OBJECT(MODEL_WHOMP, -1611, -9818, 5097, 0, 0, 0, 0x00000000, bhvWhompKingBoss),
+		OBJECT(MODEL_WHOMP, -515, -9987, 5097, 0, 0, 0, 0x00000000, bhvWhompKingBoss),
 		TERRAIN(wf_area_1_collision),
 		MACRO_OBJECTS(wf_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_INSIDE_CASTLE),

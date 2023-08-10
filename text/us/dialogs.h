@@ -2190,7 +2190,7 @@ completely barren.\n\
 According to\n\
 Wikipedia, their main\n\
 exports were Cobalt,\n\
-Fiss Tin, and Manganese.\n\
+Fiss Tin, and Iron.\n\
 I thought that was\n\
 pretty interesting.\n\
 You'd never guess\n\
