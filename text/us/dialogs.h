@@ -205,17 +205,17 @@ Would you like to Save?\n\
 
 DEFINE_DIALOG(DIALOG_013, 1, 5, 30, 200, _("\
 You've collected 100\n\
-coins! Mario gains more\n\
-power from the castle.\n\
-Do you want to Save?\n\
+coins! I bet that was\n\
+really fun!\n\
+\n\
 //Yes////No"))
 
 DEFINE_DIALOG(DIALOG_014, 1, 4, 30, 200, _("\
-Wow! Another Power Star!\n\
-Mario gains more courage\n\
-from the power of the\n\
-castle.\n\
-Do you want to Save?\n\
+Fun Token Acquired!\n\
+I'm sure these are\n\
+useful for something.\n\
+\n\
+Would you like to save?\n\
 \n\
 //You Bet//Not Now"))
 
@@ -1742,41 +1742,17 @@ Left: Black Hole\n\
 Arrow: You are here"))
 
 DEFINE_DIALOG(DIALOG_141, 1, 5, 150, 200, _("\
-You've recovered one of\n\
-the stolen Power Stars!\n\
-Now you can open some of\n\
-the sealed doors in the\n\
-castle.\n\
-Try the Princess's room\n\
-on the second floor and\n\
-the room with the\n\
-painting of Whomp's\n\
-Fortress on Floor 1.\n\
-Bowser's troops are still\n\
-gaining power, so you\n\
-can't give up. Save us,\n\
-Mario! Keep searching for\n\
-Stars!"))
+Your first Fun Token!\n\
+There's plenty more to\n\
+find. Keep at it."))
 
 DEFINE_DIALOG(DIALOG_142, 1, 5, 150, 200, _("\
-You've recovered three\n\
-Power Stars! Now you can\n\
-open any door with a 3\n\
-on its star.\n\
-\n\
-You can come and go from\n\
-the open courses as you\n\
-please. The enemies ahead\n\
-are even meaner, so be\n\
-careful!"))
+Three Fun Tokens!\n\
+Can you feel yourself\n\
+growing as a person?"))
 
 DEFINE_DIALOG(DIALOG_143, 1, 6, 150, 200, _("\
-You've recovered eight of\n\
-the Power Stars! Now you\n\
-can open the door with\n\
-the big Star! But Bowser\n\
-is just ahead...can you\n\
-hear the Princess calling?"))
+gj. proud of you."))
 
 DEFINE_DIALOG(DIALOG_144, 1, 6, 150, 200, _("\
 You've recovered 30\n\
@@ -2322,8 +2298,31 @@ DEFINE_DIALOG(DIALOG_197, 1, 4, 30, 200, _("\
 DEFINE_DIALOG(DIALOG_198, 1, 4, 30, 200, _("\
 "))
 
+// Stuck toad dialog
 DEFINE_DIALOG(DIALOG_199, 1, 4, 30, 200, _("\
-"))
+You know, I really hate\n\
+this place. The collision's\n\
+jank basically everywhere.\n\
+It couldn't have been\n\
+intentional. And now\n\
+I'm stuck in this little\n\
+prison that I entered\n\
+voluntarily, KNOWING it\n\
+would trap me. I think\n\
+it's possible to wallkick\n\
+out the top but...\n\
+I've been in here so long\n\
+that I have nothing to go\n\
+back to...\n\
+\n\
+\n\
+Say, you seem like you\n\
+have a bright future\n\
+ahead. It'd be best if\n\
+you have this. I'm won't\n\
+need it where I'm headed.\n\
+And with that, o world,\n\
+I bid you adieu!"))
 
 // 100 IQ superquiz starts here
 DEFINE_DIALOG(DIALOG_200, 1, 4, 30, 200, _("\
@@ -2496,7 +2495,7 @@ Blue: 2015"))
 DEFINE_DIALOG(DIALOG_206, 1, 4, 30, 200, _("\
 But of course, who\n\
 would forget their\n\
-own birthday?\n\
+own birth year?\n\
 \n\
 Lets ramp up the\n\
 difficulty, shall we?\n\

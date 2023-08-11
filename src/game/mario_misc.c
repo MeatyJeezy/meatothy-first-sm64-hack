@@ -146,6 +146,21 @@ static void toad_message_talking(void) {
                 o->oToadMessageDialogId = TOAD_STAR_3_DIALOG_AFTER;
                 bhv_spawn_star_no_level_exit(STAR_BP_ACT_3);
                 break;
+            // NEW for the Trapped Toad in the main level. Explode him and spawn the star
+            case DIALOG_199:
+                cur_obj_hide();
+                cur_obj_become_intangible();
+                spawn_mist_particles_variable(0, 0, 200.0f);
+                spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
+                create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+                cur_obj_shake_screen(SHAKE_POS_SMALL);
+                struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 400, o->oPosZ, 0, 0, 0);
+                starObj->oBehParams = 0x00000000;
+                starObj->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
+                vec3f_set(&starObj->oHomeVec, o->oPosX, o->oPosY + 400, o->oPosZ);
+                starObj->oFaceAnglePitch = 0;
+                starObj->oFaceAngleRoll = 0;
+            break;
         }
         // NEW Ligma object spawns here 
         if (o->oToadMessageDialogId > LIGMA_DIALOG_START && o->oToadMessageDialogId <= LIGMA_DIALOG_FINAL) {

@@ -20,7 +20,7 @@ void breakable_box_init(void) {
         case BREAKABLE_BOX_BP_3_COINS:  o->oNumLootCoins = 3; break;
         case BREAKABLE_BOX_BP_5_COINS:  o->oNumLootCoins = 5; break;
         case BREAKABLE_BOX_BP_LARGE:    cur_obj_scale(1.5f);  break;
-        case BREAKABLE_BOX_SUPER:       cur_obj_scale(0.5f);  break; // NEW
+        case BREAKABLE_BOX_SUPER:       cur_obj_scale(1.5f); o->oNumLootCoins = 5; break; // NEW
     }
 }
 
