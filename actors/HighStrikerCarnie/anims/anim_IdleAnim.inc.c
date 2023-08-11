@@ -167,7 +167,7 @@ static const u16 HighStrikerCarnie_anim_IdleAnim_indices[] = {
 };
 
 static const struct Animation HighStrikerCarnie_anim_IdleAnim = {
-	1,
+	0,
 	0,
 	0,
 	1,

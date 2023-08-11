@@ -74,6 +74,7 @@
 #define MODEL_PIPE_RED                           0xE4
 #define MODEL_PIPE_BLUE                         0xE5
 #define MODEL_PIPE_YELLOW                       0xE6
+#define MODEL_PIANTA 0xE7
 
 // Level model IDs
 

@@ -1394,28 +1394,34 @@ blocks. Step on the\n\
 switches in the hidden\n\
 courses to activate the\n\
 Cap Blocks."))
-
+// CHANGED
 DEFINE_DIALOG(DIALOG_114, 1, 5, 95, 200, _("\
-It makes me so mad! We\n\
-build your houses, your\n\
-castles. We pave your\n\
-roads, and still you\n\
-walk all over us.\n\
-Do you ever say thank\n\
-you? No! Well, you're not\n\
-going to wipe your feet\n\
-on me! I think I'll crush\n\
-you just for fun!\n\
-Do you have a problem\n\
-with that? Just try to\n\
-pound me, wimp! Ha!"))
+Well, I never expected\n\
+to see your ugly mug\n\
+here, Mario. And what's\n\
+with the clothes? They\n\
+make you look like a\n\
+complete clown.\n\
+Anyways, if you're here\n\
+to beat me up, think\n\
+again. My spine is\n\
+stronger than it's ever\n\
+been. I'm gonna smash\n\
+your bones, and then\n\
+I'm gonna smash...\n\
+\n\
+\n\
+...your bones. Then\n\
+you won't have any\n\
+bones left!\n\
+\n\
+\n\
+Hahahahahahahahahahaha!"))
 
 DEFINE_DIALOG(DIALOG_115, 1, 5, 95, 200, _("\
-No! Crushed again!\n\
-I'm just a stepping stone,\n\
-after all. I won't gravel,\n\
-er, grovel. Here, you win.\n\
-Take this with you!"))
+It would appear as if\n\
+a mockery has been made\n\
+of me yet again."))
 
 DEFINE_DIALOG(DIALOG_116, 1, 5, 95, 200, _("\
 Whaaa....Whaaat?\n\
@@ -2227,13 +2233,40 @@ And whatever you do,\n\
 do NOT mess this up.\n\
 Good luck!"))
 
-DEFINE_DIALOG(DIALOG_176, 1, 4, 30, 200, _("\
-You have collected\n\
-1 star here."))
+DEFINE_DIALOG(DIALOG_176, 1, 4, 30, 210, _("\
+Mario! Thank the Fun\n\
+Tokens you're back!\n\
+I promised these folks\n\
+a second act, which means\n\
+you'd better get on up\n\
+there. This time, you'll\n\
+be taking down the mighty\n\
+King Whomp. You've done\n\
+this before so it should\n\
+be a cinch. Well, let's\n\
+not keep the folks\n\
+waiting!"))
 
 DEFINE_DIALOG(DIALOG_177, 1, 4, 30, 200, _("\
-You have collected\n\
-2 stars here."))
+I was hoping you'd be\n\
+back! The crowd loves you.\n\
+They've been begging for\n\
+one final act.\n\
+Whadda ya say? Just one\n\
+more tiny favor for your\n\
+old pal Fappy?\n\
+\n\
+Who am I kidding, like\n\
+you'd ever turn me down.\n\
+I practically own you.\n\
+Yehehehehe!\n\
+This time, all you have\n\
+to do is jump one teeny\n\
+little gap. Surely you\n\
+can manage that?\n\
+Alright. Let's get to\n\
+it then!"))
+
 
 DEFINE_DIALOG(DIALOG_178, 1, 4, 30, 200, _("\
 "))
@@ -2285,18 +2318,43 @@ DEFINE_DIALOG(DIALOG_193, 1, 4, 30, 200, _("\
 
 DEFINE_DIALOG(DIALOG_194, 1, 4, 30, 200, _("\
 "))
-
-DEFINE_DIALOG(DIALOG_195, 1, 4, 30, 200, _("\
-"))
-
+// Carny Dialogue init
+DEFINE_DIALOG(DIALOG_195, 1, 4, 30, 220, _("\
+Step right up and test\n\
+your cheeks! Can you ground\n\
+pound the button hard\n\
+enough? Or will you be\n\
+remembered as a scrawny\n\
+little weakling with\n\
+flabby pancake buttcheeks?\n\
+Step on up and find out."))
+// Carny Dialogue fail
 DEFINE_DIALOG(DIALOG_196, 1, 4, 30, 200, _("\
-"))
-
+That was pathetic, kid.\n\
+My grandma can throw it\n\
+back better than that!\n\
+\n\
+Someone like you would\n\
+need to ground pound\n\
+from WAY higher up\n\
+to even have a shot.\n\
+Come back when you're\n\
+not such a wimp."))
+// Carny Dialogue success
 DEFINE_DIALOG(DIALOG_197, 1, 4, 30, 200, _("\
-"))
+Well, I'll be damned.\n\
+we've got a winner.\n\
+Take your token, you\n\
+earned it, stud."))
 
-DEFINE_DIALOG(DIALOG_198, 1, 4, 30, 200, _("\
-"))
+// Sign to back of the park
+DEFINE_DIALOG(DIALOG_198, 1, 4, 95, 200, _("\
+Proceed to enter the\n\
+north side of the park.\n\
+\n\
+\n\
+Don't worry, you won't\n\
+lose your coins. Trust."))
 
 // Stuck toad dialog
 DEFINE_DIALOG(DIALOG_199, 1, 4, 30, 200, _("\

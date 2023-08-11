@@ -6116,21 +6116,36 @@ const BehaviorScript bhvLigma[] = {
 };
 
 const BehaviorScript bhvHighStrikerCarny[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+    BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    //LOAD_ANIMATIONS(oAnimations, lakitu_seg6_anims_060058F8),
-    //ANIMATE(FAPPY_ANIM_DEFAULT),
+    LOAD_ANIMATIONS(oAnimations, HighStrikerCarnie_anims),
+    ANIMATE(FAPPY_ANIM_DEFAULT),
     SET_INTERACT_TYPE(INTERACT_TEXT),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
+    SET_HITBOX_WITH_OFFSET(/*Radius*/ 180, /*Height*/ 150, /*Downwards offset*/ 0),
+    // DROP_TO_FLOOR(),
+    SET_INT(oIntangibleTimer, 0),
     CALL_NATIVE(bhv_highstriker_carny_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_highstriker_carny_loop),
     END_LOOP(),
 };
 
+// BEGIN(OBJ_LIST_GENACTOR),
+//     OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+//     LOAD_ANIMATIONS(oAnimations, toad_seg6_anims_0600FB58),
+//     ANIMATE(TOAD_ANIM_WEST_WAVING_BOTH_ARMS),
+//     SET_INTERACT_TYPE(INTERACT_TEXT),
+//     SET_HITBOX(/*Radius*/ 80, /*Height*/ 100),
+//     SET_INT(oIntangibleTimer, 0),
+//     CALL_NATIVE(bhv_init_room),
+//     CALL_NATIVE(bhv_toad_message_init),
+//     BEGIN_LOOP(),
+//         CALL_NATIVE(bhv_toad_message_loop),
+//     END_LOOP(),
+
 const BehaviorScript bhvHighStrikerMachine[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
     //LOAD_ANIMATIONS(oAnimations, lakitu_seg6_anims_060058F8),
     //ANIMATE(FAPPY_ANIM_DEFAULT),
     LOAD_COLLISION_DATA(breakable_box_seg8_collision),
@@ -6144,7 +6159,7 @@ const BehaviorScript bhvHighStrikerMachine[] = {
 const BehaviorScript bhvHighStrikerBell[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, HighStrikerBell_anims),
+    //LOAD_ANIMATIONS(oAnimations, HighStrikerBell_anims),
     //ANIMATE(HIGHSTRIKER_BELL_LAUNCH),
     CALL_NATIVE(bhv_highstriker_bell_init),
     BEGIN_LOOP(),
@@ -6170,16 +6185,3 @@ const BehaviorScript bhvQuizMaster[] = {
         CALL_NATIVE(bhv_quizmaster_loop),
     END_LOOP(),
 };
-
-// BEGIN(OBJ_LIST_GENACTOR),
-//     OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-//     LOAD_ANIMATIONS(oAnimations, toad_seg6_anims_0600FB58),
-//     ANIMATE(TOAD_ANIM_WEST_WAVING_BOTH_ARMS),
-//     SET_INTERACT_TYPE(INTERACT_TEXT),
-//     SET_HITBOX(/*Radius*/ 80, /*Height*/ 100),
-//     SET_INT(oIntangibleTimer, 0),
-//     CALL_NATIVE(bhv_init_room),
-//     CALL_NATIVE(bhv_toad_message_init),
-//     BEGIN_LOOP(),
-//         CALL_NATIVE(bhv_toad_message_loop),
-//     END_LOOP(),

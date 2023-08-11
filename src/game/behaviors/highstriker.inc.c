@@ -110,13 +110,17 @@
 //             obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
 //             create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
 //         }
-//     } else {
+//     } else 
 //         if (cur_obj_was_attacked_or_ground_pounded()) {
 //             obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
 //             create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
 //         }
-//     }
+//     
 // }
+
+// Action 1: init
+// 2: fail
+// 3: success
 
 void bhv_highstriker_bell_init (void) {
     //o->oAnimations = HIGHSTRIKER_BELL_LAUNCH;
@@ -142,17 +146,85 @@ void bhv_highstriker_machine_init (void) {
     //load_object_collision_model();
 }
 void bhv_highstriker_machine_loop (void) {
-    o->oBehParams2ndByte = 0;
+    if (cur_obj_is_mario_superpounding_platform()) { // success
+        struct Object *carnyObj = cur_obj_nearest_object_with_behavior(bhvHighStrikerCarny);
+        carnyObj->oAction = 3;
+    } else if (cur_obj_was_attacked_or_ground_pounded()) { // fail
+        // The machine sets the Carny's action
+        struct Object *carnyObj = cur_obj_nearest_object_with_behavior(bhvHighStrikerCarny);
+        carnyObj->oAction = 2;
+        // if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+        // DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, o->oBehParams2ndByte)) {
+
+        //}
+    }
 }
 void bhv_highstriker_carny_init (void) {
     // Carny dead if true
-    if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITFS_DOOR) {
-        o->oAction = HIGHSTRIKER_ACT_COMPLETE;
-        // set pos?
-    }
+    // if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITFS_DOOR) {
+    //     o->oAction = HIGHSTRIKER_ACT_COMPLETE;
+    //     // set pos?
+    // }
     cur_obj_unhide();
     cur_obj_scale(1.0f);
+    o->oInteractionSubtype = INT_SUBTYPE_NPC;
+}
+
+static void carny_not_talking(void) {
+    if (o->oInteractStatus == INT_STATUS_INTERACTED) {
+        o->oInteractStatus = INT_STATUS_NONE;
+        o->oAction = 1;
+    }
+}
+
+static void carny_message_default(void) {
+    // o->oFaceAngleYaw = o->oAngleToMario;
+    if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_FRONT,
+        DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_195)) {
+        // Handle special dialogue.
+        o->oInteractStatus = INT_STATUS_NONE;
+        o->oAction = 0;
+    }
+}
+static void carny_message_fail(void) {
+    if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_FRONT,
+        DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_196)) {
+        // Handle special dialogue.
+        o->oInteractStatus = INT_STATUS_NONE;
+        o->oAction = 0;
+    }
+}
+
+static void carny_message_success(void) {
+    if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_FRONT,
+        DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, DIALOG_197)) {
+        // Award a star.
+        struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 200, o->oPosZ + 200, 0, 0, 0);
+        starObj->oBehParams = 0x01000000;
+        vec3f_set(&starObj->oHomeVec, o->oPosX, o->oPosY + 400, o->oPosZ + 500);
+        starObj->oFaceAnglePitch = 0;
+        starObj->oFaceAngleRoll = 0;
+
+        o->oInteractStatus = INT_STATUS_NONE;
+        o->oAction = 0;
+    }
 }
 void bhv_highstriker_carny_loop (void) {
-    o->oBehParams2ndByte++;
+    switch(o->oAction) {
+            case 0:
+            carny_not_talking();
+            break;
+
+            case 1:
+            carny_message_default();
+            break;
+
+            case 2:
+            carny_message_fail();
+            break;
+
+            case 3:
+            carny_message_success();
+            break;
+        }
 }
