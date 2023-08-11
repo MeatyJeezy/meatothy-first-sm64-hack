@@ -357,4 +357,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "warp_pipe_red/geo_header.h"
 
+#include "Goombaplatform/geo_header.h"
+
+
+#include "Goombaplatform/anim_header.h"
 #endif

@@ -49,3 +49,6 @@
 #include "warp_pipe_blue/model.inc.c"
 #include "warp_pipe_yellow/model.inc.c"
 #include "warp_pipe_red/model.inc.c"
+#include "Goombaplatform/model.inc.c"
+#include "Goombaplatform/anims/data.inc.c"
+#include "Goombaplatform/anims/table.inc.c"
