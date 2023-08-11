@@ -233,6 +233,11 @@ void bhv_toad_message_init(void) {
                 dialogId = TOAD_STAR_3_DIALOG_AFTER;
             }
             break;
+        case DIALOG_199:
+        if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & STAR_FLAG_ACT_1) {
+            obj_mark_for_deletion(o);
+        }
+        break;
     }
     if (enoughStars) {
         o->oToadMessageDialogId = dialogId;

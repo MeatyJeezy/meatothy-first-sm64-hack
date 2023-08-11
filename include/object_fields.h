@@ -699,6 +699,8 @@
 #define /*0x0FC*/ oCameraLakituCircleRadius   OBJECT_FIELD_F32(0x1D)
 #define /*0x100*/ oCameraLakituFinishedDialog OBJECT_FIELD_S32(0x1E)
 #define /*0x104*/ oCameraLakituIntroMusicPlayed OBJECT_FIELD_S32(0x1F)
+#define /*0x108*/ oCameraLakituCanInteract      OBJECT_FIELD_S32(0x20)
+#define /*0x108*/ oCameraLakituLigmaExists      OBJECT_FIELD_S32(0x21)
 #define /*0x1AC*/ oCameraLakituPitchVel       OBJECT_FIELD_S16(0x49, 0)
 #define /*0x1AE*/ oCameraLakituYawVel         OBJECT_FIELD_S16(0x49, 1)
 

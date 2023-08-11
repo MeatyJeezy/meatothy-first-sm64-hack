@@ -11,7 +11,7 @@
 static struct ObjectHitbox sRedCoinHitbox = {
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 2,
+    /* damageOrCoinValue: */ 5, // CHANGED
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
     /* radius:            */ 100,
@@ -42,6 +42,16 @@ void bhv_red_coin_init(void) {
  * the orange number counter.
  */
 void bhv_red_coin_loop(void) {
+    //NEW handle the special red coin
+    if (o->oBehParams2ndByte != 0) {
+        if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_CCM_DOOR)) {
+            cur_obj_hide();
+            cur_obj_become_intangible();
+        } else {
+            cur_obj_unhide();
+            cur_obj_become_tangible();
+        }
+    }
     // If Mario interacted with the object...
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
         // ...and there is a red coin star in the level...

@@ -204,7 +204,7 @@ static void bigtop_act_end_cutscene(void) {
         }
     } else {
         approach_f32_ptr(&o->oFappySpeed, 60.0f, 3.0f);
-        if (o->oDistanceToMario > 5000.0f) {
+        if (o->oDistanceToMario > 4000.0f) {
             set_mario_npc_dialog(MARIO_DIALOG_STOP);
             // This all might be a little extra but if it works idgaf
                 struct Object *fappyObj = o;
@@ -213,8 +213,14 @@ static void bigtop_act_end_cutscene(void) {
                 gMarioState->interactObj = fadeWarp;
                 // Force tele?
                 gMarioState->action = ACT_IDLE;
-                set_camera_mode(gMarioState->area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
-                obj_mark_for_deletion(fappyObj);
+                gMarioState->vel[0] = 0.0f;
+                gMarioState->vel[1] = 0.0f;
+                gMarioState->vel[2] = 0.0f;
+                if (gMarioState->action == ACT_IDLE) {
+                    set_camera_mode(gMarioState->area->camera, CAMERA_MODE_8_DIRECTIONS, 1);
+                    obj_mark_for_deletion(fappyObj);
+                }
+                
         }
         targetMovePitch = -0x3000;
         targetMoveYaw = -0x6000;

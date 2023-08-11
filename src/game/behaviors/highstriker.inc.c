@@ -166,7 +166,7 @@ void bhv_highstriker_carny_init (void) {
     //     // set pos?
     // }
     cur_obj_unhide();
-    cur_obj_scale(1.0f);
+    cur_obj_scale(0.6f);
     o->oInteractionSubtype = INT_SUBTYPE_NPC;
 }
 

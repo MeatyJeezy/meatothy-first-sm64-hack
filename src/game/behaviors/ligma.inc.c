@@ -1,10 +1,8 @@
-//#include "text_strings.h"
 
 // Loop to decrement timer. kill mario if timer reaches 0, and delete the obj if mario presses L to ligma shield
 
 void bhv_ligma_loop(void) {
     // Finds dialog id?
-    //void **dialogTable = segmented_to_virtual(seg2_dialog_table);
     s32 dialogID;
     dialogID = o->oBehParams2ndByte;
 
@@ -20,10 +18,12 @@ void bhv_ligma_loop(void) {
             obj_mark_for_deletion(o);
 
             // Increment the timer and kill the player with the appropriate ligma joke
-        } else if (o->oTimer++ > 250) {
+        } else if (o->oTimer++ > 220) {
             // If Mario is supposed to die and there's no dialogue box
             if (o->oLigmaKilledMario &&  (get_dialog_id() < 0)) {
                 disable_time_stop_including_mario();
+                // set a flag to indicate ligma death
+                save_file_set_flags(SAVE_FLAG_UNLOCKED_JRB_DOOR);
                 // trigger death action if not already doing it.
                 if (gMarioState->action != ACT_STANDING_DEATH) {
                     set_mario_action(gMarioState, ACT_STANDING_DEATH, 0);

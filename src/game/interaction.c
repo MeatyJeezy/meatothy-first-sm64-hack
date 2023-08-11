@@ -735,6 +735,18 @@ u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *
 #endif
     obj->oInteractStatus = INT_STATUS_INTERACTED;
 
+    // NEW True if at 94+ coins, CCM_DOOR flag is unset, and player doesn't have the 100 coin star.
+    if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_CCM_DOOR) && !(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & STAR_FLAG_ACT_100_COINS) && m->numCoins >= 95) {
+        //spawn fappy to talk about 100 coin star then set flag. 
+        spawn_object_relative(0xBC, 100, 100, 300, gMarioState->marioObj, MODEL_LAKITU, bhvCameraLakitu);
+        save_file_set_flags(SAVE_FLAG_UNLOCKED_CCM_DOOR);
+    }
+    // unset the flag so the dialog can trigger if the player didnt collect the star and has less coins. Assume they got yeeted to another level
+    if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_CCM_DOOR) && !(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & STAR_FLAG_ACT_100_COINS) && m->numCoins < 95) {
+        save_file_clear_flags(SAVE_FLAG_UNLOCKED_CCM_DOOR);
+    }
+
+
 #ifdef X_COIN_STAR
     if (COURSE_IS_MAIN_COURSE(gCurrCourseNum) && m->numCoins - obj->oDamageOrCoinValue < X_COIN_STAR
         && m->numCoins >= X_COIN_STAR) {
@@ -1744,7 +1756,7 @@ u32 check_npc_talk(struct MarioState *m, struct Object *obj) {
         if (obj->behavior == segmented_to_virtual(bhvYoshi)) {
             spawn_object_relative(ORANGE_NUMBER_A, 0, 256, 64, obj, MODEL_NUMBER, bhvOrangeNumber);
         } else {
-            spawn_object_relative(ORANGE_NUMBER_A, 0, 160,  0, obj, MODEL_NUMBER, bhvOrangeNumber);
+            spawn_object_relative(ORANGE_NUMBER_A, 0, 190,  0, obj, MODEL_NUMBER, bhvOrangeNumber);
         }
 #endif
         if (m->input & READ_MASK) {

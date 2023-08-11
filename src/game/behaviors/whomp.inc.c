@@ -22,7 +22,7 @@ void whomp_init(void) {
 
     if (o->oBehParams2ndByte != 0) {
         gSecondCameraFocus = o;
-        cur_obj_scale(2.3f);
+        cur_obj_scale(2.0f);
         if (o->oSubAction == 0) {
             if (o->oDistanceToMario < 1000.0f) { // CHANGED
                 o->oSubAction++;
@@ -144,7 +144,7 @@ void whomp_jump(void) {
         }
         break;
         // Really fast
-        case 3:
+        case 2:
         if (o->oTimer >= 1) {
             o->oAngleVelPitch += 0x400;
             o->oFaceAnglePitch += o->oAngleVelPitch;
@@ -156,7 +156,7 @@ void whomp_jump(void) {
         }
         break;
         // Delayed a bit
-        case 2: 
+        case 3: 
         if (o->oTimer >= 36) {
             o->oAngleVelPitch += 0x100;
             o->oFaceAnglePitch += o->oAngleVelPitch;
@@ -181,13 +181,16 @@ void whomp_jump(void) {
                     if (o->oFaceAnglePitch > 0x3900) {
                         o->oAngleVelPitch += 0x10;
                         o->oFaceAnglePitch -= o->oAngleVelPitch;
+                        cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
                     }
                     else {
                         o->oAngleVelPitch += 0x300;
                         o->oFaceAnglePitch -= o->oAngleVelPitch;
+                        cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x200);
+                        o->oForwardVel = 20.0f;
                     }
 
-                    // If whomp is fully up
+                    // Check if whomp is fully up
                     if (o->oFaceAnglePitch < 0) {
                         o->oAngleVelPitch = 0;
                         o->oFaceAnglePitch = 0x0;

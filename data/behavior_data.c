@@ -6120,7 +6120,7 @@ const BehaviorScript bhvHighStrikerCarny[] = {
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, HighStrikerCarnie_anims),
     ANIMATE(FAPPY_ANIM_DEFAULT),
-    SET_FLOAT(oGraphYOffset, 200),
+    SET_FLOAT(oGraphYOffset, 130),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     SET_HITBOX_WITH_OFFSET(/*Radius*/ 180, /*Height*/ 150, /*Downwards offset*/ 0),
     // DROP_TO_FLOOR(),

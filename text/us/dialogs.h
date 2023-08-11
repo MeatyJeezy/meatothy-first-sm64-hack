@@ -1411,12 +1411,17 @@ your bones, and then\n\
 I'm gonna smash...\n\
 \n\
 \n\
-...your bones. Then\n\
-you won't have any\n\
-bones left!\n\
+...your bones.\n\
 \n\
 \n\
-Hahahahahahahahahahaha!"))
+\n\
+\n\
+...\n\
+\n\
+\n\
+\n\
+\n\
+Prepare to die."))
 
 DEFINE_DIALOG(DIALOG_115, 1, 5, 95, 200, _("\
 It would appear as if\n\
@@ -2324,17 +2329,99 @@ DEFINE_DIALOG(DIALOG_183, 1, 4, 30, 200, _("\
 DEFINE_DIALOG(DIALOG_184, 1, 4, 30, 200, _("\
 "))
 
+// Misc. Fappy dialogue starts here
 DEFINE_DIALOG(DIALOG_185, 1, 4, 30, 200, _("\
-"))
+Whoa, are you really\n\
+THE Mario? I'm a big\n\
+fan of yours!\n\
+\n\
+I should introduce\n\
+myself:\n\
+First name's Fun,\n\
+Last name's Happy,\n\
+but everyone just\n\
+calls me Fappy!\n\
+Aren't nicknames\n\
+the best?\n\
+\n\
+Well Mario, it was\n\
+great to finally meet\n\
+you. I hope you have\n\
+fun at my carnival,\n\
+and if you ever need\n\
+me, well...\n\
+\n\
+\n\
+Good luck with that\n\
+I guess. Seeya!"))
 
+// Fappy Ligma Shield Explanation
 DEFINE_DIALOG(DIALOG_186, 1, 4, 30, 200, _("\
-"))
+Are you okay Mario?\n\
+Your pride took a\n\
+a real thrashing just\n\
+now.\n\
+Around these parts,\n\
+Ligma jokes are given\n\
+the power to manifest\n\
+themselves.\n\
+The only way to defend\n\
+against a Ligma is to\n\
+active a Ligma Shield.\n\
+\n\
+You can activate it\n\
+by pressing the L\n\
+button after finishing\n\
+a conversation.\n\
+But don't go using it\n\
+all willy-nilly.\n\
+Shielding against\n\
+nothing is almost as\n\
+bad as failing to\n\
+shield at all.\n\
+\n\
+\n\
+Let's test it out,\n\
+shall we? I'll throw\n\
+one out for you, and when\n\
+we're done talking, try\n\
+shielding.\n\
+\n\
+\n\
+\n\
+Here goes:\n\
+I heard that Bowser\n\
+died of ligma. What\n\
+a tragic way to go."))
 
-DEFINE_DIALOG(DIALOG_187, 1, 4, 30, 200, _("\
-"))
+DEFINE_DIALOG(DIALOG_187, 1, 1, 30, 200, _("\
+Ligma balls.\n\
+You didn't shield.\n\
+Gotta shield those."))
 
 DEFINE_DIALOG(DIALOG_188, 1, 4, 30, 200, _("\
-"))
+I noticed you're\n\
+getting close to\n\
+collecting 100 coins.\n\
+\n\
+Hoo, this is awkward.\n\
+See, there aren't\n\
+actually that many\n\
+coins around.\n\
+Sorry, but you really\n\
+wasted your time here.\n\
+\n\
+\n\
+...What's the look for?\n\
+\n\
+\n\
+\n\
+Okay, fine. There is ONE\n\
+coin left. All you have\n\
+to do is go to the north\n\
+side and climb the pole.\n\
+Have fun!\n\
+Yeehehehe!"))
 
 DEFINE_DIALOG(DIALOG_189, 1, 4, 30, 200, _("\
 "))
@@ -2350,18 +2437,21 @@ DEFINE_DIALOG(DIALOG_192, 1, 4, 30, 200, _("\
 
 DEFINE_DIALOG(DIALOG_193, 1, 4, 30, 200, _("\
 "))
-
+// Bigtop Entry Sign
 DEFINE_DIALOG(DIALOG_194, 1, 4, 30, 200, _("\
-"))
+Entry to the Bigtop\n\
+ahead. The next\n\
+performance starts\n\
+at soon-o-clock."))
 // Carny Dialogue init
-DEFINE_DIALOG(DIALOG_195, 1, 4, 30, 230, _("\
+DEFINE_DIALOG(DIALOG_195, 1, 4, 35, 200, _("\
 Step right up and test\n\
-your cheeks! Can you ground\n\
+your cheeks! Can you\n\
 pound the button hard\n\
 enough? Or will you be\n\
 remembered as a scrawny\n\
 little weakling with\n\
-flabby pancake buttcheeks?\n\
+a flabby pancake ass?\n\
 Step on up and find out."))
 // Carny Dialogue fail
 DEFINE_DIALOG(DIALOG_196, 1, 4, 30, 200, _("\
@@ -2406,7 +2496,7 @@ it's possible to wallkick\n\
 out the top but...\n\
 I've been in here so long\n\
 that I have nothing to go\n\
-back to...\n\
+back to.\n\
 \n\
 \n\
 Say, you seem like you\n\
@@ -2595,16 +2685,26 @@ difficulty, shall we?\n\
 \n\
 \n\
 Question 5: Which floor\n\
-texture would you most\n\
-like to land on when you\n\
-enter the next room?\n\
+texture will you land\n\
+on when you enter the\n\
+next room?\n\
 Yellow: Quicksand\n\
 Red: Lava\n\
 Green: Warp\n\
 Blue: Deathwarp"))
 
-DEFINE_DIALOG(DIALOG_207, 1, 4, 30, 200, _("\
-"))
+DEFINE_DIALOG(DIALOG_207, 1, 4, 30, 220, _("\
+Surprise! They were all\n\
+the correct option.\n\
+I hope you're as excited\n\
+as I am for this next one:\n\
+Question 6: I have set\n\
+you on fire.\n\
+\n\
+\n\
+Green: It doesn't hurt.\n\
+\n\
+Red: It hurts really bad."))
 
 DEFINE_DIALOG(DIALOG_208, 1, 4, 30, 200, _("\
 "))

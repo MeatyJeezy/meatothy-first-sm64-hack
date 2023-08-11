@@ -19,6 +19,10 @@ enum FappyDialog {
 };
 
 void bhv_camera_lakitu_init(void) {
+    // Don't show ligma explanation again. JRB_DOOR is set on ligma spawn
+    if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_PSS_DOOR) && (save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR)) {
+        obj_mark_for_deletion(o);
+    }
     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
         // Despawn unless this is the very beginning of the game
         cur_obj_hide();
@@ -30,15 +34,6 @@ void bhv_camera_lakitu_init(void) {
     }
 }
 // NEW chooses Dialog constant based on second byte param
-s32 get_dialogue_from_param(void) {
-    u8 param = o->oBehParams2ndByte;
-    switch(param) {
-        case FAPPY_DIALOG_1: return DIALOG_034; break;
-        case FAPPY_DIALOG_2: return DIALOG_035; break;
-        case FAPPY_DIALOG_3: return DIALOG_036; break;
-    }
-    return DIALOG_034;
-}
 
 /**
  * Wait for mario to stand on the bridge, then interrupt his action and enter
@@ -52,15 +47,6 @@ static void camera_lakitu_intro_act_trigger_cutscene(void) {
             o->oAction = CAMERA_LAKITU_INTRO_ACT_SPAWN_CLOUD;
         }
     }
-    // if (gMarioObject->oPosX >  -544.0f
-    //     && gMarioObject->oPosX <   545.0f
-    //     && gMarioObject->oPosY >   800.0f
-    //     && gMarioObject->oPosZ > -2000.0f
-    //     && gMarioObject->oPosZ <  -177.0f) {
-    //     if (set_mario_npc_dialog(MARIO_DIALOG_LOOK_UP) == MARIO_DIALOG_STATUS_START) {
-    //         o->oAction = CAMERA_LAKITU_INTRO_ACT_SPAWN_CLOUD;
-    //     }
-    // }
 }
 
 /**
@@ -100,7 +86,21 @@ static void camera_lakitu_intro_act_show_dialog(void) {
     if (o->oCameraLakituFinishedDialog) {
         approach_f32_ptr(&o->oCameraLakituSpeed, 60.0f, 3.0f);
         if (o->oDistanceToMario > 6000.0f) {
-            obj_mark_for_deletion(o);
+            cur_obj_hide();
+            // set the flag if the player understood the tutorial.
+            // If a ligma has spawned:
+            if (cur_obj_nearest_object_with_behavior(bhvLigma) != NULL) {
+                o->oCameraLakituLigmaExists = TRUE;
+            }
+            // If there was a ligma, but now there isn't, set the flag to never have the ligma tutorial again.
+            else if (cur_obj_nearest_object_with_behavior(bhvLigma) == NULL && o->oCameraLakituLigmaExists) {
+                save_file_set_flags(SAVE_FLAG_UNLOCKED_PSS_DOOR);
+            }
+            // No ligma nearby, safe to delete.
+            if (cur_obj_nearest_object_with_behavior(bhvLigma) == NULL) {
+                obj_mark_for_deletion(o);
+            }
+            
         }
 
         targetMovePitch = -0x3000;
@@ -141,8 +141,12 @@ static void camera_lakitu_intro_act_show_dialog(void) {
                 }
             }
         } else if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
-            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, get_dialogue_from_param())) {
+            DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, o->oBehParams2ndByte)) {
             o->oCameraLakituFinishedDialog = TRUE;
+            //  Ligma dialog, spawn the object.
+            if (o->oBehParams2ndByte == 0xBA) {
+                spawn_object_relative(o->oBehParams2ndByte, 0, 0, 0, o, MODEL_NONE, bhvLigma);
+            }
         }
     }
 
@@ -162,9 +166,18 @@ static void camera_lakitu_intro_act_show_dialog(void) {
  */
 void bhv_camera_lakitu_update(void) {
     if (!(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
+        if (o->oBehParams2ndByte == 0xBA) { // DIALOG_186 is the ligma shield explanation. Only play if flag is set
+            if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR) {
+                o->oCameraLakituCanInteract = TRUE;
+                // Flag to never show this again
+                // save_file_set_flags(SAVE_FLAG_UNLOCKED_PSS_DOOR);
+            }
+        } else {
+            o->oCameraLakituCanInteract = TRUE;
+        }
         obj_update_blinking(&o->oCameraLakituBlinkTimer, 20, 40, 4);
 
-        if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
+        if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA && o->oCameraLakituCanInteract) {
             switch (o->oAction) {
                 case CAMERA_LAKITU_INTRO_ACT_TRIGGER_CUTSCENE:
                     camera_lakitu_intro_act_trigger_cutscene();
