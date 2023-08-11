@@ -6125,7 +6125,7 @@ const BehaviorScript bhvHighStrikerCarny[] = {
     SET_HITBOX_WITH_OFFSET(/*Radius*/ 180, /*Height*/ 150, /*Downwards offset*/ 0),
     // DROP_TO_FLOOR(),
     SET_INT(oIntangibleTimer, 0),
-    CALL_NATIVE(bhv_highstriker_carny_init),
+    CALL_NATIVE(bhv_highstriker_carny_init), // 
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_highstriker_carny_loop),
     END_LOOP(),
