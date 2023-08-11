@@ -369,4 +369,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "CarnieToad/geo_header.h"
 
+#include "BossFappy/geo_header.h"
+
+
+#include "BossFappy/anim_header.h"
 #endif

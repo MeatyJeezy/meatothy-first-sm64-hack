@@ -30,3 +30,4 @@
 #include "CowboyToad/geo.inc.c"
 #include "SpelunkerToad/geo.inc.c"
 #include "CarnieToad/geo.inc.c"
+#include "BossFappy/geo.inc.c"

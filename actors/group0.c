@@ -56,3 +56,6 @@
 #include "CowboyToad/model.inc.c"
 #include "SpelunkerToad/model.inc.c"
 #include "CarnieToad/model.inc.c"
+#include "BossFappy/model.inc.c"
+#include "BossFappy/anims/data.inc.c"
+#include "BossFappy/anims/table.inc.c"

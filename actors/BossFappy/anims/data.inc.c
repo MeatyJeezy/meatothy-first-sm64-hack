@@ -1,0 +1,5 @@
+#include "anim_IdleAnimation.inc.c"
+#include "anim_Attack_A.inc.c"
+#include "anim_Attack_B.inc.c"
+#include "anim_Attack_C.inc.c"
+#include "anim_DeathTheoretically.inc.c"
