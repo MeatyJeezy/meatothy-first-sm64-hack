@@ -52,3 +52,4 @@
 #include "Goombaplatform/model.inc.c"
 #include "Goombaplatform/anims/data.inc.c"
 #include "Goombaplatform/anims/table.inc.c"
+#include "Whompplatform/model.inc.c"

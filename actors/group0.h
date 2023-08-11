@@ -361,4 +361,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 
 #include "Goombaplatform/anim_header.h"
+#include "Whompplatform/geo_header.h"
+
 #endif

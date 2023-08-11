@@ -26,3 +26,4 @@
 #include "warp_pipe_yellow/geo.inc.c"
 #include "warp_pipe_red/geo.inc.c"
 #include "Goombaplatform/geo.inc.c"
+#include "Whompplatform/geo.inc.c"
