@@ -201,6 +201,7 @@ static void carny_message_success(void) {
         // Award a star.
         struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 200, o->oPosZ + 200, 0, 0, 0);
         starObj->oBehParams = 0x01000000;
+        starObj->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
         vec3f_set(&starObj->oHomeVec, o->oPosX, o->oPosY + 400, o->oPosZ + 500);
         starObj->oFaceAnglePitch = 0;
         starObj->oFaceAngleRoll = 0;

@@ -2319,7 +2319,7 @@ DEFINE_DIALOG(DIALOG_193, 1, 4, 30, 200, _("\
 DEFINE_DIALOG(DIALOG_194, 1, 4, 30, 200, _("\
 "))
 // Carny Dialogue init
-DEFINE_DIALOG(DIALOG_195, 1, 4, 30, 220, _("\
+DEFINE_DIALOG(DIALOG_195, 1, 4, 30, 230, _("\
 Step right up and test\n\
 your cheeks! Can you ground\n\
 pound the button hard\n\

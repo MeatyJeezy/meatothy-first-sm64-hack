@@ -349,7 +349,7 @@ extern Vtx castle_grounds_dl_tentacleparkour_mesh_layer_1_vtx_0[308];
 extern Gfx castle_grounds_dl_tentacleparkour_mesh_layer_1_tri_0[];
 extern Vtx castle_grounds_dl_tentacleparkour_mesh_layer_1_vtx_1[4];
 extern Gfx castle_grounds_dl_tentacleparkour_mesh_layer_1_tri_1[];
-extern Vtx castle_grounds_dl_tentacleparkour_mesh_layer_4_vtx_0[40];
+extern Vtx castle_grounds_dl_tentacleparkour_mesh_layer_4_vtx_0[32];
 extern Gfx castle_grounds_dl_tentacleparkour_mesh_layer_4_tri_0[];
 extern Vtx castle_grounds_dl_tentsave_mesh_layer_1_vtx_0[78];
 extern Gfx castle_grounds_dl_tentsave_mesh_layer_1_tri_0[];
