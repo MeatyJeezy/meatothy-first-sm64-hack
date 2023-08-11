@@ -56,7 +56,7 @@ const LevelScript level_castle_grounds_entry[] = {
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, castle_grounds_area_1),
-		WARP_NODE(0x0A, LEVEL_RR, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF1, LEVEL_CASTLE_GROUNDS, 0x01, 0x13, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF3, LEVEL_RR, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -82,7 +82,6 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_NONE, 14408, -623, 2667, 0, -4, 0, 0x100F0000, bhvWarp),
 		OBJECT(MODEL_NONE, -5254, -665, 1942, 0, 37, 0, 0x10100000, bhvWarp),
 		OBJECT(MODEL_NONE, -13489, -662, 2808, 0, -1, 0, 0x10110000, bhvWarp),
-		OBJECT(MODEL_HIGHSTRIKER_BELL, -93, -637, 6212, 0, 0, 0, 0x00000000, bhvHighStrikerBell),
 		OBJECT(MODEL_NONE, 569, -592, 4221, 0, -180, 0, 0x000D0000, bhvLaunchDeathWarp),
 		OBJECT(MODEL_NONE, 569, -651, 4363, 0, 0, 0, 0x100B0000, bhvWarp),
 		OBJECT(MODEL_NONE, 569, -255, 4171, 0, -180, 0, 0x00120000, bhvPaintingStarCollectWarp),
@@ -104,8 +103,8 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_BOB_BUBBLY_TREE, -6936, -639, 10444, 0, 62, 0, 0x00000000, bhvTree),
 		OBJECT(MODEL_BOB_BUBBLY_TREE, -11117, -636, 8548, 0, 62, 0, 0x00000000, bhvTree),
 		OBJECT(MODEL_BOB_BUBBLY_TREE, 11939, 403, 8454, 0, 62, 0, 0x00000000, bhvTree),
-		OBJECT(MODEL_NONE, 479, -398, 15925, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
-		MARIO_POS(0x01, 0, 479, -398, 15925),
+		OBJECT(MODEL_NONE, 479, 217, 15204, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
+		MARIO_POS(0x01, 0, 479, 217, 15204),
 		OBJECT(MODEL_WOODEN_SIGNPOST, 494, -661, 14182, 0, -1, 0, 0x00A90000, bhvMessagePanel),
 		TERRAIN(castle_grounds_area_1_collision),
 		MACRO_OBJECTS(castle_grounds_area_1_macro_objs),

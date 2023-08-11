@@ -204,6 +204,7 @@ const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_PIPE_BLUE,                warp_pipe_blue_geo),
     LOAD_MODEL_FROM_GEO(MODEL_PIPE_YELLOW,              warp_pipe_yellow_geo),  
     LOAD_MODEL_FROM_GEO(MODEL_PIANTA,                   highstrikercarnie_geo),  
+    //LOAD_MODEL_FROM_GEO(MODEL_CASTLE_CASTLE_DOOR_UNUSED, castle_door_geo),
     RETURN(),
 };
 

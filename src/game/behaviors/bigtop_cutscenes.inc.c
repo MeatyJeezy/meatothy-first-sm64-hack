@@ -261,7 +261,7 @@ void bhv_bigtop_cutscene_init(void) {
     o->oBehParams2ndByte = 0;
 
     //TEMPORARY SKIP THE FIRST CUTSCENE FOR DEBUG PURPOSES
-    save_file_set_flags(SAVE_FLAG_CUSTOM_1);
+    // save_file_set_flags(SAVE_FLAG_CUSTOM_1);
     // Add 1 to the 
     if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_WF)) & STAR_FLAG_ACT_1) {
         o->oBehParams2ndByte = 1;

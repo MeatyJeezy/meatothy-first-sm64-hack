@@ -644,14 +644,14 @@ void general_star_dance_handler(struct MarioState *m, s32 isInWater) {
 
 s32 act_star_dance(struct MarioState *m) {
     m->faceAngle[1] = m->area->camera->yaw;
-    if (m->actionState == ACT_STATE_STAR_DANCE_RETURN) {//NEW if/else check to make things easier
-        set_mario_animation(m, MARIO_ANIM_RETURN_FROM_STAR_DANCE); 
-    }
-    else {
-        set_custom_mario_animation(m, 0); // 0 should be the only animation???
-    }
-    // set_mario_animation(m, m->actionState == ACT_STATE_STAR_DANCE_RETURN ? MARIO_ANIM_RETURN_FROM_STAR_DANCE
-    //                                                                      : MARIO_ANIM_STAR_DANCE);
+    // if (m->actionState == ACT_STATE_STAR_DANCE_RETURN) {//NEW if/else check to make things easier
+    //     set_mario_animation(m, MARIO_ANIM_RETURN_FROM_STAR_DANCE); 
+    // }
+    // else {
+    //     set_custom_mario_animation(m, 0); // 0 should be the only animation???
+    // }
+    set_mario_animation(m, m->actionState == ACT_STATE_STAR_DANCE_RETURN ? MARIO_ANIM_RETURN_FROM_STAR_DANCE
+                                                                         : MARIO_ANIM_STAR_DANCE);
     general_star_dance_handler(m, FALSE);
     if (m->actionState != ACT_STATE_STAR_DANCE_RETURN && m->actionTimer >= 40) {
         m->marioBodyState->handState = MARIO_HAND_PEACE_SIGN;

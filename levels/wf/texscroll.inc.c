@@ -1,6 +1,6 @@
 void scroll_wf_dl_Circle_mesh_layer_1_vtx_0() {
 	int i = 0;
-	int count = 427;
+	int count = 667;
 	int width = 32 * 0x20;
 	int height = 32 * 0x20;
 
@@ -29,7 +29,7 @@ void scroll_wf_dl_Circle_mesh_layer_1_vtx_0() {
 
 void scroll_wf_dl_Main_mesh_layer_0_vtx_0() {
 	int i = 0;
-	int count = 63;
+	int count = 106;
 	int height = 32 * 0x20;
 
 	static int currentY = 0;

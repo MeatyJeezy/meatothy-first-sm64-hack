@@ -2234,8 +2234,8 @@ do NOT mess this up.\n\
 Good luck!"))
 
 DEFINE_DIALOG(DIALOG_176, 1, 4, 30, 210, _("\
-Mario! Thank the Fun\n\
-Tokens you're back!\n\
+Mario! Thank goodness\n\
+you're back!\n\
 I promised these folks\n\
 a second act, which means\n\
 you'd better get on up\n\
@@ -2248,24 +2248,59 @@ not keep the folks\n\
 waiting!"))
 
 DEFINE_DIALOG(DIALOG_177, 1, 4, 30, 200, _("\
-I was hoping you'd be\n\
-back! The crowd loves you.\n\
-They've been begging for\n\
-one final act.\n\
-Whadda ya say? Just one\n\
-more tiny favor for your\n\
-old pal Fappy?\n\
+You're back again? We\n\
+don't have a third act\n\
+scheduled.\n\
 \n\
-Who am I kidding, like\n\
-you'd ever turn me down.\n\
-I practically own you.\n\
-Yehehehehe!\n\
-This time, all you have\n\
-to do is jump one teeny\n\
-little gap. Surely you\n\
-can manage that?\n\
-Alright. Let's get to\n\
-it then!"))
+However, I was\n\
+thinking... maybe you\n\
+can stick around and\n\
+keep doing this show\n\
+for me? All you have\n\
+to do is perform here\n\
+every day for the\n\
+rest of your life.\n\
+Whadda ya say?\n\
+\n\
+\n\
+\n\
+Oh, just kidding,\n\
+I know you wouldn't\n\
+refuse a request from\n\
+your best pal Fappy.\n\
+I mean, I practically\n\
+own you!\n\
+\n\
+\n\
+Yehehehe!\n\
+\n\
+\n\
+\n\
+Well, I have to be off\n\
+for now. You'd better\n\
+not fade warp to the\n\
+secret exit door\n\
+at the back and try\n\
+to escape the carnival\n\
+after I leave."))
+// I was hoping you'd be\n\
+// back! The crowd loves you.\n\
+// They've been begging for\n\
+// one final act.\n\
+// Whadda ya say? Just one\n\
+// more tiny favor for your\n\
+// old pal Fappy?\n\
+// \n\
+// Who am I kidding, like\n\
+// you'd ever turn me down.\n\
+// I practically own you.\n\
+// Yehehehehe!\n\
+// This time, all you have\n\
+// to do is jump one teeny\n\
+// little gap. Surely you\n\
+// can manage that?\n\
+// Alright. Let's get to\n\
+// it then!"))
 
 
 DEFINE_DIALOG(DIALOG_178, 1, 4, 30, 200, _("\
@@ -2377,7 +2412,7 @@ back to...\n\
 Say, you seem like you\n\
 have a bright future\n\
 ahead. It'd be best if\n\
-you have this. I'm won't\n\
+you have this. I won't\n\
 need it where I'm headed.\n\
 And with that, o world,\n\
 I bid you adieu!"))
