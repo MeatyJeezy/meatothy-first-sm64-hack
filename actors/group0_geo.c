@@ -27,3 +27,6 @@
 #include "warp_pipe_red/geo.inc.c"
 #include "Goombaplatform/geo.inc.c"
 #include "Whompplatform/geo.inc.c"
+#include "CowboyToad/geo.inc.c"
+#include "SpelunkerToad/geo.inc.c"
+#include "CarnieToad/geo.inc.c"

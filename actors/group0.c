@@ -53,3 +53,6 @@
 #include "Goombaplatform/anims/data.inc.c"
 #include "Goombaplatform/anims/table.inc.c"
 #include "Whompplatform/model.inc.c"
+#include "CowboyToad/model.inc.c"
+#include "SpelunkerToad/model.inc.c"
+#include "CarnieToad/model.inc.c"
