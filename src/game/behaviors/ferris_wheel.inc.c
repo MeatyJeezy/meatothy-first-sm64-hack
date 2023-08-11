@@ -53,8 +53,14 @@ void bhv_ferris_wheel_axle_init(void) {
 void bhv_ferris_wheel_platform_update(void) {
     f32 offsetXZ;
     s16 offsetAngle;
+    s32 axleRoll = 400;
+    u8 multiplier = 3;
 
+    // If mario is on platform, multiply roll by 
     obj_perform_position_op(POS_OP_SAVE_POSITION);
+    if (cur_obj_is_mario_on_platform() && multiplier != 0) {
+        o->parentObj->oFaceAngleRoll += (multiplier * axleRoll) - axleRoll;
+    }
 
     offsetAngle = o->parentObj->oFaceAngleRoll + o->oBehParams2ndByte * 0x4000;
     offsetXZ = 400.0f * coss(offsetAngle);
