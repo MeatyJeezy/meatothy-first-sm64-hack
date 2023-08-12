@@ -31,6 +31,10 @@ const GeoLayout bob_area_2_geo[] = {
 		GEO_OPEN_NODE(),
 			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -2066, 3, -2028, 0, 90, 0, bob_dl_QuestionRoomTemplate_006_mesh_layer_1),
 		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, 15217, 5385, 2834),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -2066, 3, -2028, 0, 90, 0, bob_dl_QuestionRoomTemplate_007_mesh_layer_1),
+		GEO_CLOSE_NODE(),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
