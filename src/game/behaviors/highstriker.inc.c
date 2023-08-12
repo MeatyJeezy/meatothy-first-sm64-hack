@@ -139,20 +139,30 @@ void bhv_highstriker_bell_loop (void) {
     }
 }
 void bhv_highstriker_machine_init (void) {
-    if (save_file_get_flags() & SAVE_FLAG_UNLOCKED_BITFS_DOOR) { // No need to check for the puck really. It aint going nowhere
-        //o->oAction = HIGHSTRIKER_COMPLETE;
-        // set pos?
+    if (o->oBehParams2ndByte != 0) {
+        cur_obj_scale(5.0f);
     }
     //load_object_collision_model();
 }
 void bhv_highstriker_machine_loop (void) {
     if (cur_obj_is_mario_superpounding_platform()) { // success
-        struct Object *carnyObj = cur_obj_nearest_object_with_behavior(bhvHighStrikerCarny);
-        carnyObj->oAction = 3;
+        if (o->oBehParams2ndByte == 0) {
+            struct Object *carnyObj = cur_obj_nearest_object_with_behavior(bhvHighStrikerCarny);
+            carnyObj->oAction = 3;
+        }
+        else { // prevents a million spawns
+            if (o->oAction == 0) {
+                spawn_object_relative(0xBD, 100, 100, 300, gMarioState->marioObj, MODEL_LAKITU, bhvCameraLakitu);
+                o->oAction++;
+            }
+        }
+        
     } else if (cur_obj_was_attacked_or_ground_pounded()) { // fail
         // The machine sets the Carny's action
-        struct Object *carnyObj = cur_obj_nearest_object_with_behavior(bhvHighStrikerCarny);
-        carnyObj->oAction = 2;
+        if (o->oBehParams2ndByte == 0) {
+            struct Object *carnyObj = cur_obj_nearest_object_with_behavior(bhvHighStrikerCarny);
+            carnyObj->oAction = 2;
+        }
         // if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
         // DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, o->oBehParams2ndByte)) {
 

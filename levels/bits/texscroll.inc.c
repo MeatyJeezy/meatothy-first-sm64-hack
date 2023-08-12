@@ -71,9 +71,9 @@ void scroll_bits_dl_Circle_001_mesh_layer_1_vtx_0() {
 
 void scroll_bits_dl_Cube_mesh_layer_1_vtx_0() {
 	int i = 0;
-	int count = 863;
-	int width = 32 * 0x20;
-	int height = 32 * 0x20;
+	int count = 888;
+	int width = 64 * 0x20;
+	int height = 64 * 0x20;
 
 	static int currentX = 0;
 	int deltaX;

@@ -12,12 +12,6 @@
 // The second entry is the line that pops up upon killing the player
 enum LigmaDialogs {
     LIGMA_DIALOG_START = 169, 
-    LIGMA_DIALOG_UPOST,
-    LIGMA_DIALOG_UPOST_GOTTEM,
-    LIGMA_DIALOG_FISSTIN,
-    LIGMA_DIALOG_FISSTIN_GOTTEM,
-    LIGMA_DIALOG_TASTEOFEDEN,
-    LIGMA_DIALOG_TASTEOFEDEN_GOTTEM,
     LIGMA_DIALOG_FINAL
 };
 

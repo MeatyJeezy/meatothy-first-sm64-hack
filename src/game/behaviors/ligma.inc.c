@@ -15,6 +15,12 @@ void bhv_ligma_loop(void) {
         // Delete if L trigger is pressed
         if (((gPlayer1Controller->buttonPressed & L_TRIG) && !(o->oLigmaKilledMario))) {
             play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
+            if (dialogID == 0xBD) {
+                create_dialog_box(DIALOG_209);
+                enable_time_stop_including_mario();
+                spawn_object_relative(0x10, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
+            }
+            
             obj_mark_for_deletion(o);
 
             // Increment the timer and kill the player with the appropriate ligma joke
@@ -38,6 +44,9 @@ void bhv_ligma_loop(void) {
                 create_dialog_box(dialogID + 1);
                 // Freeze until dialog box closes?
                 enable_time_stop_including_mario();
+                if (dialogID == 0xBD) {
+                    spawn_object_relative(0x10, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
+                }
             }
         }
     }

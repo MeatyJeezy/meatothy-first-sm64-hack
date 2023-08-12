@@ -11,7 +11,7 @@ void bhv_warp_loop(void) {
             // SET BPARAM3 to denote the final boss warp. Handles whether to hide it or not.
         } else if (finalBossPipe != 0) { // RESERVED 0x69 for final boss!
             // At X stars, show the pipe warp.
-            if((save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1)) >= 2) {
+            if((save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1)) >= 5) {
                cur_obj_unhide();
                cur_obj_become_tangible(); 
             } else {

@@ -3,6 +3,7 @@
 const GeoLayout bits_area_2_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 0, -2760, 0, 0, 0, 90, bits_dl_Base_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, bits_dl_Circle_001_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, bits_dl_Cube_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bits_dl_Cube_mesh_layer_5),

@@ -152,6 +152,15 @@ static void camera_lakitu_intro_act_show_dialog(void) {
             if (o->oBehParams2ndByte == 0xBA) {
                 spawn_object_relative(o->oBehParams2ndByte, 0, 0, 0, o, MODEL_NONE, bhvLigma);
             }
+            if (o->oBehParams2ndByte == 0xBD) {
+                spawn_object_relative(o->oBehParams2ndByte, 0, 0, 0, o, MODEL_NONE, bhvLigma);
+                cur_obj_hide();
+                cur_obj_become_intangible();
+                spawn_mist_particles_variable(0, 0, 200.0f);
+                spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
+                create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+                cur_obj_shake_screen(SHAKE_POS_SMALL);
+            }
         }
     }
 

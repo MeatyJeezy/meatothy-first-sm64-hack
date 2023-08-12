@@ -945,7 +945,7 @@ s32 act_ground_pound(struct MarioState *m) {
         m->actionTimer++; // NEW increase actionTimer each frame. If groundpounding long enough, it should turn into superpound. 
         if (m->actionTimer > 50) {
             m->particleFlags |= PARTICLE_SPARKLES;
-            play_sound(SOUND_MOVING_FLYING, m->marioObj->header.gfx.cameraToObject);
+            play_sound(SOUND_ACTION_FLYING_FAST, m->marioObj->header.gfx.cameraToObject);
             set_mario_action(m, ACT_SUPERPOUND, 0); // NEW
         }
         if (stepResult == AIR_STEP_LANDED) {

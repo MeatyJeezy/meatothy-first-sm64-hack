@@ -332,14 +332,35 @@ static void quiz_not_talking(void) {
     }
 }
 
+static void spawn_quiz_star(void) {
+    struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 400, o->oPosZ, 0, 0, 0);
+    starObj->oBehParams = 0x00000000;
+    vec3f_set(&starObj->oHomeVec, o->oPosX, o->oPosY + 400, o->oPosZ);
+    starObj->oFaceAnglePitch = 0;
+    starObj->oFaceAngleRoll = 0;
+}
+
 static void quiz_message_talking(void) {
     s32 dialogID = o->oBehParams2ndByte;
     if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
         DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, dialogID)) {
+        // struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 400, o->oPosZ, 0, 0, 0);
         // Handle special dialogue.
         o->oInteractStatus = INT_STATUS_NONE;
         switch(dialogID) {
+            // set on fire
+            case DIALOG_207:
+            set_mario_action(gMarioState, ACT_BURNING_GROUND, 0);
+            gMarioState->marioObj->oMarioBurnTimer = 80;
+            break;
+            // spawn star
+            case DIALOG_208:
+            spawn_quiz_star();
+            // struct Object *starObj = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStarSpawnCoordinates, o->oPosX, o->oPosY + 400, o->oPosZ, 0, 0, 0);
+            
+            break;
             default:
+
             break;
         }
         o->oAction = 0;

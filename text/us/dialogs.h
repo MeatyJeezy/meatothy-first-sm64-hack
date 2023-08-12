@@ -2122,10 +2122,9 @@ something you're holding."))
 
 //NEW DIALOGUE STARTS HERE
 DEFINE_DIALOG(DIALOG_168, 1, 4, 95, 200, _("\
-Use [Z] to crouch.\n\
-While crouched, move\n\
-around to crawl\n\
-through tight spaces!"))
+Left: High Striker Game\n\
+Forward: Mega Tree\n\
+Right: Quizmaster's tent"))
 
 DEFINE_DIALOG(DIALOG_169, 1, 4, 30, 200, _("\
 Welcome to Funland!"))
@@ -2148,14 +2147,10 @@ Welcome to Funland!"))
 // FISSTIN
 // TASTEOFEDEN
 DEFINE_DIALOG(DIALOG_170, 1, 4, 30, 200, _("\
-There's something weird\n\
-about that post\n\
-over there.\n\
-\n\
-It may look like a\n\
-normal wooden post,\n\
-but it's actually\n\
-a U-Post.\n\
+Be careful, there's\n\
+a U-Post right here.\n\
+You can't see or touch,\n\
+but it's real I swear.\n\
 They should really\n\
 label it properly.\n\
 Someone could get\n\
@@ -2233,7 +2228,8 @@ your daunting silence\n\
 and fluoride stare\n\
 as a yes!\n\
 The act should be easy,\n\
-just follow my queues.\n\
+just defeat the goomba\n\
+at center stage.\n\
 And whatever you do,\n\
 do NOT mess this up.\n\
 Good luck!"))
@@ -2353,16 +2349,33 @@ in this place until\n\
 you die of old age."))
 
 DEFINE_DIALOG(DIALOG_180, 1, 4, 30, 200, _("\
-"))
+Look at this. The\n\
+stairs here are just\n\
+barely too big to walk\n\
+up.\n\
+This is ableist against\n\
+us non-jumpers."))
 
-DEFINE_DIALOG(DIALOG_181, 1, 4, 30, 200, _("\
-"))
+DEFINE_DIALOG(DIALOG_181, 1, 2, 30, 200, _("\
+Ablei-stick my wiener\n\
+in your mouth."))
 
 DEFINE_DIALOG(DIALOG_182, 1, 4, 30, 200, _("\
-"))
+This baby right here\n\
+is the Mega Tree. It\n\
+may not look like much,\n\
+but once you start\n\
+climbing, you won't be\n\
+disappointed.\n\
+\n\
+\n\
+As for why you would\n\
+climb it, I'm not really\n\
+sure. Maybe there's\n\
+something at the top?"))
 
 DEFINE_DIALOG(DIALOG_183, 1, 4, 30, 200, _("\
-"))
+Core weak point below."))
 
 DEFINE_DIALOG(DIALOG_184, 1, 4, 30, 200, _("\
 If you have arrived\n\
@@ -2391,7 +2404,6 @@ but everyone just\n\
 calls me Fappy!\n\
 Aren't nicknames\n\
 the best?\n\
-\n\
 Well Mario, it was\n\
 great to finally meet\n\
 you. I hope you have\n\
@@ -2467,21 +2479,52 @@ wasted your time here.\n\
 Okay, fine. There is ONE\n\
 coin left. All you have\n\
 to do is go to the north\n\
-side and climb the pole.\n\
+side and climb the tree.\n\
 Have fun!\n\
 Yeehehehe!"))
 
 DEFINE_DIALOG(DIALOG_189, 1, 4, 30, 200, _("\
-"))
+You... where did you\n\
+learn to groundpound\n\
+like that? I can't\n\
+believe it. My own\n\
+friend would...\n\
+\n\
+\n\
+\n\
+No. I was the only\n\
+one who ever thought\n\
+that. I tried to force\n\
+you to stay here\n\
+against your will.\n\
+And this is the result.\n\
+I have no right to\n\
+keep you here any\n\
+longer. For what it's\n\
+worth, I really did\n\
+enjoy our brief time\n\
+together. But I've\n\
+had my taste of eden,\n\
+and now it's time to\n\
+say goodbye to this\n\
+paradise I called a\n\
+carnival."))
 
-DEFINE_DIALOG(DIALOG_190, 1, 4, 30, 200, _("\
-"))
+DEFINE_DIALOG(DIALOG_190, 1, 2, 30, 200, _("\
+Taste of eden\n\
+these nuts."))
 
 DEFINE_DIALOG(DIALOG_191, 1, 4, 30, 200, _("\
-"))
+I heard the roller\n\
+coaster was one of\n\
+the hottest\n\
+attractions here.\n\
+But it's just broken..."))
 
 DEFINE_DIALOG(DIALOG_192, 1, 4, 30, 200, _("\
-"))
+Lol, lmao even.\n\
+I hope you weren't\n\
+collecting coins."))
 
 DEFINE_DIALOG(DIALOG_193, 1, 4, 30, 200, _("\
 "))
@@ -2527,7 +2570,11 @@ north side of the park.\n\
 \n\
 \n\
 Don't worry, you won't\n\
-lose your coins. Trust."))
+lose your coins. Trust.\n\
+\n\
+\n\
+There are 60 coins\n\
+total in this area."))
 
 // Stuck toad dialog
 DEFINE_DIALOG(DIALOG_199, 1, 4, 30, 200, _("\
@@ -2664,7 +2711,6 @@ On to Question 3:\n\
 What size of shoe\n\
 does the statue of\n\
 liberty wear?\n\
-\n\
 Yellow: 1650\n\
 Red: 879\n\
 Green: 305\n\
@@ -2755,7 +2801,28 @@ Green: It doesn't hurt.\n\
 Red: It hurts really bad."))
 
 DEFINE_DIALOG(DIALOG_208, 1, 4, 30, 200, _("\
-"))
+You're tougher than you\n\
+look! Yeehehehe!\n\
+Time for Questio-\n\
+\n\
+Wait, what's this?\n\
+Our funding was cut?\n\
+\n\
+\n\
+Noooo, I was ready to\n\
+go for another 93\n\
+questions!\n\
+\n\
+Ah well, that's life\n\
+I suppose. Though it\n\
+was cut short, here\n\
+is your Fun Token.\n\
+This is your host\n\
+Fappy, signing out\n\
+of the 100 IQ\n\
+ULTRAQUIZ for the\n\
+final time."))
 
-DEFINE_DIALOG(DIALOG_209, 1, 4, 30, 200, _("\
-"))
+DEFINE_DIALOG(DIALOG_209, 1, 1, 30, 200, _("\
+Ahh well.\n\
+Can't blame me for trying."))
