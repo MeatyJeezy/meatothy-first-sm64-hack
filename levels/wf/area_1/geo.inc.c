@@ -12,7 +12,7 @@ const GeoLayout wf_area_1_geo[] = {
 		GEO_CLOSE_NODE(),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 0, 916, 6780, wf_dl_Deathplane_mesh_layer_5),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 0, -9915, 7915, wf_dl_Deathplane_001_mesh_layer_5),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_ALPHA, 0, -251, 5021, wf_dl_dtails_mesh_layer_4),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_ALPHA, 0, -251, 6939, wf_dl_dtails_mesh_layer_4),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_OPAQUE, wf_dl_dtails_mesh_layer_1),
 		GEO_CLOSE_NODE(),

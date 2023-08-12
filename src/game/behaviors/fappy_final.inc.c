@@ -93,6 +93,27 @@
 //     }
 // }
 
+// static struct ObjectHitbox sFinalFappyHitbox = {
+//     /* interactType:      */ INTERACT_DAMAGE,
+//     /* downOffset:        */ 0,
+//     /* damageOrCoinValue: */ 2,
+//     /* health:            */ 0,
+//     /* numLootCoins:      */ 0,
+//     /* radius:            */ 60,
+//     /* height:            */ 60,
+//     /* hurtboxRadius:     */ 60,
+//     /* hurtboxHeight:     */ 60,
+// };
+
+// static u8 sFinalFappyAttackHandlers[] = {
+//     /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_KNOCKBACK,
+//     /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_KNOCKBACK,
+//     /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_NOP,
+//     /* ATTACK_GROUND_POUND_OR_TWIRL: */ ATTACK_HANDLER_NOP,
+//     /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_KNOCKBACK,
+//     /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_KNOCKBACK,
+// };
+
 // 0 = wait for mario to be in range
 // 1 = follow mario from distance
 // 2 = prepare to dive at mario, set his position
@@ -103,18 +124,31 @@
 static void final_fappy_update_vel_y(f32 offsetY) {
     // In order to encourage oscillation, pass mario by a small margin before
     // accelerating the opposite direction
-    f32 margin;
-    if (o->oVelY < 0.0f) {
-        margin = -3.0f;
-    } else {
-        margin = 3.0f;
+    // f32 margin;
+    // if (o->oVelY < 0.0f) {
+    //     margin = -3.0f;
+    // } else {
+    //     margin = 3.0f;
+    // }
+    // NEW handle if he is too high or low
+    // o->oPosY = gMarioObject->oPosY + offsetY;
+    if (o->oPosY > gMarioObject->oPosY + offsetY) {
+        o->oPosY = gMarioObject->oPosY + offsetY;
     }
-
-    if (o->oPosY < gMarioObject->oPosY + offsetY + margin) {
-        obj_y_vel_approach(4.0f, 0.4f);
+    if (o->oPosY < gMarioObject->oPosY + 500) {
+        //o->oPosY = gMarioObject->oPosY - offsetY;
+        // if(o->oPosY > gMarioObject->oPosY + 200) {
+        //     obj_y_vel_approach(0.0f, 0.8f);
+        // }
+        obj_y_vel_approach(20.0f, 0.8f);
     } else {
-        obj_y_vel_approach(-4.0f, 0.4f);
+        obj_y_vel_approach(0.0f, 0.8f);
     }
+    // if (o->oPosY < gMarioObject->oPosY + offsetY + margin) {
+    //     obj_y_vel_approach(8.0f, 0.8f);
+    // } else {
+    //     obj_y_vel_approach(-8.0f, 0.8f);
+    // }
 }
 
 /**
@@ -126,8 +160,8 @@ static void final_fappy_update_speed_and_angle(void) {
     s16 turnSpeed;
 
     f32 distToMario = o->oDistanceToMario;
-    if (distToMario > 3000.0f) {
-        distToMario = 3000.0f;
+    if (distToMario > 600.0f) {
+        distToMario = 600.0f;
     }
 
     // Move faster the farther away mario is and the faster mario is moving
@@ -138,14 +172,9 @@ static void final_fappy_update_speed_and_angle(void) {
     clamp_f32(&o->oForwardVel, minSpeed, 40.0f);
 
     // Accelerate toward mario vertically
-    enemy_lakitu_update_vel_y(400.0f);
+    final_fappy_update_vel_y(500.0f);
 
-    // Turn toward mario except right after throwing a spiny
-    // if (o->oEnemyLakituFaceForwardCountdown != 0) {
-    //     o->oEnemyLakituFaceForwardCountdown--;
-    // } else {
-    //     obj_face_yaw_approach(o->oAngleToMario, 0x600);
-    // }
+    obj_face_yaw_approach(o->oAngleToMario, 0x200);
 
     // Change move angle toward mario faster when farther from mario
     turnSpeed = (s16)(distToMario * 2);
@@ -154,134 +183,168 @@ static void final_fappy_update_speed_and_angle(void) {
 }
 
 static void fappy_circle_mario(void) {
-    o->oTimer++;
 
-    if (o->oTimer++ < 360) {
+    if (o->oTimer++ < 400) {
         final_fappy_update_speed_and_angle();
+        //cur_obj_move_standard(78);
     } else {
         o->oAction = 2;
+        o->oTimer = 0;
+        
     }
 }
 
-
-// static void fappy_circle_mario(void) {
-//     // s16 targetMovePitch = 0x0;
-//     // s16 targetMoveYaw = 0x0;
-
-//     o->oTimer++;
-
-//     // Face toward mario
-//     // o->oFaceAnglePitch = obj_turn_pitch_toward_mario(120.0f, 0);
-//     // o->oFaceAngleYaw = o->oAngleToMario;
-
-//     // Every 360 frames, try the dive again
-//     // if (oTimer < 360) {
-//     //     s16 turnAmount = 0x4000 - atan2s(o->oFinalFappyCircleRadius, o->oDistanceToMario - o->oFinalFappyCircleRadius);
-//     //     if ((s16)(o->oMoveAngleYaw - o->oAngleToMario) < 0) {
-//     //         turnAmount = -turnAmount;
-//     //     }
-//     //     targetMoveYaw = o->oAngleToMario + turnAmount;
-//     //     targetMovePitch = o->oFaceAnglePitch;
-
-//     //     approach_f32_ptr(&o->oFinalFappyCircleRadius, 200.0f, 50.0f);
-//     } else {
-//         o->oAction = 2;
-//     }
-
-// }
-
 static void fappy_prepare_dive(void) {
     // Set target
-    o->oFinalFappyTargetX = gMarioState->pos[0];
-    o->oFinalFappyTargetY = gMarioState->pos[1];
-    o->oFinalFappyTargetZ = gMarioState->pos[2];
+    //o->oFinalFappyTargetX = gMarioState->pos[0];
+    //o->oFinalFappyTargetY = gMarioState->pos[1];
+    //o->oFinalFappyTargetZ = gMarioState->pos[2];
 
     // Current location stored for later
-    o->oFinalFappyPrevX = o->oPosX;
-    o->oFinalFappyPrevY = o->oPosY;
-    o->oFinalFappyPrevZ = o->oPosZ;
+    // o->oFinalFappyPrevX = o->oPosX;
+    // o->oFinalFappyPrevY = o->oPosY;
+    // o->oFinalFappyPrevZ = o->oPosZ;
+    f32 distToMario = o->oDistanceToMario;
+    // Timer counts for half a sec,
+    if (o->oTimer == 0) {
+        cur_obj_play_sound_1(SOUND_GENERAL_COIN);
+        // Store move yaw in a variable to retrieve later
+        o->oFinalFappyCircleRadius = o->oMoveAngleYaw;
+        o->oFaceAngleYaw = o->oAngleToMario;
+        o->oFaceAnglePitch = obj_turn_pitch_toward_mario(0.0f, 0);
 
-    o->oFaceAngleYaw = o->oAngleToMario;
-    //o->oFaceAnglePitch = obj_turn_pitch_toward_mario(120.0f, 0);
+        // I dont understand trig I just copied these from flyguy.inc.c
+        //o->oFinalFappyLungeTargetPitch = obj_turn_pitch_toward_mario(-200.0f, 0);
 
-    // I dont understand trig I just copied these from flyguy.inc.c
-    o->oFinalFappyLungeTargetPitch = obj_turn_pitch_toward_mario(-200.0f, 0);
-    o->oForwardVel = 25.0f * coss(o->oFinalFappyLungeTargetPitch);
-    o->oVelY = 25.0f * -sins(o->oFinalFappyLungeTargetPitch);
-    o->oFinalFappyLungeYDecel = -o->oVelY / 30.0f;
+        //o->oForwardVel = 0.5f * (o->oDistanceToMario);//30.0f * coss(o->oFinalFappyLungeTargetPitch);
+        //o->oVelY = 30.0f * -sins(o->oFinalFappyLungeTargetPitch);
+        //o->oFinalFappyLungeYDecel = -o->oVelY / 30.0f;
+        o->oForwardVel = 0;
+        o->oVelX = 0;
+        o->oVelY = 0;
+        o->oVelZ = 0;
 
-    o->oTimer = 1;
-    o->oAction = 3;
+        o->oFinalFappySpeed = 0.3f * distToMario;
+        o->oMoveAnglePitch = o->oFaceAnglePitch;
+        o->oMoveAngleYaw = o->oAngleToMario;
+        
+    } else if (o->oTimer++ > 30) {
+        o->oForwardVel = 15.0f;
+        if (o->oPosY > gMarioObject->oPosY) {
+            o->oVelY = -40.0f;
+        } else {
+            o->oVelY = 15.0f;
+        }
+        o->oTimer = 0;
+        o->oAction = 3;
+        cur_obj_play_sound_1(SOUND_ACTION_FLYING_FAST);
+    }
 }
 
 // lunge to mario's old position
-static void fappy_to_mario(void) {
-    //
+static void fappy_lunge(void) {
+    // target - old position
+    // Lunge downward
+    // f32 xDist = (o->oFinalFappyTargetX - o->oFinalFappyPrevX);
+    // f32 yDist = (o->oFinalFappyTargetY - o->oFinalFappyPrevY);
+    // f32 zDist = (o->oFinalFappyTargetZ - o->oFinalFappyPrevZ);
+    s32 time = 90;
+    if (lateral_dist_between_objects(o, gMarioObject) > 0.0f) {
+        obj_forward_vel_approach(60.0f, 0.5);
+    } else {
+        obj_forward_vel_approach(0.0f, 0.5);
+    }
+    // cur_obj_forward_vel_approach_upward(80.0f, 80.0f/time);
+    // obj_forward_vel_approach(f32 target, f32 delta);
+    if (o->oPosY < gMarioObject->oPosY + 100) {
+        obj_y_vel_approach(10.0f, 0.5f);
+    } else { 
+        obj_y_vel_approach(-55.0f, 0.5f);
+    }
+    //obj_y_vel_approach(f32 target, f32 delta);
+    //o->oForwardVel = o->oFinalFappySpeed;
+    //obj_compute_vel_from_move_pitch(o->oFinalFappySpeed);
+    //cur_obj_move_using_fvel_and_gravity();
+
+    // o->oPosX += xDist/time;
+    // o->oPosY += yDist/time;
+    // o->oPosX += zDist/time;
+    // if (o->oVelY < 0.0f) {
+    //     o->oVelY += o->oFinalFappyLungeYDecel;
+
+    //     cur_obj_rotate_yaw_toward(o->oFaceAngleYaw, 0x800);
+    //     obj_face_pitch_approach(o->oFinalFappyLungeTargetPitch, 0x400);
+
+    //     // Possible values: {-0x1000, 0x0000, 0x1000}
+    //     //o->oFinalFappyTargetRoll = 0x1000 * (s16)(random_float() * 3.0f) - 0x1000;
+
+    //     // Timer is up or he reaches his target
+    // }
+    if (o->oTimer++ > time /*|| (o->oPosX == o->oFinalFappyTargetX && o->oPosY == o->oFinalFappyTargetY && o->oPosZ == o->oFinalFappyTargetZ)*/) {
+        // reset timer and move on to returning to orbit phase.
+        o->oFinalFappyInRange = TRUE;
+        o->oTimer = 0;
+    }
 }
 
 static void fappy_return_to_orbit(void) {
 
+    // prevX is the new target, go the opposite of it to sort of mirror the movement of attacking mario
+    //f32 xDist = (o->oFinalFappyPrevX - o->oFinalFappyTargetX);
+    // s16 yDist = (o->oFinalFappyPrevY - o->oFinalFappyTargetY);
+    //f32 zDist = (o->oFinalFappyPrevZ - o->oFinalFappyTargetZ);
+    s32 time = 90;
+    obj_face_pitch_approach(0, 0x100);
+    //obj_face_roll_approach(o->oFinalFappyTargetRoll, 300);
+    //o->oPosX -= xDist/time;
+    // o->oPosY -= yDist/time;
+    //o->oPosX -= zDist/time;
+
+    //o->oMoveAngleYaw -= o->oFaceAngleRoll / 4;
+    //obj_face_yaw_approach(o->oMoveAngleYaw, 0x800);
+    final_fappy_update_vel_y(500.0f);
+
+    // Once Fappy is high enough and the timer hits time, return to the circle action
+    // OR if he reaches X and Z
+    if (o->oTimer++ > time /*|| (o->oPosX == o->oFinalFappyTargetX - xDist && o->oPosZ == o->oFinalFappyTargetZ - zDist)*/) {
+        o->oFinalFappyInRange = FALSE;
+        o->oTimer = 0;
+        o->oAction = 1;
+        o->oMoveAngleYaw = o->oFinalFappyCircleRadius;
+    }
 }
 
 static void fappy_dive_at_mario(void) {
 
-    if (o->oVelY < 0.0f) {
-        // Lunge downward
-
-        o->oVelY += o->oFinalFappyLungeYDecel;
-
-        cur_obj_rotate_yaw_toward(o->oFaceAngleYaw, 0x800);
-        obj_face_pitch_approach(o->oFinalFappyLungeTargetPitch, 0x400);
-
-        // Possible values: {-0x1000, 0x0000, 0x1000}
-        o->oFinalFappyTargetRoll = 0x1000 * (s16)(random_float() * 3.0f) - 0x1000;
-        o->oTimer = 0;
+    if (o->oFinalFappyInRange) {
+        fappy_lunge();
     } else {
-        // Twirl back upward
-
-        obj_face_pitch_approach(0, 0x100);
-        obj_face_roll_approach(o->oFinalFappyTargetRoll, 300);
-
-        // Twirl in a spiral with curvature proportional to oFaceAngleRoll
-        o->oMoveAngleYaw -= o->oFaceAngleRoll / 4;
-        obj_face_yaw_approach(o->oMoveAngleYaw, 0x800);
-
-        // Continue moving upward until at least 200 units above mario
-        if (o->oPosY < gMarioObject->oPosY + 200.0f) {
-            obj_y_vel_approach(20.0f, 0.5f);
-        } else if (obj_y_vel_approach(0.0f, 0.5f)) {
-            // Wait until roll is zero
-            if (o->oFaceAngleRoll == 0) {
-                o->oAction = FLY_GUY_ACT_APPROACH_MARIO;
-            }
-
-            o->oFinalFappyTargetRoll = 0;
-        }
+        // Returning from dive
+        fappy_return_to_orbit();
+        //cur_obj_move_standard(78);
     }
     
-    // Finished returning from dive
-
-    o->oTimer = 0;
-    o->oAction = 1;
+    
 }
 
 void bhv_final_fappy_init(void) {
+    cur_obj_hide();
+    o->oPosY = gMarioObject->oPosY + 500;
     o->oAction = 0;
     o->oTimer = 0;
-
-    o->oFinalFappySpeed = 40.0f;
-    o->oFinalFappyCircleRadius = 3000.0f;
 }
 
 void bhv_final_fappy_loop(void) {
-    if (o->oDistanceToMario < 9000 && o->oAction == 0) {
+    if (o->oDistanceToMario < 9000 && o->oAction == 0 && cur_obj_nearest_object_with_behavior(bhvCameraLakitu) == NULL) {
         o->oAction = 1;
+        cur_obj_unhide();
     }
+    treat_far_home_as_mario(25000.0f);
 
     switch (o->oAction) {
         case 1:
-            treat_far_home_as_mario(3000.0f);
             fappy_circle_mario();
+            //cur_obj_move_standard(78);
         break;
         case 2:
             fappy_prepare_dive();
@@ -290,4 +353,9 @@ void bhv_final_fappy_loop(void) {
             fappy_dive_at_mario();
         break;
     }
+    cur_obj_move_standard(78);
+    // ?? idk
+    // obj_check_attacks(&sFinalFappyHitbox, o->oAction);
 }
+
+// void bhv_overhead_cam(void) {}

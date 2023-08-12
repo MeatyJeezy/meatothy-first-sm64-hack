@@ -2333,7 +2333,24 @@ LEAVE THIS PLACE\n\
 ALIVE."))
 
 DEFINE_DIALOG(DIALOG_179, 1, 4, 30, 200, _("\
-"))
+Yeehehehe! It's futile.\n\
+I'm unstoppable as long\n\
+as my core is intact.\n\
+\n\
+Go ahead Mario. It's\n\
+in this room. Try\n\
+and break it. I\n\
+know it's impossible\n\
+for you to hit it\n\
+hard enough. I know\n\
+you better than anyone\n\
+Mario. So unless you\n\
+picked up some new\n\
+technique in your\n\
+short time here,\n\
+you'll be trapped\n\
+in this place until\n\
+you die of old age."))
 
 DEFINE_DIALOG(DIALOG_180, 1, 4, 30, 200, _("\
 "))
