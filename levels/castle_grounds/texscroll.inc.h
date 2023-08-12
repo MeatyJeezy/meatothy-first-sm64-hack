@@ -2,7 +2,6 @@ extern void scroll_castle_grounds_dl_Bench_mesh_layer_1_vtx_2();
 extern void scroll_castle_grounds_dl_Cube_mesh_layer_7_vtx_0();
 extern void scroll_castle_grounds_dl_aesthetic_Tents_mesh_layer_1_vtx_0();
 extern void scroll_castle_grounds_dl_aesthetic_Tents_001_mesh_layer_1_vtx_0();
-extern void scroll_castle_grounds_dl_aesthetic_Tents_002_mesh_layer_1_vtx_0();
 extern void scroll_castle_grounds_dl_bordar_mesh_layer_1_vtx_0();
 extern void scroll_castle_grounds_dl_Cube_001_mesh_layer_7_vtx_0();
 extern void scroll_castle_grounds_dl_Cube_001_mesh_layer_1_vtx_0();

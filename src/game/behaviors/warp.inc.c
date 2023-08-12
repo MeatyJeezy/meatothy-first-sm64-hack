@@ -6,6 +6,11 @@ void bhv_warp_loop(void) {
         u16 disabled = GET_BPARAM4(o->oBehParams);
         u16 finalBossPipe = GET_BPARAM3(o->oBehParams);
         // NEW this is devilish code. Setting param 4 disables the warp effectively
+        if(o->oBehParams2ndByte == 0x7A) {
+            o->oPosX = gMarioState->pos[0];
+            o->oPosY = gMarioState->pos[1];
+            o->oPosZ = gMarioState->pos[2];
+        }
         if (disabled != 0) {
             o->hitboxRadius = 0.0f;
             // SET BPARAM3 to denote the final boss warp. Handles whether to hide it or not.

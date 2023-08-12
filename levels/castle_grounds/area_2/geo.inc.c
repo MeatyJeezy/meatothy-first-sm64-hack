@@ -5,7 +5,7 @@ const GeoLayout castle_grounds_area_2_geo[] = {
 	GEO_OPEN_NODE(),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -11628, -2327, -6631, castle_grounds_dl_aesthetic_Tents_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -11628, -2327, -6631, castle_grounds_dl_aesthetic_Tents_001_mesh_layer_1),
-		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 12538, -2327, -6515, -180, 0, 0, castle_grounds_dl_aesthetic_Tents_002_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, 12538, -2327, -6515, -180, 0, 0),
 		GEO_TRANSLATE_NODE(LAYER_OPAQUE, 204, -665, 10812),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_grounds_dl_barrel_001_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 910, 0, 116, -180, 0, 0, castle_grounds_dl_barrel_002_mesh_layer_1),

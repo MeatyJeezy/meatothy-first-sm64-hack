@@ -75,8 +75,9 @@ const LevelScript level_bitdw_entry[] = {
 		WARP_NODE(0xF1, LEVEL_CASTLE_GROUNDS, 0x01, 0x13, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x0B, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_BITDW_WARP_PIPE, -396, 245, -12, 0, 0, 0, 0x000B0000, bhvWarpPipe),
-		OBJECT(MODEL_NONE, 584, 336, -3, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
-		MARIO_POS(0x01, 0, 584, 336, -3),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -407, 245, 242, 0, 0, 0, 0x00A70000, bhvMessagePanel),
+		OBJECT(MODEL_NONE, -468, 336, 608, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
+		MARIO_POS(0x01, 0, -468, 336, 608),
 		TERRAIN(bitdw_area_1_collision),
 		MACRO_OBJECTS(bitdw_area_1_macro_objs),
 		STOP_MUSIC(0),
@@ -85,8 +86,23 @@ const LevelScript level_bitdw_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
+	AREA(2, bitdw_area_2),
+		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF1, LEVEL_CASTLE_GROUNDS, 0x01, 0x13, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x00, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_NONE, -104, 436, 519, 0, 0, 0, 0x00000000, bhvAirborneWarp),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -113, 255, -172, 0, 0, 0, 0x00A60000, bhvMessagePanel),
+		TERRAIN(bitdw_area_2_collision),
+		MACRO_OBJECTS(bitdw_area_2_macro_objs),
+		STOP_MUSIC(0),
+		TERRAIN_TYPE(TERRAIN_GRASS),
+		/* Fast64 begin persistent block [area commands] */
+		/* Fast64 end persistent block [area commands] */
+	END_AREA(),
+
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, 584, 336, -3),
+	MARIO_POS(0x01, 0, -468, 336, 608),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),

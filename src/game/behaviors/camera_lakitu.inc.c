@@ -20,14 +20,12 @@ enum FappyDialog {
 
 void bhv_camera_lakitu_init(void) {
     // Don't show ligma explanation again. JRB_DOOR is set on ligma spawn
-    if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_PSS_DOOR) && (save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR)) {
+    if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_PSS_DOOR) && (save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR) && o->oBehParams2ndByte == 0xBA) {
         obj_mark_for_deletion(o);
     }
     if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR) && o->oBehParams2ndByte == 0xB2) { // Final boss level start
         obj_mark_for_deletion(o);
-    } else if (o->oBehParams2ndByte == 0xB2) {
-        save_file_set_flags(SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR);
-    }
+    } 
     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
         // Despawn unless this is the very beginning of the game
         cur_obj_hide();
@@ -186,6 +184,12 @@ void bhv_camera_lakitu_update(void) {
                 // Flag to never show this again
                 // save_file_set_flags(SAVE_FLAG_UNLOCKED_PSS_DOOR);
             }
+        if (o->oBehParams2ndByte == 0xB2) {
+            if (!(save_file_get_flags() & SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR)) {
+                save_file_set_flags(SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR);
+                 o->oCameraLakituCanInteract = TRUE;
+            }
+        }
         } else {
             o->oCameraLakituCanInteract = TRUE;
         }

@@ -141,7 +141,7 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(MODEL_LAKITU, 12775, 4487, 923, 0, 0, 0, 0x00D00000, bhvQuizMaster),
 		TERRAIN(bob_area_2_collision),
 		MACRO_OBJECTS(bob_area_2_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_INSIDE_CASTLE),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */

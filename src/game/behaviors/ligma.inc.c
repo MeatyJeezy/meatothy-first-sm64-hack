@@ -18,10 +18,14 @@ void bhv_ligma_loop(void) {
             if (dialogID == 0xBD) {
                 create_dialog_box(DIALOG_209);
                 enable_time_stop_including_mario();
-                spawn_object_relative(0x10, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
+                spawn_object_relative(0x7A, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
+            }
+            if (get_dialog_id() < 0) {
+                disable_time_stop_including_mario();
+                obj_mark_for_deletion(o);
             }
             
-            obj_mark_for_deletion(o);
+            
 
             // Increment the timer and kill the player with the appropriate ligma joke
         } else if (o->oTimer++ > 220) {
@@ -31,22 +35,25 @@ void bhv_ligma_loop(void) {
                 // set a flag to indicate ligma death
                 save_file_set_flags(SAVE_FLAG_UNLOCKED_JRB_DOOR);
                 // trigger death action if not already doing it.
-                if (gMarioState->action != ACT_STANDING_DEATH) {
+                if (gMarioState->action != ACT_STANDING_DEATH && dialogID != 0xBD) {
                     set_mario_action(gMarioState, ACT_STANDING_DEATH, 0);
                     obj_mark_for_deletion(o);
+                } else if (dialogID == 0xBD) {
+                    spawn_object_relative(0x7A, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
                 }
             }
 
             // Check which joke to use and print it in center of screen, then kill mario
             if (!(o->oLigmaKilledMario)) {
+                // if (dialogID == 0xBD) {
+                //     spawn_object_relative(0x7A, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
+                // }
                 // dialogID + 1 should always give correct "gottem" text
                 o->oLigmaKilledMario = TRUE;
                 create_dialog_box(dialogID + 1);
                 // Freeze until dialog box closes?
                 enable_time_stop_including_mario();
-                if (dialogID == 0xBD) {
-                    spawn_object_relative(0x10, 0, 0, 0, gMarioState->marioObj, MODEL_NONE, bhvWarp);
-                }
+                
             }
         }
     }

@@ -1974,13 +1974,16 @@ hit the wall. You can\n\
 bounce to a higher level\n\
 using this Wall Kick."))
 
+// Highstriker
 DEFINE_DIALOG(DIALOG_159, 1, 6, 30, 200, _("\
-3. If you stop, press [Z]\n\
-to crouch, then jump, you\n\
-can perform a Backward\n\
-Somersault. To do a Long\n\
-Jump, run fast, press [Z],\n\
-then jump."))
+Pro Gamer Tip:\n\
+After falling for\n\
+a couple seconds\n\
+while doing a ground\n\
+pound, it will turn\n\
+into a Superpound,\n\
+capable of hitting\n\
+things slightly harder."))
 
 DEFINE_DIALOG(DIALOG_160, 1, 4, 30, 200, _("\
 Press [B] while running\n\
@@ -2087,22 +2090,43 @@ from running around\n\
 this post."))
 
 DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
-I'll be back soon.\n\
-I'm out training now,\n\
-so come back later.\n\
-//--Koopa the Quick"))
+Thanks for playing!\n\
+Thank you to the members\n\
+of the Simpleflips rom\n\
+hacking discord for\n\
+answering my questions.\n\
+And thanks to Simple\n\
+for hosting these\n\
+competitions and\n\
+inspiring us to try\n\
+romhacking for the\n\
+first time. It was\n\
+stressful as hell,\n\
+but also very\n\
+satisfying. We're\n\
+looking forward to\n\
+seeing everyone else's\n\
+submissions. Also\n\
+there isn't an end\n\
+screen so go ahead\n\
+and close the game\n\
+whenever"))
 
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
-Princess Toadstool's\n\
-castle is just ahead.\n\
-\n\
-\n\
-Press [A] to jump, [Z] to\n\
-crouch, and [B] to punch,\n\
-read a sign, or grab\n\
-something.\n\
-Press [B] again to throw\n\
-something you're holding."))
+This hack was made by\n\
+Johnothy and Meaty Jesus\n\
+for the Simpleflips 2023\n\
+Troll Hack Competition.\n\
+It contains 6 collectable\n\
+stars, but only 5 are\n\
+required to finish.\n\
+There are images included\n\
+showing all the coin\n\
+locations if they're\n\
+taking too long to find.\n\
+This is our first ever\n\
+romhack, so we hope you\n\
+enjoy."))
 
 // DEFINE_DIALOG(DIALOG_168, 1, 5, 30, 200, _("\
 // Hey! Knock it off! That's\n\
@@ -2334,8 +2358,10 @@ I'm unstoppable as long\n\
 as my core is intact.\n\
 \n\
 Go ahead Mario. It's\n\
-in this room. Try\n\
-and break it. I\n\
+in this room. On the\n\
+head of that giant\n\
+figure of yours truly.\n\
+Try and break it. I\n\
 know it's impossible\n\
 for you to hit it\n\
 hard enough. I know\n\
@@ -2375,7 +2401,9 @@ sure. Maybe there's\n\
 something at the top?"))
 
 DEFINE_DIALOG(DIALOG_183, 1, 4, 30, 200, _("\
-Core weak point below."))
+Core weak point below.\n\
+Avoid hitting with\n\
+tremendous force."))
 
 DEFINE_DIALOG(DIALOG_184, 1, 4, 30, 200, _("\
 If you have arrived\n\
@@ -2388,7 +2416,7 @@ is OFF LIMITS, and\n\
 only visible to\n\
 people who are\n\
 really smart, or have\n\
-6 Fun Tokens."))
+5 Fun Tokens."))
 
 // Misc. Fappy dialogue starts here
 DEFINE_DIALOG(DIALOG_185, 1, 4, 30, 200, _("\
@@ -2512,7 +2540,8 @@ carnival."))
 
 DEFINE_DIALOG(DIALOG_190, 1, 2, 30, 200, _("\
 Taste of eden\n\
-these nuts."))
+these nuts.\n\
+And that's all, folks!"))
 
 DEFINE_DIALOG(DIALOG_191, 1, 4, 30, 200, _("\
 I heard the roller\n\
