@@ -1755,6 +1755,9 @@ u32 check_npc_talk(struct MarioState *m, struct Object *obj) {
 #ifdef DIALOG_INDICATOR
         if (obj->behavior == segmented_to_virtual(bhvYoshi)) {
             spawn_object_relative(ORANGE_NUMBER_A, 0, 256, 64, obj, MODEL_NUMBER, bhvOrangeNumber);
+            // NEW Set indicator higher for Carny
+        } else if (obj->behavior == segmented_to_virtual(bhvHighStrikerCarny)) {
+            spawn_object_relative(ORANGE_NUMBER_A, 0, 299, 64, obj, MODEL_NUMBER, bhvOrangeNumber);
         } else {
             spawn_object_relative(ORANGE_NUMBER_A, 0, 190,  0, obj, MODEL_NUMBER, bhvOrangeNumber);
         }

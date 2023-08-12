@@ -2284,10 +2284,9 @@ Yehehehe!\n\
 Well, I have to be off\n\
 for now. You'd better\n\
 not fade warp to the\n\
-secret exit door\n\
-at the back and try\n\
-to escape the carnival\n\
-after I leave."))
+secret exit at\n\
+the back after\n\
+I leave."))
 // I was hoping you'd be\n\
 // back! The crowd loves you.\n\
 // They've been begging for\n\
@@ -2309,7 +2308,29 @@ after I leave."))
 
 
 DEFINE_DIALOG(DIALOG_178, 1, 4, 30, 200, _("\
-"))
+You've really done\n\
+it now, Mario. I\n\
+let you be a part\n\
+of my carnival--\n\
+my PARADISE, and\n\
+this is how you\n\
+repay me? I thought\n\
+we were friends, but\n\
+you violated my trust.\n\
+VIOLATED IT!!!\n\
+\n\
+\n\
+It's too late now.\n\
+You weren't supposed\n\
+to see any of this.\n\
+\n\
+There's only one\n\
+thing I can do now.\n\
+\n\
+\n\
+Mario. You will NOT\n\
+LEAVE THIS PLACE\n\
+ALIVE."))
 
 DEFINE_DIALOG(DIALOG_179, 1, 4, 30, 200, _("\
 "))
@@ -2327,7 +2348,17 @@ DEFINE_DIALOG(DIALOG_183, 1, 4, 30, 200, _("\
 "))
 
 DEFINE_DIALOG(DIALOG_184, 1, 4, 30, 200, _("\
-"))
+If you have arrived\n\
+here by accident,\n\
+take the pipe on the\n\
+right to safely exit\n\
+the bigtop.\n\
+The pipe on the left\n\
+is OFF LIMITS, and\n\
+only visible to\n\
+people who are\n\
+really smart, or have\n\
+6 Fun Tokens."))
 
 // Misc. Fappy dialogue starts here
 DEFINE_DIALOG(DIALOG_185, 1, 4, 30, 200, _("\

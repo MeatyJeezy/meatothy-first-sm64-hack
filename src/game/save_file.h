@@ -119,11 +119,11 @@ enum SaveProgressFlags {
     SAVE_FLAG_HAVE_KEY_2             = (1 <<  5), /* 0x00000020 */
     // Safe flags to use:
     SAVE_FLAG_UNLOCKED_BASEMENT_DOOR = (1 <<  6), /* 0x00000040 Fappy dialogue one*/
-    SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR = (1 <<  7), /* 0x00000080 F dial 2*/
+    SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR = (1 <<  7), /* 0x00000080 F dial final boss start*/
     SAVE_FLAG_DDD_MOVED_BACK         = (1 <<  8), /* 0x00000100 F dial 3*/
-    SAVE_FLAG_MOAT_DRAINED           = (1 <<  9), /* 0x00000200 F dial 4*/
+    SAVE_FLAG_MOAT_DRAINED           = (1 <<  9), /* 0x00000200 Final Boss Dialog Start*/
     SAVE_FLAG_UNLOCKED_PSS_DOOR      = (1 << 10), /* 0x00000400 F dont show ligma shield explanation again*/
-    SAVE_FLAG_UNLOCKED_WF_DOOR       = (1 << 11), /* 0x00000800 */
+    SAVE_FLAG_UNLOCKED_WF_DOOR       = (1 << 11), /* 0x00000800 Final*/
     SAVE_FLAG_UNLOCKED_CCM_DOOR      = (1 << 12), /* 0x00001000 Fappy tell player about 100th coin*/
     SAVE_FLAG_UNLOCKED_JRB_DOOR      = (1 << 13), /* 0x00002000 Fappy do ligma explanation*/
     SAVE_FLAG_UNLOCKED_BITDW_DOOR    = (1 << 14), /* 0x00004000 Quizmaster first entry*/

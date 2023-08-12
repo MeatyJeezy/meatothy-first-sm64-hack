@@ -23,6 +23,11 @@ void bhv_camera_lakitu_init(void) {
     if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_PSS_DOOR) && (save_file_get_flags() & SAVE_FLAG_UNLOCKED_JRB_DOOR)) {
         obj_mark_for_deletion(o);
     }
+    if ((save_file_get_flags() & SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR) && o->oBehParams2ndByte == 0xB2) { // Final boss level start
+        obj_mark_for_deletion(o);
+    } else if (o->oBehParams2ndByte == 0xB2) {
+        save_file_set_flags(SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR);
+    }
     if (o->oBehParams2ndByte != CAMERA_LAKITU_BP_FOLLOW_CAMERA) {
         // Despawn unless this is the very beginning of the game
         cur_obj_hide();

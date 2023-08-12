@@ -723,8 +723,24 @@
 #define /*0x0F8*/ oLigmaTimerStarted        OBJECT_FIELD_S32(0x1C)
 #define /*0x0FC*/ oLigmaKilledMario         OBJECT_FIELD_F32(0x1D)
 
-#define /*0x0F4*/ oHighstrikerCarnyDialog   OBJECT_FIELD_S32(0x1B)
-#define /*0x0F8*/ oHighStrikerCarnyDoneTalking OBJECT_FIELD_S32(0x1C)
+/* Final Fappy Boss*/
+#define /*0x0F4*/ oFinalFappyInRange           OBJECT_FIELD_S32(0x1B)
+#define /*0x0F8*/ oFinalFappyCircleRadius      OBJECT_FIELD_S32(0x1C)
+#define /*0x0FC*/ oFinalFappyTargetX            OBJECT_FIELD_F32(0x1D)
+#define /*0x100*/ oFinalFappyTargetY            OBJECT_FIELD_F32(0x1E)
+#define /*0x104*/ oFinalFappyTargetZ            OBJECT_FIELD_F32(0x1F)
+#define /*0x0FC*/ oFinalFappyPrevX              OBJECT_FIELD_F32(0x20)
+#define /*0x0FC*/ oFinalFappyPrevY              OBJECT_FIELD_F32(0x21)
+#define /*0x0FC*/ oFinalFappyPrevZ              OBJECT_FIELD_F32(0x22)
+#define /*0x100*/ oFinalFappyLungeYDecel            OBJECT_FIELD_F32(0x23)
+#define /*0x104*/ oFinalFappyLungeTargetPitch       OBJECT_FIELD_S32(0x24)
+#define /*0x0F8*/ oFinalFappySpeed                   OBJECT_FIELD_F32(0x25)
+#define /*0x108*/ oFinalFappyTargetRoll                  OBJECT_FIELD_S32(0x26)
+#define /*0x1AC*/ oFinalFappyPitchVel                OBJECT_FIELD_S16(0x49, 0)
+#define /*0x1AE*/ oFinalFappyYawVel                  OBJECT_FIELD_S16(0x49, 1)
+
+#define /*0x0F4*/ oHighstrikerCarnyDialog       OBJECT_FIELD_S32(0x1B)
+#define /*0x0F8*/ oHighStrikerCarnyDoneTalking  OBJECT_FIELD_S32(0x1C)
 
 /* Evil Lakitu */
 #define /*0x0F4*/ oEnemyLakituNumSpinies           OBJECT_FIELD_S32(0x1B)

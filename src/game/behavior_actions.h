@@ -560,6 +560,8 @@ void bhv_highstriker_bell_init(void);
 void bhv_highstriker_bell_loop(void);
 void bhv_quizmaster_init(void);
 void bhv_quizmaster_loop(void);
+void bhv_final_fappy_init(void);
+void bhv_final_fappy_loop(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

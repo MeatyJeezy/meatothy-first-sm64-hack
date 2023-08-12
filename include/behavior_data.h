@@ -546,5 +546,6 @@ extern const BehaviorScript bhvHighStrikerBell[];
 extern const BehaviorScript bhvHighStrikerCarny[];
 extern const BehaviorScript bhvHighStrikerMachine[];
 extern const BehaviorScript bhvQuizMaster[];
+extern const BehaviorScript bhvFinalFappy[];
 
 #endif // BEHAVIOR_DATA_H
