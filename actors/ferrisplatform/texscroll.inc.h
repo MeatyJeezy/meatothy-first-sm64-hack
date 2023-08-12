@@ -1,0 +1,2 @@
+extern void scroll_ferrisplatform_000_displaylist_mesh_layer_1_vtx_0();
+extern void scroll_actor_geo_ferrisplatform();

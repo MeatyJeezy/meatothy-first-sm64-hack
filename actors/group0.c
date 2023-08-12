@@ -59,3 +59,4 @@
 #include "BossFappy/model.inc.c"
 #include "BossFappy/anims/data.inc.c"
 #include "BossFappy/anims/table.inc.c"
+#include "ferrisplatform/model.inc.c"

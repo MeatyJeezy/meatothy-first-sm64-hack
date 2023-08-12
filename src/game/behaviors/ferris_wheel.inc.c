@@ -54,7 +54,7 @@ void bhv_ferris_wheel_platform_update(void) {
     f32 offsetXZ;
     s16 offsetAngle;
     s32 axleRoll = 400;
-    u8 multiplier = 3;
+    u8 multiplier = 5;
 
     // If mario is on platform, multiply roll by 
     obj_perform_position_op(POS_OP_SAVE_POSITION);

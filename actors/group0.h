@@ -373,4 +373,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 
 #include "BossFappy/anim_header.h"
+#include "ferrisplatform/geo_header.h"
+
 #endif

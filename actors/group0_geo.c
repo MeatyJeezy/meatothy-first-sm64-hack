@@ -31,3 +31,4 @@
 #include "SpelunkerToad/geo.inc.c"
 #include "CarnieToad/geo.inc.c"
 #include "BossFappy/geo.inc.c"
+#include "ferrisplatform/geo.inc.c"
